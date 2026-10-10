@@ -102,11 +102,30 @@
      * Safely update an element's textContent (strictly preventing innerHTML XSS)
      * @param {HTMLElement|string} target Element or selector
      * @param {string} text Plain text to insert
+    /**
+     * Decodes numeric and hex HTML entities into raw Unicode characters.
+     * @param {string} str
+     * @returns {string}
+     */
+    decodeEntities: function(str) {
+      if (!str || typeof str !== 'string') return str || '';
+      if (!/&#\d+|&#x[0-9a-fA-F]+;|&amp;#/i.test(str)) return str;
+      return str
+        .replace(/&amp;#(\d+);/g, function(_, dec) { return String.fromCodePoint(parseInt(dec, 10)); })
+        .replace(/&amp;#x([0-9a-fA-F]+);/gi, function(_, hex) { return String.fromCodePoint(parseInt(hex, 16)); })
+        .replace(/&#(\d+);/g, function(_, dec) { return String.fromCodePoint(parseInt(dec, 10)); })
+        .replace(/&#x([0-9a-fA-F]+);/gi, function(_, hex) { return String.fromCodePoint(parseInt(hex, 16)); });
+    },
+
+    /**
+     * Safely update an element's textContent (strictly preventing innerHTML XSS and decoding Blogger entities)
+     * @param {HTMLElement|string} target Element or selector
+     * @param {string} text Plain text to insert
      */
     safeSetText: function(target, text) {
       var el = typeof target === 'string' ? document.querySelector(target) : target;
       if (el) {
-        el.textContent = text;
+        el.textContent = this.decodeEntities(text);
       }
     },
 
@@ -122,7 +141,7 @@
         .replace(/</g, '&lt;')
         .replace(/>/g, '&gt;')
         .replace(/"/g, '&quot;')
-        .replace(/'/g, '&#039;');
+        .replace(/'/g, '&apos;');
     }
   };
 

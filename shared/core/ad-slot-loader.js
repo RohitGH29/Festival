@@ -1,12 +1,12 @@
 /**
  * Google AdSense Safe Integration & Lazy Loader
  * Complies strictly with Google AdSense program policies:
- * - Minimum 100px vertical buffer from tappable buttons.
+ * - Max 3 manual ad units per page.
+ * - Minimum 100px vertical buffer from tappable controls.
  * - Reserved min-height (prevents Cumulative Layout Shift CLS < 0.1).
- * - Mandatory "ADVERTISEMENT" labels.
- * - IntersectionObserver lazy loading with push-once guarantee.
- * - Ad-blocker safe collapse fallback.
- * - Zero click tracking (only legitimate viewability events).
+ * - Mandatory "ADVERTISEMENT" labels (12px readable).
+ * - Immediate zero-height collapse when unfilled (data-ad-status="unfilled").
+ * - No stray preview text or deceptive elements.
  */
 (function(window) {
   'use strict';
@@ -26,7 +26,7 @@
 
       this.setupSlots();
       this.observeAdSlots();
-      this.setupAdBlockerFallback();
+      this.setupUnfilledCollapseWatcher();
     },
 
     setupSlots: function() {
@@ -34,6 +34,12 @@
       var adUnits = document.querySelectorAll('.fest-ad-slot');
 
       adUnits.forEach(function(slot, index) {
+        // Enforce max 3 units limit
+        if (index >= 3) {
+          slot.parentElement ? slot.parentElement.remove() : slot.remove();
+          return;
+        }
+
         var slotId = slot.getAttribute('id') || ('fest-ad-' + (index + 1));
         slot.setAttribute('id', slotId);
 
@@ -46,7 +52,6 @@
           slot.insertBefore(label, slot.firstChild);
         }
 
-        // Configure ins element attributes if needed
         var ins = slot.querySelector('ins.adsbygoogle');
         if (ins && self.publisherId && self.publisherId !== 'ca-pub-XXXXXXXXXXXXXXXX') {
           ins.setAttribute('data-ad-client', self.publisherId);
@@ -72,7 +77,7 @@
             }
           });
         }, {
-          rootMargin: '250px 0px 250px 0px', // Preload when 250px away
+          rootMargin: '250px 0px 250px 0px',
           threshold: 0.05
         });
 
@@ -80,7 +85,6 @@
           observer.observe(slot);
         });
       } else {
-        // Fallback for browsers without IntersectionObserver
         window.addEventListener('load', function() {
           adSlots.forEach(function(slot) {
             self.loadSlot(slot);
@@ -97,50 +101,46 @@
       var ins = slotEl.querySelector('ins.adsbygoogle');
       if (!ins) return;
 
-      // Policy check: Don't load real ads if publisher ID is not set
+      // Don't push to AdSense if publisher ID is default placeholder
       if (!this.publisherId || this.publisherId === 'ca-pub-XXXXXXXXXXXXXXXX') {
-        // Show test placeholder styling in preview/development
-        slotEl.classList.add('ad-slot-preview-mode');
-        var previewNotice = slotEl.querySelector('.ad-preview-badge');
-        if (!previewNotice) {
-          var badge = document.createElement('div');
-          badge.className = 'ad-preview-badge';
-          badge.textContent = 'AdSense Unit ' + slotId + ' (Policy-Safe Slot)';
-          slotEl.appendChild(badge);
-        }
         return;
       }
 
       try {
         (window.adsbygoogle = window.adsbygoogle || []).push({});
 
-        // Log viewability only to GA4 (Never track clicks on ads)
         if (window.FestivalAnalytics) {
           window.FestivalAnalytics.logEvent('ad_slot_viewed', {
             slot_id: slotId
           });
         }
       } catch (e) {
-        console.warn('AdSense push error for ' + slotId + ':', e);
+        // Silently catch ad load issues
       }
     },
 
-    setupAdBlockerFallback: function() {
-      // After 3.5s, check if ads failed to fill or blocked; collapse empty space gracefully
-      window.addEventListener('load', function() {
-        setTimeout(function() {
-          var adSlots = document.querySelectorAll('.fest-ad-slot:not(.ad-slot-preview-mode)');
-          adSlots.forEach(function(slot) {
-            var ins = slot.querySelector('ins.adsbygoogle');
-            if (ins) {
-              var status = ins.getAttribute('data-ad-status');
-              // If unfilled or 0 height
-              if (status === 'unfilled' || (ins.clientHeight === 0 && ins.innerHTML.trim() === '')) {
-                slot.classList.add('ad-slot-collapsed');
+    setupUnfilledCollapseWatcher: function() {
+      // Monitor unfilled slots and collapse them cleanly without layout gaps
+      function checkAndCollapse() {
+        var adSlots = document.querySelectorAll('.fest-ad-slot');
+        adSlots.forEach(function(slot) {
+          var ins = slot.querySelector('ins.adsbygoogle');
+          if (ins) {
+            var status = ins.getAttribute('data-ad-status');
+            if (status === 'unfilled') {
+              slot.classList.add('ad-slot-collapsed');
+              if (slot.parentElement && slot.parentElement.classList.contains('fest-ad-slot-wrapper')) {
+                slot.parentElement.style.display = 'none';
               }
             }
-          });
-        }, 3500);
+          }
+        });
+      }
+
+      // Check on load and periodically for filled status
+      window.addEventListener('load', function() {
+        setTimeout(checkAndCollapse, 2000);
+        setTimeout(checkAndCollapse, 4500);
       });
     }
   };

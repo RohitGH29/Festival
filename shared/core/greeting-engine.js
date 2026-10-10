@@ -1,13 +1,73 @@
 /**
  * Dynamic Greeting & Wish Personalization Engine
- * Manages personalized state, wish pool shuffling, style categories, and instant multi-language toggling.
+ * Manages personalized state, wish pool shuffling, style categories, entity decoding,
+ * and 100% consistent bilingual UI toggling (Hindi <-> English).
  */
 (function(window) {
   'use strict';
 
+  // Helper: Decode decimal (&#2369;) and hex (&#x0941;) HTML entities and double-escaped entities
+  function decodeEntities(str) {
+    if (typeof str !== 'string' || !str) return str || '';
+    if (!/&#\d+|&#x[0-9a-fA-F]+;|&amp;#/i.test(str)) return str;
+    return str
+      .replace(/&amp;#(\d+);/g, function(_, dec) { return String.fromCodePoint(parseInt(dec, 10)); })
+      .replace(/&amp;#x([0-9a-fA-F]+);/gi, function(_, hex) { return String.fromCodePoint(parseInt(hex, 16)); })
+      .replace(/&#(\d+);/g, function(_, dec) { return String.fromCodePoint(parseInt(dec, 10)); })
+      .replace(/&#x([0-9a-fA-F]+);/gi, function(_, hex) { return String.fromCodePoint(parseInt(hex, 16)); });
+  }
+
+  // Recursively decode all strings within config
+  function deepDecode(obj) {
+    if (typeof obj === 'string') return decodeEntities(obj);
+    if (Array.isArray(obj)) return obj.map(deepDecode);
+    if (obj && typeof obj === 'object') {
+      for (var k in obj) {
+        if (Object.prototype.hasOwnProperty.call(obj, k)) {
+          obj[k] = deepDecode(obj[k]);
+        }
+      }
+    }
+    return obj;
+  }
+
+  // Walk DOM text nodes, placeholders, and aria-labels to repair any Blogger-encoded entities
+  function decodeDOMEntities(root) {
+    try {
+      var r = root || document.body;
+      if (!r) return;
+      var walker = document.createTreeWalker(r, NodeFilter.SHOW_TEXT, null, false);
+      var node;
+      while ((node = walker.nextNode())) {
+        if (node.nodeValue && /&#\d+|&#x[0-9a-fA-F]+;|&amp;#/i.test(node.nodeValue)) {
+          node.nodeValue = decodeEntities(node.nodeValue);
+        }
+      }
+      var inputs = r.querySelectorAll('input[placeholder], textarea[placeholder]');
+      inputs.forEach(function(el) {
+        var ph = el.getAttribute('placeholder');
+        if (ph && /&#\d+|&#x[0-9a-fA-F]+;|&amp;#/i.test(ph)) {
+          el.setAttribute('placeholder', decodeEntities(ph));
+        }
+      });
+      var ariaEls = r.querySelectorAll('[aria-label]');
+      ariaEls.forEach(function(el) {
+        var al = el.getAttribute('aria-label');
+        if (al && /&#\d+|&#x[0-9a-fA-F]+;|&amp;#/i.test(al)) {
+          el.setAttribute('aria-label', decodeEntities(al));
+        }
+      });
+    } catch (e) {
+      // Graceful fallback for older environments
+    }
+  }
+
+  window.decodeEntities = decodeEntities;
+  window.decodeDOMEntities = decodeDOMEntities;
+
   var GreetingEngine = {
     config: null,
-    currentLang: 'en',
+    currentLang: 'hi',
     currentStyle: 'all',
     currentWishIndex: 0,
     state: {
@@ -16,7 +76,11 @@
     },
 
     init: function(config) {
-      this.config = config || {};
+      this.config = deepDecode(config || {});
+
+      // Fix mobile viewport if host theme injected desktop width=1100
+      this.enforceMobileViewport();
+
       var params = window.FestivalSanitizer ? window.FestivalSanitizer.getQueryParams() : { to: '', from: '', lang: '', style: 'all' };
 
       this.currentLang = params.lang || (this.config.defaultLanguage || 'hi');
@@ -24,30 +88,46 @@
       this.state.to = params.to || '';
       this.state.from = params.from || '';
 
+      // Clean up any entities existing in the DOM from host template
+      decodeDOMEntities(document.body);
+
       this.setupDOM();
       this.bindEvents();
       this.render();
     },
 
+    enforceMobileViewport: function() {
+      try {
+        var metaVp = document.querySelector('meta[name="viewport"]');
+        if (metaVp) {
+          metaVp.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover');
+        } else {
+          metaVp = document.createElement('meta');
+          metaVp.name = 'viewport';
+          metaVp.content = 'width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover';
+          document.head.appendChild(metaVp);
+        }
+      } catch (e) {}
+    },
+
     setupDOM: function() {
-      // Set initial input values if present
       var toInput = document.getElementById('fest-input-to');
       var fromInput = document.getElementById('fest-input-from');
       if (toInput && this.state.to) toInput.value = this.state.to;
       if (fromInput && this.state.from) fromInput.value = this.state.from;
 
-      // Update active language pill
-      var langButtons = document.querySelectorAll('.lang-pill');
       var self = this;
+      var langButtons = document.querySelectorAll('.lang-pill');
       langButtons.forEach(function(btn) {
         if (btn.getAttribute('data-lang') === self.currentLang) {
           btn.classList.add('active');
+          btn.setAttribute('aria-checked', 'true');
         } else {
           btn.classList.remove('active');
+          btn.setAttribute('aria-checked', 'false');
         }
       });
 
-      // Update active style pill
       var styleButtons = document.querySelectorAll('.style-pill');
       styleButtons.forEach(function(btn) {
         if (btn.getAttribute('data-style') === self.currentStyle) {
@@ -61,7 +141,6 @@
     bindEvents: function() {
       var self = this;
 
-      // Personalize form submit
       var form = document.getElementById('fest-personalize-form');
       if (form) {
         form.addEventListener('submit', function(e) {
@@ -70,7 +149,6 @@
         });
       }
 
-      // Shuffle wish button
       var shuffleBtn = document.getElementById('fest-btn-shuffle');
       if (shuffleBtn) {
         shuffleBtn.addEventListener('click', function() {
@@ -78,7 +156,6 @@
         });
       }
 
-      // Copy wish button
       var copyWishBtn = document.getElementById('fest-btn-copy-wish');
       if (copyWishBtn) {
         copyWishBtn.addEventListener('click', function() {
@@ -86,7 +163,6 @@
         });
       }
 
-      // "Make one for someone else" button
       var makeOwnBtn = document.getElementById('fest-btn-make-own');
       if (makeOwnBtn) {
         makeOwnBtn.addEventListener('click', function() {
@@ -94,7 +170,6 @@
         });
       }
 
-      // Language switcher pills
       var langButtons = document.querySelectorAll('.lang-pill');
       langButtons.forEach(function(btn) {
         btn.addEventListener('click', function() {
@@ -103,7 +178,6 @@
         });
       });
 
-      // Style category pills
       var styleButtons = document.querySelectorAll('.style-pill');
       styleButtons.forEach(function(btn) {
         btn.addEventListener('click', function() {
@@ -112,13 +186,11 @@
         });
       });
 
-      // Quick recipient selector chips (Family, Friends, Boss, Teacher)
       var recipientChips = document.querySelectorAll('.recipient-chip');
       recipientChips.forEach(function(chip) {
         chip.addEventListener('click', function() {
           var targetStyle = chip.getAttribute('data-target-style');
           if (targetStyle) self.setStyle(targetStyle);
-          // Highlight chip
           recipientChips.forEach(function(c) { c.classList.remove('active'); });
           chip.classList.add('active');
         });
@@ -135,10 +207,8 @@
       this.state.to = window.FestivalSanitizer ? window.FestivalSanitizer.sanitizeName(rawTo, 30) : rawTo.trim();
       this.state.from = window.FestivalSanitizer ? window.FestivalSanitizer.sanitizeName(rawFrom, 30) : rawFrom.trim();
 
-      // Update URL query parameters without reloading
       this.updateUrlParams();
 
-      // Track analytics
       if (window.FestivalAnalytics) {
         window.FestivalAnalytics.logEvent('name_entered', {
           festival: this.config.slug,
@@ -147,15 +217,12 @@
         });
       }
 
-      // Re-render
       this.render();
 
-      // Trigger celebratory golden sparkle particles
       if (window.triggerFestConfetti) {
         window.triggerFestConfetti();
       }
 
-      // Smooth scroll to card
       var card = document.getElementById('fest-greeting-card');
       if (card) {
         card.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -163,7 +230,6 @@
     },
 
     handleMakeForSomeoneElse: function() {
-      // Growth loop: recipient becomes the sender!
       var previousTo = this.state.to;
       this.state.from = previousTo;
       this.state.to = '';
@@ -178,7 +244,6 @@
         fromInput.value = previousTo;
       }
 
-      // Switch view to form if card was in personalized display mode
       var formSection = document.getElementById('fest-personalize-section');
       if (formSection) {
         formSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -216,9 +281,7 @@
         }
 
         window.history.replaceState({}, '', url.toString());
-      } catch (e) {
-        // Fallback for older browsers
-      }
+      } catch (e) {}
     },
 
     setLanguage: function(lang) {
@@ -226,13 +289,14 @@
       this.currentLang = lang;
       this.currentWishIndex = 0;
 
-      // Update pills
       var langButtons = document.querySelectorAll('.lang-pill');
       langButtons.forEach(function(btn) {
         if (btn.getAttribute('data-lang') === lang) {
           btn.classList.add('active');
+          btn.setAttribute('aria-checked', 'true');
         } else {
           btn.classList.remove('active');
+          btn.setAttribute('aria-checked', 'false');
         }
       });
 
@@ -243,6 +307,14 @@
           language: lang,
           festival: this.config.slug
         });
+      }
+
+      // Propagate language update to interactive engine (quiz, diya) and countdown
+      if (window.FestivalInteractive && window.FestivalInteractive.setLanguage) {
+        window.FestivalInteractive.setLanguage(lang);
+      }
+      if (window.FestivalCountdown && window.FestivalCountdown.setLanguage) {
+        window.FestivalCountdown.setLanguage(lang);
       }
 
       this.render();
@@ -284,7 +356,10 @@
     getCurrentWish: function() {
       var pool = this.getFilteredWishes();
       if (!pool || pool.length === 0) {
-        return { text: 'May this festive season bring joy, health, and prosperity to you and your loved ones!', category: 'all' };
+        var defaultText = this.currentLang === 'hi'
+          ? 'आपके और आपके परिवार के लिए यह पावन पर्व सुख, शांति और समृद्धि लाए!'
+          : 'May this festive season bring joy, health, and prosperity to you and your loved ones!';
+        return { text: defaultText, category: 'all' };
       }
       return pool[this.currentWishIndex % pool.length];
     },
@@ -298,7 +373,7 @@
       var wishEl = document.getElementById('fest-card-wish');
       if (wishEl) {
         wishEl.classList.remove('fade-in-wish');
-        void wishEl.offsetWidth; // Trigger reflow for animation
+        void wishEl.offsetWidth;
         wishEl.classList.add('fade-in-wish');
       }
 
@@ -317,13 +392,13 @@
       var wishObj = this.getCurrentWish();
       var wishEl = document.getElementById('fest-card-wish');
       if (wishEl) {
-        wishEl.textContent = wishObj.text;
+        wishEl.textContent = decodeEntities(wishObj.text);
       }
     },
 
     copyCurrentWish: function() {
       var wishObj = this.getCurrentWish();
-      var textToCopy = wishObj.text;
+      var textToCopy = decodeEntities(wishObj.text);
       var self = this;
 
       if (navigator.clipboard && navigator.clipboard.writeText) {
@@ -347,9 +422,7 @@
       try {
         document.execCommand('copy');
         this.showToast(this.currentLang === 'hi' ? 'शुभकामना कॉपी हो गई! 📋' : 'Wish copied! 📋');
-      } catch (e) {
-        // Failed
-      }
+      } catch (e) {}
       document.body.removeChild(ta);
     },
 
@@ -361,7 +434,7 @@
         toast.className = 'fest-toast';
         document.body.appendChild(toast);
       }
-      toast.textContent = message;
+      toast.textContent = decodeEntities(message);
       toast.classList.add('visible');
       setTimeout(function() {
         toast.classList.remove('visible');
@@ -376,26 +449,25 @@
       var titleEl = document.getElementById('fest-card-title');
       var nameEl = document.getElementById('fest-card-name');
       var fromEl = document.getElementById('fest-card-from');
-      var festivalGreeting = langData.greetingName || (this.config.name + ' Greeting');
+      var festivalGreeting = langData.greetingName || (isHindi ? (this.config.nameHindi || 'शुभ पर्व') : (this.config.name + ' Greeting'));
 
       if (titleEl) {
-        titleEl.textContent = festivalGreeting;
+        titleEl.textContent = decodeEntities(festivalGreeting);
       }
 
       if (nameEl) {
         if (this.state.to) {
-          nameEl.textContent = (isHindi ? 'प्रिय ' : 'Dearest ') + this.state.to + '!';
-          nameEl.style.display = 'block';
+          nameEl.textContent = decodeEntities((isHindi ? 'प्रिय ' : 'Dearest ') + this.state.to + '!');
         } else {
-          nameEl.textContent = isHindi ? 'आपके और आपके परिवार के लिए!' : 'For You & Your Family!';
-          nameEl.style.display = 'block';
+          nameEl.textContent = decodeEntities(isHindi ? 'आपके और आपके परिवार के लिए!' : 'For You & Your Family!');
         }
+        nameEl.style.display = 'block';
       }
 
       // 2. Render Sender line
       if (fromEl) {
         if (this.state.from) {
-          fromEl.textContent = isHindi ? '— ' + this.state.from + ' की ओर से सप्रेम' : '— With love & warm wishes from ' + this.state.from;
+          fromEl.textContent = decodeEntities(isHindi ? ('— ' + this.state.from + ' की ओर से सप्रेम') : ('— With warm wishes from ' + this.state.from));
           fromEl.style.display = 'block';
         } else {
           fromEl.style.display = 'none';
@@ -414,11 +486,13 @@
           to: this.state.to,
           from: this.state.from,
           lang: this.currentLang,
-          wishText: this.getCurrentWish().text,
-          festivalName: this.config.name,
-          festivalGreeting: festivalGreeting
+          wishText: decodeEntities(this.getCurrentWish().text),
+          festivalName: isHindi ? (this.config.nameHindi || this.config.name) : this.config.name,
+          festivalGreeting: decodeEntities(festivalGreeting)
         });
       }
+
+      decodeDOMEntities(document.body);
     },
 
     updateLanguageTexts: function(langData, isHindi) {
@@ -448,27 +522,70 @@
       var badgeEl = document.querySelector('.fest-card-badge');
       var waBtn = document.getElementById('fest-btn-share-whatsapp');
 
-      if (toLabel) toLabel.textContent = isHindi ? 'यह शुभकामना किसके लिए है? (नाम)' : 'Enter Recipient Name (e.g., Priya)';
-      if (fromLabel) fromLabel.textContent = isHindi ? 'आपका नाम (वैकल्पिक)' : 'Your Name (Optional)';
-      if (toInput) toInput.placeholder = isHindi ? 'उदा. राहुल या प्रिया' : 'Recipient\'s name';
-      if (fromInput) fromInput.placeholder = isHindi ? 'आपका नाम' : 'Your name';
-      if (boxTitle) boxTitle.textContent = isHindi ? '2 सेकंड में अपने नाम से बनाएं' : 'Personalize This Greeting in 2 Seconds';
+      if (toLabel) toLabel.textContent = decodeEntities(isHindi ? 'यह शुभकामना किसके लिए है? (नाम)' : 'Enter Recipient Name (e.g., Priya)');
+      if (fromLabel) fromLabel.textContent = decodeEntities(isHindi ? 'आपका नाम (वैकल्पिक)' : 'Your Name (Optional)');
+      if (toInput) toInput.placeholder = decodeEntities(isHindi ? 'उदा. राहुल या प्रिया' : 'e.g., Rahul or Priya');
+      if (fromInput) fromInput.placeholder = decodeEntities(isHindi ? 'आपका नाम' : 'Your name');
+      if (boxTitle) boxTitle.textContent = decodeEntities(isHindi ? '2 सेकंड में अपने नाम से बनाएं' : 'Personalize This Greeting in 2 Seconds');
 
-      if (createBtn) createBtn.innerHTML = isHindi ? '<span>✨</span> <span>व्यक्तिगत कार्ड बनाएं</span>' : '<span>✨</span> <span>Generate Personalized Greeting</span>';
-      if (shuffleBtn) shuffleBtn.innerHTML = isHindi ? '<span>🔀</span> <span>नया संदेश</span>' : '<span>🔀</span> <span>Shuffle Wish</span>';
-      if (copyBtn) copyBtn.innerHTML = isHindi ? '<span>📋</span> <span>कॉपी करें</span>' : '<span>📋</span> <span>Copy Text</span>';
-      if (makeOwnBtn) makeOwnBtn.innerHTML = isHindi ? '<span>✍️</span> <span>अपने नाम से दूसरों के लिए बनाएं</span>' : '<span>✍️</span> <span>Make One for Someone Else</span>';
-      if (statusBtn) statusBtn.innerHTML = isHindi ? '<span>📸</span> <span>व्हाट्सएप स्टेटस इमेज डाउनलोड करें (HD)</span>' : '<span>📸</span> <span>Download WhatsApp Status Image (HD)</span>';
+      if (createBtn) createBtn.innerHTML = decodeEntities(isHindi ? '<span>✨</span> <span>व्यक्तिगत कार्ड बनाएं</span>' : '<span>✨</span> <span>Generate Personalized Greeting</span>');
+      if (shuffleBtn) shuffleBtn.innerHTML = decodeEntities(isHindi ? '<span>🔀</span> <span>नया संदेश</span>' : '<span>🔀</span> <span>Shuffle Wish</span>');
+      if (copyBtn) copyBtn.innerHTML = decodeEntities(isHindi ? '<span>📋</span> <span>कॉपी करें</span>' : '<span>📋</span> <span>Copy Text</span>');
+      if (makeOwnBtn) makeOwnBtn.innerHTML = decodeEntities(isHindi ? '<span>✍️</span> <span>अपने नाम से दूसरों के लिए बनाएं</span>' : '<span>✍️</span> <span>Make One for Someone Else</span>');
+      if (statusBtn) statusBtn.innerHTML = decodeEntities(isHindi ? '<span>📸</span> <span>व्हाट्सएप स्टेटस इमेज डाउनलोड करें (HD)</span>' : '<span>📸</span> <span>Download WhatsApp Status Image (HD)</span>');
 
       if (waBtn) {
         var waSpan = waBtn.querySelector('span');
-        if (waSpan) waSpan.textContent = isHindi ? 'व्हाट्सएप पर भेजें 🚀' : 'Share on WhatsApp 🚀';
+        if (waSpan) waSpan.textContent = decodeEntities(isHindi ? 'व्हाट्सएप पर भेजें 🚀' : 'Share on WhatsApp 🚀');
       }
 
       if (badgeEl) {
         var festName = isHindi ? (this.config.nameHindi || this.config.name) : this.config.name;
-        badgeEl.textContent = isHindi ? ('✨ पावन ' + festName + ' 2026 ✨') : ('✨ Auspicious ' + festName + ' 2026 ✨');
+        badgeEl.textContent = decodeEntities(isHindi ? ('✨ पावन ' + festName + ' 2026 ✨') : ('✨ Auspicious ' + festName + ' 2026 ✨'));
       }
+
+      // Update Daily Celebration Counter Pill
+      var counterLabel = document.getElementById('fest-counter-lbl');
+      if (counterLabel) {
+        counterLabel.textContent = decodeEntities(isHindi ? 'शुभकामनाएं आज भेजी गईं' : 'wishes shared today');
+      }
+
+      // Update Secondary Share Grid labels
+      var shareGrid = document.querySelector('.fest-share-secondary-row');
+      if (shareGrid) {
+        var btnWeb = document.getElementById('fest-btn-web-share');
+        var btnTg = document.getElementById('fest-btn-share-telegram');
+        var btnFb = document.getElementById('fest-btn-share-facebook');
+        var btnCopy = document.getElementById('fest-btn-copy-link');
+
+        if (btnWeb) btnWeb.querySelector('span:last-child').textContent = decodeEntities(isHindi ? 'शेयर' : 'Share');
+        if (btnTg) btnTg.querySelector('span:last-child').textContent = decodeEntities(isHindi ? 'टेलीग्राम' : 'Telegram');
+        if (btnFb) btnFb.querySelector('span:last-child').textContent = decodeEntities(isHindi ? 'फेसबुक' : 'Facebook');
+        if (btnCopy) btnCopy.querySelector('span:last-child').textContent = decodeEntities(isHindi ? 'लिंक कॉपी' : 'Copy Link');
+      }
+
+      // Update Recipient Category Chips
+      var recipientChips = document.querySelectorAll('.recipient-chip');
+      var chipNamesHindi = {
+        'all': 'सभी संदेश 🌟',
+        'family': 'परिवार 👨‍👩‍👧‍👦',
+        'friends': 'मित्र 🤝',
+        'formal': 'ऑफिस 💼',
+        'traditional': 'धार्मिक 🙏'
+      };
+      var chipNamesEn = {
+        'all': 'All Wishes 🌟',
+        'family': 'Family 👨‍👩‍👧‍👦',
+        'friends': 'Friends 🤝',
+        'formal': 'Office 💼',
+        'traditional': 'Devotional 🙏'
+      };
+      recipientChips.forEach(function(chip) {
+        var s = chip.getAttribute('data-target-style');
+        if (s) {
+          chip.textContent = decodeEntities(isHindi ? (chipNamesHindi[s] || s) : (chipNamesEn[s] || s));
+        }
+      });
 
       // Update Style Navigation Pills
       var stylePills = document.querySelectorAll('.style-pill');
@@ -491,11 +608,69 @@
       stylePills.forEach(function(pill) {
         var s = pill.getAttribute('data-style');
         if (s) {
-          pill.textContent = isHindi ? (styleNamesHindi[s] || s) : (styleNamesEn[s] || s);
+          pill.textContent = decodeEntities(isHindi ? (styleNamesHindi[s] || s) : (styleNamesEn[s] || s));
         }
       });
+
+      // Update WhatsApp Channel Community CTA
+      var channelTitle = document.querySelector('.fest-channel-cta h4');
+      var channelDesc = document.querySelector('.fest-channel-cta p');
+      var channelBtn = document.querySelector('.btn-join-channel span');
+      if (channelTitle) {
+        channelTitle.textContent = decodeEntities(isHindi
+          ? '🔔 शुभ मुहूर्त व शुभकामनाओं के लिए जुड़ें'
+          : '🔔 Never Miss a Festival Muhurat or Wish!');
+      }
+      if (channelDesc) {
+        channelDesc.textContent = decodeEntities(isHindi
+          ? 'हमारे निःशुल्क व्हाट्सएप चैनल से जुड़ें और पाएं पावन मुहूर्त, प्रेरक विचार व HD ग्रीटिंग कार्ड्स सीधे अपने फोन पर।'
+          : 'Join our free WhatsApp channel to receive auspicious muhurat reminders, devotional quotes, and HD greeting cards directly on your phone.');
+      }
+      if (channelBtn) {
+        channelBtn.textContent = decodeEntities(isHindi ? '📲 व्हाट्सएप चैनल से जुड़ें' : '📲 Join WhatsApp Channel');
+      }
+
+      // Update Upcoming Festivals Section Title
+      var carouselTitle = document.querySelector('.fest-carousel-title');
+      if (carouselTitle) {
+        carouselTitle.textContent = decodeEntities(isHindi ? 'आगामी पावन पर्व' : 'Upcoming Auspicious Festivals');
+      }
+
+      // Update FAQ Section Title
+      var faqTitle = document.querySelector('.fest-faq-section-title');
+      if (faqTitle) {
+        faqTitle.textContent = decodeEntities(isHindi ? 'अक्सर पूछे जाने वाले प्रश्न (FAQ)' : 'Frequently Asked Questions (FAQ)');
+      }
+
+      decodeDOMEntities(document.body);
     }
   };
+
+  // Automated Real-Time Mutation Observer to keep all text clean of Blogger entities
+  if (typeof MutationObserver !== 'undefined' && typeof document !== 'undefined') {
+    try {
+      var entityObserver = new MutationObserver(function(mutations) {
+        for (var i = 0; i < mutations.length; i++) {
+          var m = mutations[i];
+          if (m.type === 'characterData' && m.target && /&#\d+|&#x[0-9a-fA-F]+;|&amp;#/i.test(m.target.nodeValue)) {
+            m.target.nodeValue = decodeEntities(m.target.nodeValue);
+          } else if (m.addedNodes && m.addedNodes.length) {
+            for (var j = 0; j < m.addedNodes.length; j++) {
+              var n = m.addedNodes[j];
+              if (n.nodeType === 1 || n.nodeType === 3) decodeDOMEntities(n);
+            }
+          }
+        }
+      });
+      if (document.body) {
+        entityObserver.observe(document.body, { childList: true, subtree: true, characterData: true });
+      } else {
+        document.addEventListener('DOMContentLoaded', function() {
+          entityObserver.observe(document.body, { childList: true, subtree: true, characterData: true });
+        });
+      }
+    } catch (e) {}
+  }
 
   window.FestivalGreeting = GreetingEngine;
   if (typeof module !== 'undefined' && module.exports) {

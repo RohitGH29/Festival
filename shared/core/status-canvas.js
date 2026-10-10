@@ -102,6 +102,13 @@
       }
       ctx.restore();
 
+      function dec(s) {
+        if (!s) return '';
+        return String(s)
+          .replace(/&amp;#(\d+);/g, function(_, d) { return String.fromCodePoint(parseInt(d, 10)); })
+          .replace(/&#(\d+);/g, function(_, d) { return String.fromCodePoint(parseInt(d, 10)); });
+      }
+
       // 5. Draw Festival Greeting Title
       ctx.textAlign = 'center';
       var festTitle = isHindi ? (isDiwali ? 'शुभ दीपावली' : 'शुभ विजयदशमी') : (isDiwali ? 'HAPPY DIWALI' : 'HAPPY DUSSEHRA');
@@ -118,7 +125,7 @@
 
       // 6. Draw Recipient Name (Personalized)
       if (greetingState.to) {
-        var toText = (isHindi ? 'प्रिय ' : 'For ') + greetingState.to + '!';
+        var toText = (isHindi ? 'प्रिय ' : 'For ') + dec(greetingState.to) + '!';
         ctx.font = '600 48px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans Devanagari", sans-serif';
         ctx.fillStyle = '#FFFFFF';
         ctx.fillText(toText, 540, 710);
@@ -144,14 +151,14 @@
       ctx.fill();
 
       // 7. Draw Wish Text (Multi-line wrapped cleanly)
-      var wishText = currentWish.text || 'May the divine light illuminate your path with joy, success, and prosperity!';
+      var wishText = dec(currentWish.text || 'May the divine light illuminate your path with joy, success, and prosperity!');
       ctx.font = '400 36px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans Devanagari", sans-serif';
       ctx.fillStyle = '#FFF8E7';
       self.wrapText(ctx, wishText, 540, 890, 800, 56);
 
       // 8. Draw Sender Name (Attribution)
       if (greetingState.from) {
-        var fromText = isHindi ? '— ' + greetingState.from + ' की ओर से सप्रेम' : '— With love & blessings from ' + greetingState.from;
+        var fromText = isHindi ? '— ' + dec(greetingState.from) + ' की ओर से सप्रेम' : '— With love & blessings from ' + dec(greetingState.from);
         ctx.font = 'italic 500 38px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans Devanagari", sans-serif';
         ctx.fillStyle = '#FFD700';
         ctx.fillText(fromText, 540, 1340);

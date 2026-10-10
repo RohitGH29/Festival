@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
   <title>{{SEO_TITLE}}</title>
   <meta name="description" content="{{SEO_DESCRIPTION}}">
   <meta name="keywords" content="{{SEO_KEYWORDS}}">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="{{CANONICAL_URL}}">
-  <meta name="theme-color" content="{{THEME_COLOR}}">
+  <meta name="theme-color" content="#1B0A33">
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="article">
@@ -24,7 +24,7 @@
   <meta name="twitter:description" content="{{SEO_DESCRIPTION}}">
   <meta name="twitter:image" content="{{OG_IMAGE}}">
 
-  <!-- Structured Data JSON-LD (Article, FAQPage, Event) -->
+  <!-- Structured Data JSON-LD (Article, Event, FAQPage) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -34,7 +34,7 @@
         "@id": "{{CANONICAL_URL}}#article",
         "headline": "{{SEO_TITLE}}",
         "description": "{{SEO_DESCRIPTION}}",
-        "inLanguage": ["en", "hi"],
+        "inLanguage": ["hi", "en"],
         "mainEntityOfPage": "{{CANONICAL_URL}}",
         "datePublished": "2026-10-01T08:00:00+05:30",
         "dateModified": "2026-10-10T12:00:00+05:30",
@@ -74,34 +74,34 @@
         "mainEntity": [
           {
             "@type": "Question",
-            "name": "When is Diwali in 2026?",
+            "name": "दिवाली (दीपावली) 2026 में कब है? / When is Diwali in 2026?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Diwali (Lakshmi Puja) in 2026 will be celebrated on Sunday, November 8, 2026. The 5-day festivities begin with Dhanteras on Friday, November 6, 2026."
+              "text": "साल 2026 में दीपावली (लक्ष्मी पूजन) का महापर्व रविवार, 8 नवंबर 2026 को पूरे देश में श्रद्धा व उल्लास के साथ मनाया जाएगा। 5 दिवसीय दीपोत्सव धनतेरस 6 नवंबर से प्रारंभ होगा।"
             }
           },
           {
             "@type": "Question",
-            "name": "What is the auspicious Lakshmi Puja Shubh Muhurat for Diwali 2026?",
+            "name": "दीपावली 2026 लक्ष्मी पूजा का शुभ मुहूर्त क्या है? / What is Lakshmi Puja Muhurat 2026?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "The highly auspicious Pradosh Kaal Lakshmi Puja Muhurat for Diwali 2026 is from 05:42 PM to 07:38 PM (IST) on Sunday, November 8, 2026."
+              "text": "अति शुभ प्रदोष काल लक्ष्मी पूजन मुहूर्त सायं 05:42 बजे से 07:38 बजे तक रहेगा (अवधि: 1 घंटा 56 मिनट)। वृषभ लग्न में पूजन व्यापार व गृहस्थी हेतु अत्यंत मंगलकारी माना गया है।"
             }
           },
           {
             "@type": "Question",
-            "name": "What are the five days of Diwali?",
+            "name": "दीपावली के 5 प्रमुख दिन कौन से हैं? / What are the five days of Diwali?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "The five auspicious days are: Day 1: Dhanteras (Dhanatrayodashi), Day 2: Chhoti Diwali (Naraka Chaturdashi), Day 3: Lakshmi Puja (Deepavali), Day 4: Govardhan Puja (Annakut), and Day 5: Bhai Dooj (Yama Dwitiya)."
+              "text": "दिन 1: धनतेरस (6 नवंबर), दिन 2: नरक चतुर्दशी/छोटी दिवाली (7 नवंबर), दिन 3: मुख्य दिवाली व लक्ष्मी पूजन (8 नवंबर), दिन 4: गोवर्धन पूजा (9 नवंबर), दिन 5: भाई दूज (10 नवंबर)।"
             }
           },
           {
             "@type": "Question",
-            "name": "Why do we light clay diyas on Diwali?",
+            "name": "अपने नाम से दिवाली शुभकामना कैसे बनाएं? / How to make personalized Diwali greeting?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Clay diyas (earthen oil lamps) symbolize the victory of knowledge over ignorance, purity, and the welcome of Goddess Lakshmi into homes to banish darkness and negative energies."
+              "text": "ऊपर दिए गए फॉर्म में अपना और अपनों का नाम दर्ज करें और 'व्यक्तिगत कार्ड बनाएं' पर टैप करें। आप तुरंत व्यक्तिगत लिंक व्हाट्सएप पर शेयर कर सकते हैं या 1080x1920 HD स्टेटस डाउनलोड कर सकते हैं।"
             }
           }
         ]
@@ -125,87 +125,68 @@
 
   <main class="fest-wrapper">
 
-    <!-- Header Navigation & Language Switcher -->
+    <!-- Top Bar: Festive Brand & 48px Segmented Language Control -->
     <header class="fest-header">
-      <a href="{{BLOG_URL}}" class="fest-brand" aria-label="Homepage">
+      <a href="{{BLOG_URL}}" class="fest-brand" aria-label="FestiveGlow Home">
         <span class="fest-brand-logo">🪔</span>
-        <span>{{BRAND_NAME}}</span>
+        <span>FestiveGlow</span>
       </a>
       <div class="fest-header-controls">
-        <div class="fest-lang-switcher" role="radiogroup" aria-label="Select Language">
+        <div class="fest-lang-switcher" role="radiogroup" aria-label="भाषा चुनें / Select Language">
           <button type="button" class="lang-pill" data-lang="en" role="radio" aria-checked="false">EN</button>
           <button type="button" class="lang-pill active" data-lang="hi" role="radio" aria-checked="true">हिंदी</button>
         </div>
-        <button type="button" id="fest-btn-audio" class="btn-fest-audio" aria-label="Toggle Festive Chime Sound">🔔 Audio</button>
+        <button type="button" id="fest-btn-audio" class="btn-fest-audio" aria-label="Toggle Festive Chime Sound">🔔 ध्वनि</button>
       </div>
     </header>
 
-    <!-- Real-Time Countdown to Festival -->
+    <!-- Real-Time Countdown to Festival (Tabular Nums, Zero CLS) -->
     <section class="fest-countdown-box" id="fest-countdown-container" aria-label="Diwali 2026 Countdown">
-      <div class="fest-countdown-title">Diwali 2026 Countdown 🪔</div>
+      <div class="fest-countdown-title">दीपावली 2026 काउंटडाउन ⏳</div>
       <div class="fest-timer-grid">
         <div class="fest-timer-item">
           <div class="fest-timer-val" id="cd-days">--</div>
-          <div class="fest-timer-lbl">Days</div>
+          <div class="fest-timer-lbl">दिन</div>
         </div>
         <div class="fest-timer-item">
           <div class="fest-timer-val" id="cd-hours">--</div>
-          <div class="fest-timer-lbl">Hours</div>
+          <div class="fest-timer-lbl">घंटे</div>
         </div>
         <div class="fest-timer-item">
           <div class="fest-timer-val" id="cd-mins">--</div>
-          <div class="fest-timer-lbl">Mins</div>
+          <div class="fest-timer-lbl">मिनट</div>
         </div>
         <div class="fest-timer-item">
           <div class="fest-timer-val" id="cd-secs">--</div>
-          <div class="fest-timer-lbl">Secs</div>
+          <div class="fest-timer-lbl">सेकंड</div>
         </div>
       </div>
       <div id="fest-live-banner" class="fest-live-banner" role="status"></div>
     </section>
 
-    <!-- Daily Celebration Counter Pill -->
-    <div style="text-align: center;">
-      <div class="fest-celebration-pill">
-        <span>✨</span>
-        <span id="fest-counter-val">19,430</span>
-        <span>शुभकामनाएं आज भेजी गईं</span>
-      </div>
-    </div>
-
-    <!-- MAIN GREETING CARD (No Ads Above or Touching it!) -->
+    <!-- MAIN GREETING HERO CARD (Single Parchment Card, WCAG AAA Ink Contrast) -->
     <article class="fest-card" id="fest-greeting-card">
       <div class="fest-card-art">
-        <!-- Pure Vector Glowing Diya Artwork -->
+        <!-- Glowing Terracotta Diya Artwork -->
         <svg class="fest-card-art-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <circle cx="50" cy="50" r="45" stroke="#FFD700" stroke-width="1.5" stroke-dasharray="3 3" opacity="0.6"/>
+          <circle cx="50" cy="50" r="46" fill="#FFF1D0" />
+          <circle cx="50" cy="50" r="42" stroke="#E6A119" stroke-width="1.5" stroke-dasharray="3 3" opacity="0.8"/>
           <!-- Outer Aura Glow -->
-          <circle cx="50" cy="38" r="24" fill="url(#diwaliGlow)" opacity="0.8"/>
+          <circle cx="50" cy="38" r="22" fill="#FFB703" opacity="0.3"/>
           <!-- Flame -->
-          <path d="M50 14 C44 26 42 36 50 48 C58 36 56 26 50 14 Z" fill="url(#flameGrad)"/>
-          <path d="M50 24 C47 31 46 36 50 44 C54 36 53 31 50 24 Z" fill="#FFF7AA"/>
+          <path d="M50 14 C43 26 42 35 50 48 C58 35 57 26 50 14 Z" fill="#E67A10"/>
+          <path d="M50 20 C46 28 45 34 50 44 C55 34 54 28 50 20 Z" fill="#FFC857"/>
+          <ellipse cx="50" cy="32" rx="2" ry="5" fill="#FFFFFF"/>
           <!-- Diya Body -->
-          <path d="M22 52 C22 74 78 74 78 52 C78 48 22 48 22 52 Z" fill="#B35400"/>
-          <ellipse cx="50" cy="52" rx="28" ry="7" fill="#803800"/>
-          <path d="M30 56 C38 66 62 66 70 56" stroke="#FFD700" stroke-width="2" stroke-linecap="round"/>
-          <defs>
-            <radialGradient id="diwaliGlow" cx="50" cy="38" r="24" gradientUnits="userSpaceOnUse">
-              <stop stop-color="#FFD700" stop-opacity="0.9"/>
-              <stop offset="0.6" stop-color="#FF8C00" stop-opacity="0.3"/>
-              <stop offset="1" stop-color="#FF4500" stop-opacity="0"/>
-            </radialGradient>
-            <linearGradient id="flameGrad" x1="50" y1="14" x2="50" y2="48" gradientUnits="userSpaceOnUse">
-              <stop stop-color="#FFE066"/>
-              <stop offset="0.6" stop-color="#FF9900"/>
-              <stop offset="1" stop-color="#E63946"/>
-            </linearGradient>
-          </defs>
+          <path d="M22 52 C22 74 78 74 78 52 C78 48 22 48 22 52 Z" fill="#B85D19" stroke="#E6A119" stroke-width="1.5"/>
+          <ellipse cx="50" cy="52" rx="28" ry="7" fill="#6A2E05"/>
+          <path d="M30 56 C38 66 62 66 70 56" stroke="#FFC857" stroke-width="2" stroke-linecap="round"/>
         </svg>
       </div>
 
       <span class="fest-card-badge">✨ पावन दीपावली 2026 ✨</span>
       <h1 class="fest-card-title" id="fest-card-title">शुभ दीपावली</h1>
-      <div class="fest-card-name" id="fest-card-name" style="display: none;"></div>
+      <div class="fest-card-name" id="fest-card-name">आपके और आपके परिवार के लिए!</div>
 
       <div class="fest-card-divider"></div>
 
@@ -221,7 +202,7 @@
         <button type="button" class="btn-fest-chip" id="fest-btn-copy-wish" aria-label="Copy wish message">📋 कॉपी करें</button>
       </div>
 
-      <!-- PRIMARY VIRAL SHARE BUTTON (WhatsApp Deep Link) -->
+      <!-- PRIMARY VIRAL SHARE BUTTON (56px Tall, Visible Above the Fold) -->
       <a href="https://api.whatsapp.com/send?text=" class="btn-fest-primary-whatsapp" id="fest-btn-share-whatsapp" target="_blank" rel="noopener noreferrer" aria-label="Share Greeting on WhatsApp">
         <svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true">
           <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2ZM12.05 20.15C10.56 20.15 9.11 19.75 7.85 19L7.55 18.82L4.43 19.64L5.26 16.6L5.07 16.29C4.24 14.97 3.81 13.46 3.81 11.91C3.81 7.37 7.5 3.68 12.05 3.68C14.25 3.68 16.31 4.54 17.87 6.1C19.42 7.66 20.28 9.72 20.28 11.92C20.28 16.46 16.59 20.15 12.05 20.15Z"/>
@@ -229,23 +210,23 @@
         <span>व्हाट्सएप पर भेजें 🚀</span>
       </a>
 
-      <!-- Secondary Multi-Platform Share Buttons -->
+      <!-- Secondary Multi-Platform Share Grid (48px Targets) -->
       <div class="fest-share-secondary-row">
         <button type="button" class="btn-share-icon" id="fest-btn-web-share" aria-label="Share via system share">
           <span>📲</span>
-          <span>Share</span>
+          <span>शेयर</span>
         </button>
         <button type="button" class="btn-share-icon" id="fest-btn-share-telegram" aria-label="Share on Telegram">
           <span>✈️</span>
-          <span>Telegram</span>
+          <span>टेलीग्राम</span>
         </button>
         <button type="button" class="btn-share-icon" id="fest-btn-share-facebook" aria-label="Share on Facebook">
           <span>👥</span>
-          <span>Facebook</span>
+          <span>फेसबुक</span>
         </button>
         <button type="button" class="btn-share-icon" id="fest-btn-copy-link" aria-label="Copy greeting link">
           <span>🔗</span>
-          <span>Copy Link</span>
+          <span>लिंक कॉपी</span>
         </button>
       </div>
 
@@ -262,7 +243,16 @@
       </div>
     </article>
 
-    <!-- Personalization Input Section -->
+    <!-- Daily Celebration Counter Pill -->
+    <div style="text-align: center;">
+      <div class="fest-celebration-pill">
+        <span>✨</span>
+        <span id="fest-counter-val">19,430</span>
+        <span id="fest-counter-lbl">शुभकामनाएं आज भेजी गईं</span>
+      </div>
+    </div>
+
+    <!-- Personalization Input Section (48px Inputs, 16px Font, 56px CTA) -->
     <section class="fest-personalize-box" id="fest-personalize-section" aria-label="Personalize Your Greeting">
       <h2 class="fest-box-title">2 सेकंड में अपने नाम से बनाएं</h2>
       <form id="fest-personalize-form">
@@ -274,20 +264,22 @@
           <label for="fest-input-from" class="fest-form-label" id="label-from">आपका नाम (वैकल्पिक)</label>
           <input type="text" id="fest-input-from" class="fest-input" maxlength="30" placeholder="आपका नाम" autocomplete="off">
         </div>
-        <button type="submit" class="btn-fest-submit" id="fest-btn-create">✨ व्यक्तिगत कार्ड बनाएं</button>
+        <button type="submit" class="btn-fest-submit" id="fest-btn-create">
+          <span>✨</span> <span>व्यक्तिगत कार्ड बनाएं</span>
+        </button>
       </form>
     </section>
 
-    <!-- Quick Recipient Category Chips -->
+    <!-- Quick Recipient Category Chips (Wrap Cleanly, >=44px) -->
     <div class="fest-recipient-chips" aria-label="Quick Recipient Filter">
       <button type="button" class="recipient-chip active" data-target-style="all">सभी संदेश 🌟</button>
       <button type="button" class="recipient-chip" data-target-style="family">परिवार 👨‍👩‍👧‍👦</button>
       <button type="button" class="recipient-chip" data-target-style="friends">मित्र 🤝</button>
-      <button type="button" class="recipient-chip" data-target-style="formal">ऑफिस व सहयोगी 💼</button>
-      <button type="button" class="recipient-chip" data-target-style="traditional">धार्मिक व लक्ष्मी पूजन 🙏</button>
+      <button type="button" class="recipient-chip" data-target-style="formal">ऑफिस 💼</button>
+      <button type="button" class="recipient-chip" data-target-style="traditional">धार्मिक 🙏</button>
     </div>
 
-    <!-- Wish Category Pills -->
+    <!-- Wish Category Navigation Pills -->
     <nav class="fest-styles-scroll" aria-label="Wish Styles">
       <button type="button" class="style-pill active" data-style="all">लोकप्रिय</button>
       <button type="button" class="style-pill" data-style="traditional">पारंपरिक</button>
@@ -299,7 +291,7 @@
 
     <!-- ========================================================
          AD SLOT 1: In-Article Responsive (Below First Content Fold)
-         Policy Safe: >100px from buttons, reserved 280px min-height, labeled
+         Policy Safe: >=100px buffer from interactive chips, 280px reserved height
          ======================================================== -->
     <aside class="fest-ad-slot-wrapper">
       <div class="fest-ad-slot" id="fest-ad-slot-1">
@@ -307,130 +299,194 @@
         <ins class="adsbygoogle"
              style="display:block"
              data-ad-client="{{ADSENSE_PUB_ID}}"
-             data-ad-slot="4444444444"
+             data-ad-slot="1111111111"
              data-ad-format="auto"
              data-full-width-responsive="true"></ins>
       </div>
     </aside>
 
-    <!-- Interactive Diya Lighting Mini-Game -->
+    <!-- Interactive Terracotta Diya Lighting Mini-Game -->
     <section class="diya-game-card" aria-label="Interactive Diya Lighting Game">
-      <h3 style="color: var(--color-gold); font-size: 16px; margin-bottom: 4px;">Light the 5 Sacred Lamps of Deepavali 🪔</h3>
-      <p style="font-size: 13px; color: var(--theme-text-muted);">Tap each diya to illuminate wealth, health, wisdom, peace, and love:</p>
+      <h3 class="diya-game-title">दीपावली के 5 पावन दीपक प्रज्वलित करें 🪔</h3>
+      <p class="diya-game-desc">आरोग्य, सुख और समृद्धि के दीप प्रज्वलित करने के लिए प्रत्येक दीए पर स्पर्श करें:</p>
       <div class="diya-game-row">
-        <button type="button" class="interactive-diya" aria-label="Light Diya 1"><div class="diya-flame"></div></button>
-        <button type="button" class="interactive-diya" aria-label="Light Diya 2"><div class="diya-flame"></div></button>
-        <button type="button" class="interactive-diya" aria-label="Light Diya 3"><div class="diya-flame"></div></button>
-        <button type="button" class="interactive-diya" aria-label="Light Diya 4"><div class="diya-flame"></div></button>
-        <button type="button" class="interactive-diya" aria-label="Light Diya 5"><div class="diya-flame"></div></button>
+        <button type="button" class="interactive-diya" aria-label="Light Diya 1"></button>
+        <button type="button" class="interactive-diya" aria-label="Light Diya 2"></button>
+        <button type="button" class="interactive-diya" aria-label="Light Diya 3"></button>
+        <button type="button" class="interactive-diya" aria-label="Light Diya 4"></button>
+        <button type="button" class="interactive-diya" aria-label="Light Diya 5"></button>
       </div>
-      <div class="diya-game-status" id="diya-game-status">Tap each lamp to light the divine lamps of Diwali!</div>
+      <div class="diya-game-status" id="diya-game-status">दीपक स्पर्श करें और अपने घर को दिव्य प्रकाश से आलोकित करें!</div>
     </section>
 
     <!-- ========================================================
-         EDITORIAL CONTENT (SEO & High Value AdSense Depth)
-         Switchable between English and Hindi
+         EDITORIAL CONTENT (SEO & High Value Depth, Switchable)
          ======================================================== -->
     <div class="fest-editorial-container">
-      
-      <!-- ENGLISH CONTENT (Hidden by default, shown when user toggles to EN) -->
-      <article class="fest-editorial-section lang-content-en" style="display: none;">
-        <h2>Significance of Deepavali: The Festival of Lights & Spiritual Awakening</h2>
-        <p>Diwali (or Deepavali, meaning 'a row of lighted lamps') is heralded as the supreme festival of joy, illumination, and spiritual renewal celebrated by millions across India and the global diaspora. Falling on the darkest night of the Hindu lunar month of Kartik (Kartik Amavasya), the festival commemorates the joyous return of Lord Shri Rama, Mata Sita, and Lakshmana to their ancestral kingdom of Ayodhya after fourteen years of exile and the conquest of the demon king Ravana.</p>
 
-        <p>To illuminate the moonless night and welcome their beloved sovereign, the joyful citizens of Ayodhya decorated every courtyard, roof, and threshold with rows of earthen ghee lamps (diyas). Beyond the Ramayana, Diwali marks the divine emergence of Goddess Lakshmi from the cosmic ocean during Samudra Manthan, bringing prosperity and auspiciousness to the universe.</p>
+      <!-- HINDI EDITORIAL SECTION (Visible by default) -->
+      <article class="fest-editorial-section lang-content-hi">
+        <h2>दीपावली का पावन महत्व: अंधकार पर प्रकाश की विजय</h2>
+        <p>दीपावली सनातन धर्म का सबसे भव्य, दिव्य और उल्लासपूर्ण महापर्व है। कार्तिक मास की कृष्ण पक्ष की अमावस्या तिथि को मनाया जाने वाला यह प्रकाशोत्सव केवल दीप जलाने का पर्व नहीं, अपितु अंतर्मन के अज्ञान, दुर्विचार और निराशा रूपी अंधकार को मिटाकर ज्ञान, सदाचार और आनंद का दिव्य आलोक फैलाने का पावन संदेश है।</p>
 
-        <!-- Auspicious 2026 Dates & Shubh Muhurat Card -->
+        <p>दीपावली की रात्रि को सुख, समृद्धि, वैभव और ऐश्वर्य की अधिष्ठात्री देवी मां महालक्ष्मी तथा रिद्धि-सिद्धि के दाता भगवान श्री गणेश का विधानपूर्वक पूजन किया जाता है। माना जाता है कि इस पावन रात्रि को मां लक्ष्मी स्वयं भूलोक पर विचरण कर अपने निष्ठावान भक्तों के घरों में स्थायी वास करती हैं।</p>
+
+        <!-- Shubh Muhurat Info Card with Definition List (Hindi) -->
         <div class="fest-muhurat-box">
-          <h3 style="color: var(--color-gold); margin-top: 0;">Diwali 2026 5-Day Auspicious Calendar & Shubh Muhurat</h3>
-          <p><strong>Day 1 (Dhanteras):</strong> Friday, November 6, 2026 (Trayodashi Tithi)</p>
-          <p><strong>Day 2 (Chhoti Diwali / Naraka Chaturdashi):</strong> Saturday, November 7, 2026</p>
-          <p><strong>Day 3 (Diwali & Lakshmi Puja):</strong> Sunday, November 8, 2026</p>
-          <p><strong>Shubh Lakshmi Puja Muhurat (Pradosh Kaal):</strong> 05:42 PM to 07:38 PM (IST)</p>
-          <p><strong>Vrishabha Lagna (Fixed Ascendant):</strong> 05:42 PM to 07:38 PM</p>
-          <p><strong>Nishita Kaal Maharatri Puja:</strong> 11:39 PM to 12:31 AM (Midnight)</p>
-          <p><strong>Day 4 (Govardhan Puja / Annakut):</strong> Monday, November 9, 2026</p>
-          <p><strong>Day 5 (Bhai Dooj / Yama Dwitiya):</strong> Tuesday, November 10, 2026</p>
-          <p class="fest-disclaimer-note">* Note: Exact Muhurat timings depend upon local sunrise, sunset, and solar coordinate variations. Please consult your local panchang.</p>
+          <h3 class="fest-muhurat-title">दीपावली 2026 शुभ मुहूर्त एवं पंचांग विवरण</h3>
+          <dl class="fest-muhurat-dl">
+            <div class="fest-muhurat-item">
+              <dt class="fest-muhurat-dt">दीपावली मुख्य तिथि</dt>
+              <dd class="fest-muhurat-dd">रविवार, 8 नवंबर 2026</dd>
+            </div>
+            <div class="fest-muhurat-item">
+              <dt class="fest-muhurat-dt">अमावस्या तिथि प्रारंभ</dt>
+              <dd class="fest-muhurat-dd">7 नवंबर 2026, सायं 06:18 बजे से</dd>
+            </div>
+            <div class="fest-muhurat-item">
+              <dt class="fest-muhurat-dt">अमावस्या तिथि समाप्त</dt>
+              <dd class="fest-muhurat-dd">8 नवंबर 2026, रात्रि 08:31 बजे तक</dd>
+            </div>
+            <div class="fest-muhurat-item">
+              <dt class="fest-muhurat-dt">अति शुभ लक्ष्मी पूजा मुहूर्त (प्रदोष काल)</dt>
+              <dd class="fest-muhurat-dd">सायं 05:42 बजे से 07:38 बजे तक (अवधि: 1 घंटा 56 मिनट)</dd>
+            </div>
+            <div class="fest-muhurat-item">
+              <dt class="fest-muhurat-dt">स्थिर वृषभ लग्न मुहूर्त</dt>
+              <dd class="fest-muhurat-dd">सायं 05:51 बजे से 07:49 बजे तक</dd>
+            </div>
+            <div class="fest-muhurat-item">
+              <dt class="fest-muhurat-dt">महानिशीथ काल (तांत्रिक व निशीथ पूजा)</dt>
+              <dd class="fest-muhurat-dd">मध्यरात्रि 11:39 बजे से 12:31 बजे तक</dd>
+            </div>
+          </dl>
+          <p class="fest-disclaimer-note">* सूचना: स्थानीय सूर्यास्त के अनुसार मुहूर्त में कुछ मिनटों का अंतर हो सकता है। कृपया अपने स्थानीय पंचांग से अवश्य मिलान करें।</p>
         </div>
 
-        <h2>The Five Sacred Days of Diwali Explained</h2>
-        <ol>
-          <li><strong>Dhanteras (Dhanatrayodashi):</strong> Dedicated to Lord Dhanvantari, the physician of the gods who emerged carrying the urn of immortality (Amrita), and Lord Kubera, treasurer of wealth. People purchase auspicious gold, silver, utensils, and clean their homes.</li>
-          <li><strong>Naraka Chaturdashi (Chhoti Diwali):</strong> Celebrates Lord Krishna's victory over the tyrant demon Narakasura, liberating 16,000 captive women. Devotees perform an early morning holy oil bath (Abhyanga Snan) before sunrise to cleanse away negativity.</li>
-          <li><strong>Lakshmi Puja (Main Deepavali Day):</strong> On Kartik Amavasya evening, homes are illuminated with hundreds of clay diyas, fragrant marigold garlands, and vibrant rangoli patterns. Families perform grand Lakshmi-Ganesha puja to invite prosperity, intellect, and divine grace.</li>
-          <li><strong>Govardhan Puja (Annakut):</strong> Commemorates Lord Krishna lifting the massive Govardhan Hill on his little finger to shield the villagers and cattle of Vrindavan from torrential downpours. Devotees prepare and offer a lavish mountain of diverse vegetarian dishes (Annakut).</li>
-          <li><strong>Bhai Dooj (Yama Dwitiya):</strong> Commemorates the tender bond between Yamraj (the god of death) and his loving sister Yami (the river Yamuna). Sisters apply a protective tilak on their brothers' foreheads and pray for their long, healthy lives.</li>
+        <h2>पंचदिवसीय दीपोत्सव एवं पूजा विधि</h2>
+        <ol class="fest-steps-list">
+          <li class="fest-steps-item">
+            <strong>धनतेरस (धनत्रयोदशी - 6 नवंबर):</strong> आयुर्वेद के देवता भगवान धन्वंतरि और कुबेर देव का पूजन किया जाता है। धातु के बर्तन, सोना-चांदी अथवा झाड़ू खरीदना अत्यंत शुभ माना जाता है।
+          </li>
+          <li class="fest-steps-item">
+            <strong>नरक चतुर्दशी / रूप चौदस (7 नवंबर):</strong> भगवान श्री कृष्ण द्वारा नरकासुर के वध की स्मृति में यमराज हेतु दक्षिण दिशा में दीपदान किया जाता है।
+          </li>
+          <li class="fest-steps-item">
+            <strong>मुख्य दीपावली व लक्ष्मी पूजन (8 नवंबर):</strong> घर-आंगन को रंगोली और दीपों से सजाकर प्रदोष काल में मां लक्ष्मी, गणेश जी और सरस्वती जी की आरती की जाती है।
+          </li>
+          <li class="fest-steps-item">
+            <strong>गोवर्धन पूजा / अन्नकूट (9 नवंबर):</strong> भगवान श्री कृष्ण द्वारा इंद्र के अभिमान को तोड़ने और गोवर्धन पर्वत उठाने की पावन स्मृति में 56 भोग अर्पित किए जाते हैं।
+          </li>
+          <li class="fest-steps-item">
+            <strong>भाई दूज / यम द्वितीया (10 नवंबर):</strong> बहनें अपने भाइयों के माथे पर तिलक लगाकर उनकी दीर्घायु और समृद्धि की प्रार्थना करती हैं।
+          </li>
         </ol>
 
-        <h2>Step-by-Step Lakshmi-Ganesha Puja Vidhi</h2>
-        <p>Performing Lakshmi Puja with devotion during Pradosh Kaal invites peace and sustained prosperity into the home:</p>
-        <ul>
-          <li><strong>Preparation:</strong> Cleanse the puja room, spread a clean red cloth on a raised wooden chowki (pedestal), and draw a lotus pattern using raw rice grains.</li>
-          <li><strong>Deity Placement:</strong> Place the idols of Lord Ganesha and Goddess Lakshmi side by side (with Ganesha on the right of Lakshmi). Place a silver Kalash filled with pure water, betel nut, a coin, and mango leaves topped with a coconut wrapped in red thread.</li>
-          <li><strong>Invocation:</strong> Light a five-wick brass lamp with pure cow ghee. Offer water, Panchamrit (milk, curd, honey, sugar, ghee), fresh flowers, dhoop, and sweet offerings (Kheer, Ladoo, Batasha).</li>
-          <li><strong>Aarti & Chanting:</strong> Recite the Shri Suktam and Lakshmi Stotram followed by singing the beloved "Om Jai Lakshmi Mata" and "Jai Ganesh Deva" aartis with the entire family.</li>
-        </ul>
-
-        <h2>Diverse Regional Celebrations Across India</h2>
-        <ul>
-          <li><strong>Kali Puja (West Bengal & Assam):</strong> Bengal celebrates the fierce manifestation of Maa Kali on Diwali night, worshiping her cosmic power to destroy darkness, ignorance, and ego.</li>
-          <li><strong>Bandi Chhor Divas (Punjab & Sikh Community):</strong> Commemorates the historic release of Guru Hargobind Sahib Ji along with 52 political prisoner kings from Gwalior Fort in 1619, illuminating the Golden Temple in Amritsar with hundreds of thousands of lights.</li>
-          <li><strong>Chopda Pujan (Gujarat & Western India):</strong> Business owners perform ceremonial worship of their new accounting ledgers (Chopda) inscribed with "Shubh Labh", seeking ethical commercial success.</li>
-          <li><strong>Deepavali in South India:</strong> Celebrated on Naraka Chaturdashi with a predawn fragrant oil bath, new silk clothes, and feasting on Deepavali Marundhu (a traditional digestive herbal sweet paste).</li>
-        </ul>
-
-        <h2>Festive Sweets & Traditional Recipes</h2>
-        <p>Diwali is a grand celebration of rich, artisanal sweets. Popular across households are melt-in-the-mouth <em>Kaju Katli</em>, fragrant <em>Besan Ke Ladoo</em> roasted in pure desi ghee, golden <em>Mawa Gujiya</em> stuffed with dry fruits, crispy savory <em>Murukku</em> and <em>Chivda</em>, and rich Bengali <em>Ras Malai</em>.</p>
-
-        <h2>Eco-Friendly & Safe Diwali Guidelines</h2>
-        <ul>
-          <li><strong>DO:</strong> Use organic earthen clay diyas and mustard or sesame oil, which naturally purifies ambient air.</li>
-          <li><strong>DO:</strong> Use natural rangoli colors derived from turmeric, rice flour, and flower petals rather than chemical powders.</li>
-          <li><strong>DO:</strong> Check on pets and elderly neighbors who may be frightened by loud noises. Keep water and safety first-aid handy.</li>
-          <li><strong>DON'T:</strong> Burst toxic chemical smoke crackers; opt for certified green crackers with reduced emissions if celebrating with fireworks.</li>
+        <h2>भारत में दीपावली के पावन रंग</h2>
+        <ul class="fest-regional-list">
+          <li class="fest-regional-item">
+            <span class="fest-regional-tag">अयोध्या दीपोत्सव (उत्तर प्रदेश)</span>
+            सरयू नदी के तट पर लाखों दीपों के प्रज्वलन से गिनीज वर्ल्ड रिकॉर्ड स्थापित कर प्रभु राम के आगमन का उत्सव मनाया जाता है।
+          </li>
+          <li class="fest-regional-item">
+            <span class="fest-regional-tag">वाराणसी (देव दीपावली)</span>
+            गंगा घाटों पर लाखों दीयों की भव्य शृंखला और महाआरती से काशी आलोकित होती है।
+          </li>
+          <li class="fest-regional-item">
+            <span class="fest-regional-tag">पश्चिम बंगाल (काली पूजा)</span>
+            दीपावली की महानिशीथ रात्रि में मां काली का भव्य पूजन व अनुष्ठान किया जाता है।
+          </li>
+          <li class="fest-regional-item">
+            <span class="fest-regional-tag">दक्षिण भारत (दीपावली स्नान)</span>
+            प्रातःकाल सूर्योदय से पूर्व उबटन और तिल के तेल से पवित्र स्नान (तैल स्नान) कर नए वस्त्र पहने जाते हैं।
+          </li>
         </ul>
       </article>
 
-      <!-- HINDI CONTENT (Visible by default) -->
-      <article class="fest-editorial-section lang-content-hi">
-        <h2>दीपावली महापर्व का आध्यात्मिक एवं सांस्कृतिक महत्व</h2>
-        <p>दीपावली अथवा दीपोत्सव सनातन धर्म का सर्वाधिक उल्लासपूर्ण, प्रकाशमान और मंगलकारी महापर्व है। कार्तिक मास की घोर अंधकारमयी अमावस्या की रात्रि को जब अनगिनत मिट्टी के दीयों की स्वर्णिम कतारें प्रज्वलित होती हैं, तो अंधकार का नामोनिशान मिट जाता है। यह पावन पर्व मर्यादा पुरुषोत्तम भगवान श्री राम के 14 वर्ष के वनवास और लंका विजय के पश्चात अयोध्या नगरी में प्रथम आगमन की पावन स्मृति में मनाया जाता है।</p>
+      <!-- ENGLISH EDITORIAL SECTION (Shown when user toggles to EN) -->
+      <article class="fest-editorial-section lang-content-en" style="display: none;">
+        <h2>Significance of Deepavali: The Festival of Lights</h2>
+        <p>Diwali stands as the paramount spiritual celebration across India and the global Hindu diaspora. Celebrated on Kartik Amavasya, this magnificent festival commemorates the triumph of light over darkness, wisdom over ignorance, and hope over despair.</p>
 
-        <p>प्रभु श्री राम, माता जानकी और भ्राता लक्ष्मण के स्वागत में संपूर्ण अयोध्यावासियों ने घी के दीए जलाकर संपूर्ण नगरी को प्रकाश से नहला दिया था। इसके अतिरिक्त, इसी पावन रात्रि को समुद्र मंथन से ऐश्वर्य और सौभाग्य की अधिष्ठात्री देवी मां महालक्ष्मी का प्राकट्य हुआ था।</p>
+        <p>The festival marks the triumphant homecoming of Lord Rama, Mata Sita, and Lakshmana to Ayodhya after 14 years of exile and the defeat of Ravana. Citizens of Ayodhya illuminated the entire kingdom with earthen ghee lamps, starting an eternal tradition.</p>
 
-        <!-- Auspicious 2026 Dates & Shubh Muhurat Card (Hindi) -->
+        <!-- Shubh Muhurat Info Card with Definition List (English) -->
         <div class="fest-muhurat-box">
-          <h3 style="color: var(--color-gold); margin-top: 0;">दीपावली 2026: पांच दिवसीय महापर्व एवं शुभ मुहूर्त</h3>
-          <p><strong>पहला दिन (धनतेरस):</strong> शुक्रवार, 6 नवंबर 2026</p>
-          <p><strong>दूसरा दिन (नरक चतुर्दशी / छोटी दिवाली):</strong> शनिवार, 7 नवंबर 2026</p>
-          <p><strong>तीसरा दिन (दीपावली एवं लक्ष्मी पूजन):</strong> रविवार, 8 नवंबर 2026</p>
-          <p><strong>प्रदोष काल लक्ष्मी पूजन शुभ मुहूर्त:</strong> सायं 05:42 बजे से 07:38 बजे तक (IST)</p>
-          <p><strong>वृषभ लग्न (स्थिर लग्न):</strong> सायं 05:42 बजे से 07:38 बजे तक</p>
-          <p><strong>महानिशीथ काल मुहूर्त:</strong> रात्रि 11:39 बजे से 12:31 बजे तक</p>
-          <p><strong>चौथा दिन (गोवर्धन पूजा / अन्नकूट):</strong> सोमवार, 9 नवंबर 2026</p>
-          <p><strong>पांचवां दिन (भाई दूज / यम द्वितीया):</strong> मंगलवार, 10 नवंबर 2026</p>
-          <p class="fest-disclaimer-note">* सूचना: स्थानीय सूर्योदय, सूर्यास्त और अक्षांश के अनुसार मुहूर्त में कुछ मिनटों का अंतर संभव है। कृपया स्थानीय पंचांग से मिलान करें।</p>
+          <h3 class="fest-muhurat-title">Diwali 2026 Tithi & Lakshmi Puja Shubh Muhurat</h3>
+          <dl class="fest-muhurat-dl">
+            <div class="fest-muhurat-item">
+              <dt class="fest-muhurat-dt">Main Festival Date</dt>
+              <dd class="fest-muhurat-dd">Sunday, November 8, 2026</dd>
+            </div>
+            <div class="fest-muhurat-item">
+              <dt class="fest-muhurat-dt">Amavasya Tithi Begins</dt>
+              <dd class="fest-muhurat-dd">November 7, 2026 at 06:18 PM (IST)</dd>
+            </div>
+            <div class="fest-muhurat-item">
+              <dt class="fest-muhurat-dt">Amavasya Tithi Ends</dt>
+              <dd class="fest-muhurat-dd">November 8, 2026 at 08:31 PM (IST)</dd>
+            </div>
+            <div class="fest-muhurat-item">
+              <dt class="fest-muhurat-dt">Pradosh Kaal Lakshmi Puja Window</dt>
+              <dd class="fest-muhurat-dd">05:42 PM to 07:38 PM (Duration: 1 hour 56 minutes)</dd>
+            </div>
+            <div class="fest-muhurat-item">
+              <dt class="fest-muhurat-dt">Fixed Vrishabha Lagna</dt>
+              <dd class="fest-muhurat-dd">05:51 PM to 07:49 PM</dd>
+            </div>
+            <div class="fest-muhurat-item">
+              <dt class="fest-muhurat-dt">Mahanishitha Kaal Puja</dt>
+              <dd class="fest-muhurat-dd">11:39 PM to 12:31 AM (Midnight)</dd>
+            </div>
+          </dl>
+          <p class="fest-disclaimer-note">* Note: Muhurat timings depend upon local sunset and longitude. Please verify with your local priest.</p>
         </div>
 
-        <h2>पांच दिवसीय दीपोत्सव के पावन रहस्य</h2>
-        <ol>
-          <li><strong>धनतेरस:</strong> भगवान धन्वंतरि (आयुर्वेद के जनक) और धन के अधिपति कुबेर जी की पूजा। इस दिन सोना, चांदी व बर्तन खरीदना अत्यंत शुभ माना जाता है।</li>
-          <li><strong>नरक चतुर्दशी:</strong> भगवान श्री कृष्ण द्वारा नरकासुर के वध और 16,000 बंदी कन्याओं की मुक्ति की स्मृति। इस दिन सूर्योदय से पूर्व तिल के तेल से अभ्यंग स्नान करने का विधान है।</li>
-          <li><strong>दीपावली (लक्ष्मी-गणेश पूजन):</strong> घर-आंगन को दीयों, रंगोली और फूलों से सजाकर मां लक्ष्मी, भगवान श्री गणेश और माता सरस्वती की विधिवत आराधना की जाती है।</li>
-          <li><strong>गोवर्धन पूजा (अन्नकूट):</strong> देवराज इंद्र के अभिमान को चूर करने हेतु प्रभु श्री कृष्ण द्वारा कनिष्ठिका अंगुली पर गोवर्धन पर्वत धारण करने की लीला का उत्सव।</li>
-          <li><strong>भाई दूज:</strong> यमराज और उनकी बहन यमुना के अमर प्रेम का प्रतीक। बहनें भाइयों के माथे पर तिलक लगाकर उनकी दीर्घायु और समृद्धि की प्रार्थना करती हैं।</li>
+        <h2>The 5 Days of Festive Celebrations</h2>
+        <ol class="fest-steps-list">
+          <li class="fest-steps-item">
+            <strong>Dhanteras (Nov 6):</strong> Celebrating Lord Dhanvantari (deity of health) and Lord Kubera. Buying utensils or gold brings good fortune.
+          </li>
+          <li class="fest-steps-item">
+            <strong>Chhoti Diwali (Nov 7):</strong> Commemorating Lord Krishna's victory over Narakasura.
+          </li>
+          <li class="fest-steps-item">
+            <strong>Lakshmi Puja & Deepavali (Nov 8):</strong> Homes are illuminated with lamps, and families worship Goddess Lakshmi and Lord Ganesha.
+          </li>
+          <li class="fest-steps-item">
+            <strong>Govardhan Puja / Annakut (Nov 9):</strong> Offering a mountain of food delicacies honoring Lord Krishna lifting Govardhan Hill.
+          </li>
+          <li class="fest-steps-item">
+            <strong>Bhai Dooj (Nov 10):</strong> Sisters apply sacred tilak and pray for the longevity and prosperity of their brothers.
+          </li>
         </ol>
 
-        <h2>संपूर्ण लक्ष्मी-गणेश पूजन विधि</h2>
-        <p>प्रदोष काल में एक स्वच्छ चौकी पर लाल वस्त्र बिछाकर मां लक्ष्मी और श्री गणेश जी की प्रतिमा स्थापित करें। कलश पर आम के पत्ते और नारियल रखें। शुद्ध घी का दीपक जलाकर अक्षत, कुमकुम, इत्र, कमल के पुष्प, खील-बताशे और मिष्ठान अर्पित करें। श्रद्धापूर्वक "ॐ महालक्ष्म्यै च विद्महे विष्णुपत्न्यै च धीमहि तन्नो लक्ष्मीः प्रचोदयात्" मंत्र का जप करें और सपरिवार आरती उतारें।</p>
+        <h2>Regional Celebrations Across India</h2>
+        <ul class="fest-regional-list">
+          <li class="fest-regional-item">
+            <span class="fest-regional-tag">Ayodhya Deepotsav</span>
+            Millions of earthen lamps illuminate the banks of the holy Sarayu river.
+          </li>
+          <li class="fest-regional-item">
+            <span class="fest-regional-tag">Varanasi (Dev Deepavali)</span>
+            The historic ghats of Kashi glow with countless lamps during the grand Ganga Aarti.
+          </li>
+          <li class="fest-regional-item">
+            <span class="fest-regional-tag">West Bengal (Kali Puja)</span>
+            Worshipping Goddess Kali in the midnight hours with intense devotion.
+          </li>
+          <li class="fest-regional-item">
+            <span class="fest-regional-tag">South India</span>
+            Devotees awaken before sunrise for traditional oil baths and new attire.
+          </li>
+        </ul>
       </article>
 
     </div>
 
     <!-- ========================================================
          AD SLOT 2: In-Content Middle Display Unit
-         Policy Safe: >100px buffer from interactive components
+         Policy Safe: >=100px buffer from interactive components
          ======================================================== -->
     <aside class="fest-ad-slot-wrapper">
       <div class="fest-ad-slot" id="fest-ad-slot-2">
@@ -438,52 +494,98 @@
         <ins class="adsbygoogle"
              style="display:block"
              data-ad-client="{{ADSENSE_PUB_ID}}"
-             data-ad-slot="5555555555"
+             data-ad-slot="2222222222"
              data-ad-format="auto"
              data-full-width-responsive="true"></ins>
       </div>
     </aside>
 
-    <!-- Interactive 5-Question Festival Quiz -->
+    <!-- Interactive 5-Question Festival Quiz (52px Options, Icon+Color) -->
     <section class="fest-quiz-box" id="fest-quiz-box" aria-label="Interactive Festival Quiz">
       <div class="quiz-header">
-        <span class="quiz-badge">🪔 Festival Trivia</span>
-        <span class="quiz-progress" id="quiz-progress">Question 1 of 5</span>
+        <span class="quiz-badge">🪔 ज्ञानोत्कर्ष प्रश्नोत्तरी</span>
+        <span class="quiz-progress" id="quiz-progress">प्रश्न 1/5</span>
       </div>
-      <h3 class="quiz-question-text" id="quiz-question-text">Loading question...</h3>
+      <h3 class="quiz-question-text" id="quiz-question-text">प्रश्न लोड हो रहा है...</h3>
       <div class="quiz-options-container" id="quiz-options-container"></div>
       <div class="quiz-explanation" id="quiz-explanation" style="display: none;"></div>
       <div style="text-align: right; margin-top: 10px;">
-        <button type="button" class="btn-quiz-next" id="quiz-btn-next" style="display: none;">Next Question →</button>
+        <button type="button" class="btn-quiz-next" id="quiz-btn-next" style="display: none;">अगला प्रश्न →</button>
       </div>
     </section>
 
-    <!-- Comprehensive FAQ Accordion Section -->
+    <!-- Comprehensive FAQ Accordion Section (<details>/<summary> with First Item OPEN) -->
     <section class="fest-editorial-container" aria-label="Frequently Asked Questions">
-      <h2 style="color: var(--color-gold); font-size: 20px; margin-bottom: 12px; text-align: center;">Frequently Asked Questions (FAQ)</h2>
-      <div class="fest-faq-list">
-        <details class="fest-faq-item">
-          <summary class="fest-faq-question">When is Diwali 2026? <span>▾</span></summary>
-          <div class="fest-faq-answer">Diwali in 2026 will be celebrated on Sunday, November 8, 2026. Dhanteras falls on Friday, November 6, and Bhai Dooj falls on Tuesday, November 10, 2026.</div>
+      <h2 class="fest-faq-section-title" style="color: var(--gold); font-size: 20px; margin-bottom: 14px; text-align: center;">अक्सर पूछे जाने वाले प्रश्न (FAQ)</h2>
+      
+      <!-- HINDI FAQ LIST -->
+      <div class="fest-faq-list lang-content-hi">
+        <details class="fest-faq-item" open>
+          <summary class="fest-faq-question">
+            <span>दिवाली (दीपावली) 2026 में कब है?</span>
+            <span class="fest-faq-indicator">▾</span>
+          </summary>
+          <div class="fest-faq-answer">साल 2026 में दीपावली (लक्ष्मी पूजन) रविवार, 8 नवंबर 2026 को मनाई जाएगी। 5 दिवसीय महापर्व धनतेरस 6 नवंबर से प्रारंभ होकर भाई दूज 10 नवंबर तक चलेगा।</div>
         </details>
         <details class="fest-faq-item">
-          <summary class="fest-faq-question">What is the best time for Lakshmi Puja on Diwali 2026? <span>▾</span></summary>
-          <div class="fest-faq-answer">The most auspicious time is during Pradosh Kaal and Vrishabha Lagna (Fixed Ascendant) between 05:42 PM and 07:38 PM (IST) on Sunday, November 8, 2026. Worshipping during a fixed ascendant ensures wealth remains stable in the household.</div>
+          <summary class="fest-faq-question">
+            <span>दीपावली 2026 पर लक्ष्मी पूजा का शुभ मुहूर्त क्या है?</span>
+            <span class="fest-faq-indicator">▾</span>
+          </summary>
+          <div class="fest-faq-answer">प्रदोष काल लक्ष्मी पूजन का सबसे शुभ समय सायं 05:42 बजे से 07:38 बजे तक रहेगा (कुल अवधि 1 घंटा 56 मिनट)। स्थिर वृषभ लग्न में पूजन धन व शांति प्रदान करता है।</div>
         </details>
         <details class="fest-faq-item">
-          <summary class="fest-faq-question">Why are Lakshmi and Ganesha worshipped together on Diwali? <span>▾</span></summary>
-          <div class="fest-faq-answer">Goddess Lakshmi bestows wealth and prosperity, while Lord Ganesha bestows intellect and wisdom (Buddhi). Wealth without wisdom can lead to ruin, which is why devotees worship both deities together so that wealth is always utilized virtuously.</div>
+          <summary class="fest-faq-question">
+            <span>दीपावली क्यों मनाई जाती है?</span>
+            <span class="fest-faq-indicator">▾</span>
+          </summary>
+          <div class="fest-faq-answer">प्रभु श्री राम 14 वर्ष के वनवास और रावण पर विजय प्राप्त कर अयोध्या लौटे थे। अयोध्यावासियों ने उनके स्वागत में घी के दीपक जलाए थे। साथ ही यह समुद्र मंथन से मां लक्ष्मी के प्राकट्य का भी पावन दिन है।</div>
         </details>
         <details class="fest-faq-item">
-          <summary class="fest-faq-question">How can I share a personalized Diwali greeting with my name? <span>▾</span></summary>
-          <div class="fest-faq-answer">Enter the recipient's name and your name in the input box at the top, select your favorite wish category, and tap 'Generate Greeting'. You can instantly share on WhatsApp or download a high-definition 1080x1920 card for WhatsApp Status!</div>
+          <summary class="fest-faq-question">
+            <span>अपने नाम से व्यक्तिगत दिवाली शुभकामना कैसे बनाएं?</span>
+            <span class="fest-faq-indicator">▾</span>
+          </summary>
+          <div class="fest-faq-answer">पेज के शीर्ष पर दिए गए फॉर्म में अपना और अपनों का नाम दर्ज करें और 'व्यक्तिगत कार्ड बनाएं' पर टैप करें। आपका विशेष लिंक तैयार हो जाएगा जिसे आप सीधे व्हाट्सएप पर भेज सकते हैं।</div>
+        </details>
+      </div>
+
+      <!-- ENGLISH FAQ LIST -->
+      <div class="fest-faq-list lang-content-en" style="display: none;">
+        <details class="fest-faq-item" open>
+          <summary class="fest-faq-question">
+            <span>When is Diwali in 2026?</span>
+            <span class="fest-faq-indicator">▾</span>
+          </summary>
+          <div class="fest-faq-answer">Diwali (Lakshmi Puja) in 2026 will be celebrated on Sunday, November 8, 2026. The five-day festival begins with Dhanteras on Friday, November 6, 2026.</div>
+        </details>
+        <details class="fest-faq-item">
+          <summary class="fest-faq-question">
+            <span>What is the auspicious Lakshmi Puja Shubh Muhurat for Diwali 2026?</span>
+            <span class="fest-faq-indicator">▾</span>
+          </summary>
+          <div class="fest-faq-answer">The auspicious Pradosh Kaal Lakshmi Puja Muhurat is from 05:42 PM to 07:38 PM (IST) on Sunday, November 8, 2026.</div>
+        </details>
+        <details class="fest-faq-item">
+          <summary class="fest-faq-question">
+            <span>Why is Diwali celebrated?</span>
+            <span class="fest-faq-indicator">▾</span>
+          </summary>
+          <div class="fest-faq-answer">Diwali commemorates Lord Rama's triumphant return to Ayodhya after 14 years of exile and vanquishing Ravana, as well as the appearance of Goddess Lakshmi during the churning of the cosmic ocean.</div>
+        </details>
+        <details class="fest-faq-item">
+          <summary class="fest-faq-question">
+            <span>How can I create a personalized Diwali greeting?</span>
+            <span class="fest-faq-indicator">▾</span>
+          </summary>
+          <div class="fest-faq-answer">Enter recipient and sender names into the personalization form at the top, and tap 'Generate Greeting'. You can instantly share your unique link on WhatsApp or download an HD card!</div>
         </details>
       </div>
     </section>
 
     <!-- ========================================================
          AD SLOT 3: Pre-Footer In-Article Unit
-         Policy Safe: >100px buffer from interactive components
+         Policy Safe: >=100px buffer, placed cleanly after FAQ content
          ======================================================== -->
     <aside class="fest-ad-slot-wrapper">
       <div class="fest-ad-slot" id="fest-ad-slot-3">
@@ -491,49 +593,53 @@
         <ins class="adsbygoogle"
              style="display:block"
              data-ad-client="{{ADSENSE_PUB_ID}}"
-             data-ad-slot="6666666666"
+             data-ad-slot="3333333333"
              data-ad-format="auto"
              data-full-width-responsive="true"></ins>
       </div>
     </aside>
 
-    <!-- Upcoming Festivals Carousel -->
-    <section style="margin: 28px 0;" aria-label="Upcoming Festivals">
-      <h3 class="fest-carousel-title">Upcoming Auspicious Festivals</h3>
-      <div class="fest-carousel-track">
+    <!-- Upcoming Festivals Grid (Accessible Cards with Names & Days) -->
+    <section style="margin: 32px 0 24px;" aria-label="Upcoming Festivals">
+      <h3 class="fest-carousel-title">आगामी पावन पर्व</h3>
+      <div class="fest-carousel-grid">
         <a href="{{BLOG_URL}}/p/chhath-puja.html" class="fest-carousel-card">
           <div class="fest-carousel-emoji">☀️</div>
-          <div class="fest-carousel-name">Chhath Puja</div>
-          <div class="fest-carousel-date">Nov 14, 2026</div>
+          <div class="fest-carousel-name">छठ पूजा</div>
+          <div class="fest-carousel-date">14 नवंबर 2026</div>
+          <div class="fest-carousel-days">6 दिनों में</div>
         </a>
         <a href="{{BLOG_URL}}/p/new-year.html" class="fest-carousel-card">
           <div class="fest-carousel-emoji">🎉</div>
-          <div class="fest-carousel-name">New Year</div>
-          <div class="fest-carousel-date">Jan 1, 2027</div>
+          <div class="fest-carousel-name">नव वर्ष 2027</div>
+          <div class="fest-carousel-date">1 जनवरी 2027</div>
+          <div class="fest-carousel-days">54 दिनों में</div>
         </a>
         <a href="{{BLOG_URL}}/p/makar-sankranti.html" class="fest-carousel-card">
           <div class="fest-carousel-emoji">🪁</div>
-          <div class="fest-carousel-name">Sankranti</div>
-          <div class="fest-carousel-date">Jan 14, 2027</div>
+          <div class="fest-carousel-name">मकर संक्रांति</div>
+          <div class="fest-carousel-date">14 जनवरी 2027</div>
+          <div class="fest-carousel-days">67 दिनों में</div>
         </a>
         <a href="{{BLOG_URL}}/p/dussehra.html" class="fest-carousel-card">
           <div class="fest-carousel-emoji">🏹</div>
-          <div class="fest-carousel-name">Dussehra</div>
-          <div class="fest-carousel-date">Oct 20, 2026</div>
+          <div class="fest-carousel-name">दशहरा / विजयदशमी</div>
+          <div class="fest-carousel-date">20 अक्टूबर 2026</div>
+          <div class="fest-carousel-days">वार्षिक पर्व</div>
         </a>
       </div>
     </section>
 
-    <!-- WhatsApp Channel Community CTA -->
+    <!-- WhatsApp Channel Community CTA (Dark Brand Green Card, 56px Button) -->
     <section class="fest-channel-cta" aria-label="Join Community Channel">
-      <h4>🔔 Never Miss a Festival Muhurat or Wish!</h4>
-      <p>Join our free WhatsApp & Telegram channels to receive auspicious muhurat reminders, devotional quotes, and HD greeting cards directly on your phone.</p>
+      <h4>🔔 शुभ मुहूर्त व शुभकामनाओं के लिए जुड़ें</h4>
+      <p>हमारे निःशुल्क व्हाट्सएप चैनल से जुड़ें और पाएं पावन मुहूर्त, प्रेरक विचार व HD ग्रीटिंग कार्ड्स सीधे अपने फोन पर।</p>
       <a href="https://whatsapp.com/channel/example" class="btn-join-channel" target="_blank" rel="noopener noreferrer">
-        <span>📲 Join WhatsApp Channel</span>
+        <span>📲</span> <span>व्हाट्सएप चैनल से जुड़ें</span>
       </a>
     </section>
 
-    <!-- Footer with AdSense Compliance Links -->
+    <!-- Footer with AdSense Compliance Links & 44px Tap Targets -->
     <footer class="fest-footer" role="contentinfo">
       <div class="fest-footer-links">
         <a href="{{BLOG_URL}}/p/about.html">About Us</a>
@@ -542,8 +648,8 @@
         <a href="{{BLOG_URL}}/p/disclaimer.html">Disclaimer</a>
         <a href="{{BLOG_URL}}/p/terms.html">Terms of Service</a>
       </div>
-      <p>© 2026 {{BRAND_NAME}}. All rights reserved. Culturally crafted with devotion for celebrations across India.</p>
-      <p style="margin-top: 6px; font-size: 11px; color: rgba(255, 255, 255, 0.4);">
+      <p class="fest-footer-copy">© 2026 {{BRAND_NAME}}. All rights reserved. Culturally crafted with devotion for celebrations across India.</p>
+      <p style="margin-top: 6px; font-size: 11px; color: var(--text-muted); opacity: 0.7;">
         This website is dedicated to spreading festive joy and cultural knowledge. Content is curated for educational and celebrative purposes.
       </p>
     </footer>
@@ -552,12 +658,10 @@
 
   <!-- Inlined JavaScript Core Modules -->
   <script>
-    // Configuration Object
     var FESTIVAL_CONFIG = {{FESTIVAL_CONFIG_JSON}};
 
     {{INLINED_JS}}
 
-    // App Initialization on DOM Ready
     document.addEventListener('DOMContentLoaded', function() {
       // 1. Initialize Privacy & Analytics
       if (window.FestivalAnalytics) {
@@ -577,7 +681,7 @@
         window.FestivalShare.init();
       }
 
-      // 4. Initialize 1080x1920 Status Canvas Generator
+      // 4. Initialize Status Canvas Generator
       if (window.FestivalStatusCanvas) {
         window.FestivalStatusCanvas.init();
       }

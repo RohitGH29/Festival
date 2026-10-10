@@ -126,11 +126,33 @@ festivalDirs.forEach(slug => {
     }
   }
 
-  // 7. Accessibility: Viewport, Form Labels & Interactive IDs
+  // 7. Accessibility: Viewport, Meta Charset, Form Labels & Interactive IDs
   assert(content.includes('name="viewport"'), `Viewport meta tag is properly configured`);
+  assert(/<meta\s+charset=["']?utf-8["']?/i.test(content), `Meta charset UTF-8 tag is present`);
   assert(content.includes('id="fest-input-to"'), `Recipient input ID is declared`);
   assert(content.includes('id="fest-btn-share-whatsapp"'), `Primary WhatsApp share CTA ID is present`);
   assert(content.includes('aria-label='), `Aria labels present for accessible screen readers`);
+
+  // 8. Single H1 Tag Rule
+  const h1Matches = content.match(/<h1[\s>]/gi) || [];
+  assert(h1Matches.length === 1, `Exactly 1 H1 heading tag found in document (Found ${h1Matches.length})`);
+
+  // 9. Zero Raw HTML Entities in Rendered Markup Text Nodes
+  const markupOnly = content.replace(/<script[\s\S]*?<\/script>/gi, '').replace(/<style[\s\S]*?<\/style>/gi, '');
+  const entityMatches = markupOnly.match(/&#\d+;|&amp;#/g) || [];
+  assert(entityMatches.length === 0, `Zero raw HTML entities (&#...;) found in markup text nodes`);
+
+  // 10. No "ADS GO HERE" or Placeholder Ad Artifacts
+  assert(!content.toLowerCase().includes('ads go here'), `Zero "ADS GO HERE" placeholder strings found`);
+
+  // 11. FAQ Structure Check (Non-empty with first item OPEN)
+  assert(content.includes('class="fest-faq-item" open'), `FAQ first details accordion has 'open' attribute`);
+  assert(content.includes('fest-faq-answer'), `FAQ section contains rendered answers`);
+
+  // 12. WCAG AA Unified Surface Design System Tokens
+  assert(content.includes('--parchment') && content.includes('--ink'), `Parchment hero card tokens (--parchment, --ink) defined`);
+  assert(content.includes('--surface') && content.includes('--gold'), `Unified dark surface tokens (--surface, --gold) defined`);
+  assert(content.includes('--saffron') && content.includes('--wa-green'), `Action CTA tokens (--saffron, --wa-green) defined`);
 });
 
 // ====================================================================

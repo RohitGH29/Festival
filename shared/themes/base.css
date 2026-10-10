@@ -1,67 +1,130 @@
 /**
- * Base Design System Tokens & Mobile-First Foundation
- * Optimized for 360-412px mobile screens, touch targets >= 48px, zero CLS, WCAG AA contrast.
+ * Unified Festive Design System & Mobile-First Foundation
+ * Strictly WCAG AA compliant (all text >= 4.5:1, UI >= 3:1), zero CLS, 48px tap targets,
+ * full-bleed Blogger host overrides, and single parchment hero card system.
  */
 
 :root {
-  /* Typography */
-  --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans Devanagari", "Mukta", sans-serif;
-  --font-size-base: 16px;
-  --font-size-sm: 14px;
+  /* Core Brand & Canvas Tokens */
+  --bg-1: #1B0A33;
+  --bg-2: #3A1259;
+  --surface: #2A1647;
+  --surface-2: #38205C;
+  --border: rgba(255, 200, 87, 0.35);
+  --border-light: rgba(255, 200, 87, 0.18);
+
+  /* Typography & Text Contrast Tokens */
+  --text: #F8F2FF;
+  --text-muted: #D6C9EE;
+  --gold: #FFC857;
+  --gold-glow: rgba(255, 200, 87, 0.35);
+
+  /* Accent & Action Tokens */
+  --saffron: #FF9933;
+  --saffron-dark: #E67A10;
+  --saffron-text: #2B1200;
+  --wa-green: #0F7B45;
+  --wa-green-hover: #0B6337;
+  --wa-light: #25D366;
+
+  /* Parchment Hero Card Tokens (WCAG AAA Contrast > 13:1) */
+  --parchment: #FFF4DC;
+  --ink: #3B0A12;
+  --ink-accent: #8A101C;
+  --ink-muted: #5A0C16;
+
+  /* Typography Scale */
+  --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans Devanagari", "Hind", sans-serif;
   --font-size-xs: 12px;
-  --font-size-lg: 18px;
+  --font-size-sm: 14px;
+  --font-size-base: 16px;
+  --font-size-md: 18px;
+  --font-size-lg: 20px;
   --font-size-xl: 22px;
-  --font-size-2xl: 26px;
-  --font-size-3xl: 32px;
-  --line-height-base: 1.6;
+  --font-size-2xl: 28px;
+  --line-height-base: 1.65;
+  --line-height-heading: 1.28;
 
-  /* Global Theme Colors */
-  --color-gold: #FFD700;
-  --color-gold-dark: #C99700;
-  --color-gold-light: #FFF4B8;
-  --color-gold-glow: rgba(255, 215, 0, 0.35);
-  --color-whatsapp: #25D366;
-  --color-whatsapp-hover: #1EBE5D;
-  --color-white: #FFFFFF;
-  --color-gray-100: #F3F4F6;
-  --color-gray-200: #E5E7EB;
-  --color-gray-600: #4B5563;
-  --color-gray-800: #1F2937;
-  --color-gray-900: #111827;
-
-  /* Default Festive Accents */
-  --theme-bg-gradient: linear-gradient(135deg, #1A0B2E 0%, #301142 50%, #150624 100%);
-  --theme-card-bg: rgba(255, 255, 255, 0.08);
-  --theme-card-border: rgba(255, 215, 0, 0.45);
-  --theme-text-primary: #FFFFFF;
-  --theme-text-secondary: #E2E8F0;
-  --theme-text-muted: #A0AEC0;
-  --theme-accent: #FF9900;
-  --theme-accent-gradient: linear-gradient(135deg, #FFB703 0%, #FB8500 100%);
-
-  /* Spacing */
-  --space-xs: 4px;
-  --space-sm: 8px;
-  --space-md: 16px;
-  --space-lg: 24px;
-  --space-xl: 32px;
-  --space-2xl: 48px;
-
-  /* Safe Area Insets for notched devices */
-  --safe-bottom: env(safe-area-inset-bottom, 16px);
-  --safe-top: env(safe-area-inset-top, 16px);
-
-  /* Radius & Shadows */
-  --radius-sm: 8px;
-  --radius-md: 14px;
+  /* Layout, Radius & Elevation */
+  --radius-sm: 10px;
+  --radius-md: 16px;
   --radius-lg: 20px;
   --radius-full: 9999px;
-  --shadow-sm: 0 2px 4px rgba(0,0,0,0.12);
-  --shadow-card: 0 10px 25px -5px rgba(0, 0, 0, 0.4), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
-  --shadow-glow: 0 0 20px var(--color-gold-glow);
+  --safe-bottom: env(safe-area-inset-bottom, 16px);
+  --safe-top: env(safe-area-inset-top, 16px);
+  --shadow-card: 0 10px 30px -5px rgba(0, 0, 0, 0.5), 0 4px 12px rgba(0, 0, 0, 0.3);
+  --shadow-glow: 0 0 25px var(--gold-glow);
 }
 
-/* Base Reset & Box Sizing */
+/* ==========================================================================
+   BLOGGER HOST FULL-BLEED OVERRIDES & RESET
+   Ensures edge-to-edge background, kills white gutters, hides title/comments/gadgets
+   ========================================================================== */
+html, body,
+.body-fauxcolumn-outer,
+.fauxcolumn-inner,
+.content-outer,
+.content-inner,
+.main-outer,
+.main-inner,
+.region-inner,
+.columns,
+.column-center-outer,
+.column-center-inner,
+.post-outer,
+.post-body,
+.entry-content,
+.post,
+.Blog,
+.blog-posts {
+  background: var(--bg-1) !important;
+  background-color: var(--bg-1) !important;
+  background-image: radial-gradient(circle at 50% 20%, var(--bg-2) 0%, var(--bg-1) 80%) !important;
+  background-attachment: fixed !important;
+  color: var(--text) !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  box-shadow: none !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  overflow-x: hidden !important;
+}
+
+/* Hide Blogger Chrome headers, plain titles ("dussehra"), share icons, comments, and sidebars */
+.header-outer, #header-outer, .Header, #header,
+.tabs-outer, .tabs-inner,
+.post-title, .entry-title, .post-header, .post-footer, .post-bottom,
+.post-share-buttons, .byline, .post-author, .post-timestamp,
+.sidebar-outer, .sidebar, #sidebar, .sidebar-container,
+#comments, .comments, #comment-editor, .comment-form, .comment-thread,
+.blog-pager, #blog-pager, .feed-links,
+.status-msg-wrap, .status-msg-border,
+.widget.HTML:not(.fest-widget),
+.widget.AdSense:not(.fest-ad-slot),
+[id*="sidebar"] {
+  display: none !important;
+}
+
+/* Restyle Blogger Attribution ("Powered by Blogger") - dark background, accessible link */
+.attribution, .footer-outer, .footer-inner, [id*="Attribution"] {
+  background: var(--bg-1) !important;
+  color: var(--text-muted) !important;
+  text-align: center !important;
+  padding: 16px 12px calc(var(--safe-bottom) + 12px) !important;
+  font-size: 13px !important;
+  border-top: 1px solid var(--border-light) !important;
+  margin: 0 !important;
+}
+.attribution a, .footer-outer a {
+  color: var(--gold) !important;
+  text-decoration: underline !important;
+}
+
+/* ==========================================================================
+   BASE RESET & ACCESSIBILITY
+   ========================================================================== */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -79,15 +142,12 @@ html {
 }
 
 body {
-  background: var(--theme-bg-gradient);
-  color: var(--theme-text-primary);
   min-height: 100vh;
-  overflow-x: hidden;
   position: relative;
-  padding-bottom: var(--safe-bottom);
+  font-size: var(--font-size-base);
 }
 
-/* Background Particle Canvas */
+/* Particle Canvas Backdrop */
 #fest-particles-canvas {
   position: fixed;
   top: 0;
@@ -98,191 +158,217 @@ body {
   z-index: 1;
 }
 
-/* Layout Container */
+/* Center Column Container */
 .fest-wrapper {
   position: relative;
   z-index: 2;
   width: 100%;
-  max-width: 480px; /* Perfect centered card width for mobile & desktop */
+  max-width: 480px;
   margin: 0 auto;
-  padding: 12px 14px calc(var(--safe-bottom) + 20px);
+  padding: 12px 16px calc(var(--safe-bottom) + 24px);
 }
 
-/* Editorial content container can expand slightly for comfortable desktop reading */
 .fest-editorial-container {
-  max-width: 760px;
+  max-width: 480px;
   margin: 0 auto;
   width: 100%;
 }
 
-/* Header */
+/* ==========================================================================
+   TOP BAR (48px Segmented Control & Festive Brand)
+   ========================================================================== */
 .fest-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 8px 4px 14px;
+  padding: 6px 0 12px;
   margin-bottom: 8px;
+  min-height: 52px;
 }
 
 .fest-brand {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: var(--font-size-sm);
-  font-weight: 700;
-  color: var(--color-gold);
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--gold);
   text-decoration: none;
   letter-spacing: 0.5px;
 }
 
 .fest-brand-logo {
-  font-size: 22px;
+  font-size: 26px;
+  line-height: 1;
 }
 
 .fest-header-controls {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
 }
 
-/* Language Switcher Pills */
+/* 48px Segmented Language Toggle */
 .fest-lang-switcher {
   display: flex;
-  background: rgba(0, 0, 0, 0.4);
-  border: 1px solid rgba(255, 215, 0, 0.3);
+  align-items: center;
+  background: var(--surface-2);
+  border: 1.5px solid var(--border);
   border-radius: var(--radius-full);
-  padding: 2px;
+  padding: 3px;
+  height: 48px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 .lang-pill {
   border: none;
   background: transparent;
-  color: var(--theme-text-muted);
-  font-size: var(--font-size-xs);
-  font-weight: 600;
-  padding: 6px 12px;
+  color: var(--text-muted);
+  font-size: 14px;
+  font-weight: 700;
+  padding: 0 16px;
   border-radius: var(--radius-full);
   cursor: pointer;
-  min-height: 32px;
-  min-width: 38px;
+  height: 40px;
+  min-width: 52px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   transition: all 0.2s ease;
 }
 
 .lang-pill.active {
-  background: var(--theme-accent-gradient);
-  color: #000;
-  font-weight: 700;
-  box-shadow: 0 2px 8px rgba(255, 183, 3, 0.4);
+  background: var(--gold);
+  color: #1B0A33;
+  box-shadow: 0 2px 8px rgba(255, 200, 87, 0.4);
 }
 
-/* Audio button */
+.lang-pill:focus-visible {
+  outline: 2px solid var(--gold);
+}
+
+/* 48px Audio Toggle Button */
 .btn-fest-audio {
-  background: rgba(0, 0, 0, 0.4);
-  border: 1px solid rgba(255, 215, 0, 0.3);
-  color: var(--theme-text-primary);
+  background: var(--surface-2);
+  border: 1.5px solid var(--border);
+  color: var(--text);
   border-radius: var(--radius-full);
-  padding: 6px 10px;
-  font-size: var(--font-size-xs);
+  padding: 0 14px;
+  font-size: 14px;
+  font-weight: 600;
   cursor: pointer;
-  min-height: 32px;
-  display: flex;
+  height: 48px;
+  min-width: 48px;
+  display: inline-flex;
   align-items: center;
-  gap: 4px;
+  justify-content: center;
+  gap: 6px;
+  transition: all 0.2s ease;
 }
 
 .btn-fest-audio.playing {
-  border-color: var(--color-gold);
-  background: rgba(255, 215, 0, 0.15);
+  border-color: var(--gold);
+  background: rgba(255, 200, 87, 0.2);
+  color: var(--gold);
 }
 
-/* Live Countdown Banner */
+/* ==========================================================================
+   COUNTDOWN TIMER (Tabular Nums, Equal Widths, No Layout Shift)
+   ========================================================================== */
 .fest-countdown-box {
-  background: rgba(0, 0, 0, 0.45);
-  border: 1px solid rgba(255, 215, 0, 0.25);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  background: var(--surface);
+  border: 1px solid var(--border);
   border-radius: var(--radius-md);
-  padding: 10px 14px;
-  margin-bottom: 14px;
+  padding: 12px 14px;
+  margin-bottom: 12px;
   text-align: center;
+  box-shadow: var(--shadow-card);
 }
 
 .fest-countdown-title {
-  font-size: var(--font-size-xs);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: var(--color-gold);
-  margin-bottom: 6px;
-  font-weight: 600;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  color: var(--gold);
+  margin-bottom: 8px;
 }
 
 .fest-timer-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 6px;
+  gap: 8px;
 }
 
 .fest-timer-item {
-  background: rgba(255, 255, 255, 0.08);
+  background: var(--surface-2);
+  border: 1px solid var(--border-light);
   border-radius: var(--radius-sm);
-  padding: 6px 2px;
+  padding: 8px 4px 6px;
+  text-align: center;
 }
 
 .fest-timer-val {
-  font-size: var(--font-size-lg);
+  font-size: 24px;
   font-weight: 800;
   color: #FFFFFF;
   line-height: 1.1;
   font-variant-numeric: tabular-nums;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", monospace;
 }
 
 .fest-timer-lbl {
-  font-size: 10px;
-  color: var(--theme-text-muted);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--gold);
   text-transform: uppercase;
+  margin-top: 2px;
 }
 
 .fest-live-banner {
   display: none;
-  font-size: var(--font-size-sm);
-  color: var(--color-gold);
-  padding: 6px;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--gold);
+  padding: 8px 12px;
+  background: rgba(255, 200, 87, 0.15);
+  border-radius: var(--radius-sm);
+  margin-top: 8px;
 }
 
-/* Celebration Counter Pill */
 .fest-celebration-pill {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  background: rgba(255, 215, 0, 0.12);
-  border: 1px solid rgba(255, 215, 0, 0.3);
+  background: rgba(255, 200, 87, 0.12);
+  border: 1px solid var(--border);
   border-radius: var(--radius-full);
-  padding: 4px 12px;
-  font-size: var(--font-size-xs);
-  color: var(--color-gold-light);
+  padding: 4px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--gold);
   margin-bottom: 12px;
 }
 
-/* Main Greeting Card */
+/* ==========================================================================
+   HERO CARD: PARCHMENT PAPER AESTHETIC (High Contrast AAA)
+   ========================================================================== */
 .fest-card {
-  background: var(--theme-card-bg);
-  border: 2px solid var(--theme-card-border);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: var(--parchment);
+  color: var(--ink);
+  border: 2px solid rgba(255, 200, 87, 0.7);
   border-radius: var(--radius-lg);
-  padding: 22px 18px 20px;
+  padding: 20px 18px 20px;
   text-align: center;
-  box-shadow: var(--shadow-card), var(--shadow-glow);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.45), 0 0 20px rgba(255, 200, 87, 0.2);
   position: relative;
   overflow: hidden;
-  margin-bottom: 16px;
+  margin-bottom: 24px;
 }
 
-/* Card Decorative Motifs */
 .fest-card-art {
-  width: 100px;
-  height: 100px;
-  margin: 0 auto 12px;
+  width: 96px;
+  height: 96px;
+  margin: 0 auto 10px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -292,127 +378,135 @@ body {
 .fest-card-art-svg {
   width: 100%;
   height: 100%;
-  filter: drop-shadow(0 0 12px var(--color-gold-glow));
+  filter: drop-shadow(0 4px 10px rgba(138, 16, 28, 0.25));
 }
 
 .fest-card-badge {
   display: inline-block;
-  background: rgba(255, 215, 0, 0.15);
-  color: var(--color-gold);
-  font-size: var(--font-size-xs);
+  background: rgba(59, 10, 18, 0.08);
+  color: var(--ink-muted);
+  border: 1px solid rgba(59, 10, 18, 0.2);
+  font-size: 12px;
   font-weight: 700;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  padding: 3px 10px;
+  letter-spacing: 0.5px;
+  padding: 4px 12px;
   border-radius: var(--radius-full);
   margin-bottom: 8px;
 }
 
 .fest-card-title {
-  font-size: var(--font-size-2xl);
-  font-weight: 800;
-  color: var(--color-gold);
+  font-size: clamp(28px, 7.5vw, 38px);
+  font-weight: 900;
+  color: var(--ink);
   line-height: 1.25;
   margin-bottom: 6px;
-  text-shadow: 0 2px 10px rgba(0,0,0,0.6);
 }
 
 .fest-card-name {
-  font-size: var(--font-size-xl);
-  font-weight: 700;
-  color: #FFFFFF;
-  margin-bottom: 12px;
-  letter-spacing: 0.5px;
+  font-size: clamp(18px, 5.5vw, 22px);
+  font-weight: 800;
+  color: var(--ink-accent);
+  margin-bottom: 10px;
+  letter-spacing: 0.3px;
+  line-height: 1.3;
 }
 
 .fest-card-divider {
   width: 60%;
   height: 2px;
-  background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
-  margin: 12px auto 14px;
+  background: linear-gradient(90deg, transparent, rgba(138, 16, 28, 0.4), transparent);
+  margin: 10px auto 12px;
 }
 
 .fest-card-wish-box {
-  min-height: 72px;
+  min-height: 64px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 14px;
+  margin-bottom: 12px;
 }
 
 .fest-card-wish {
   font-size: 17px;
-  line-height: 1.55;
-  color: #FFF8E7;
-  font-weight: 400;
+  line-height: 1.6;
+  color: var(--ink);
+  font-weight: 500;
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 .fade-in-wish {
-  animation: fadeInWish 0.35s ease forwards;
+  animation: fadeInWish 0.3s ease forwards;
 }
 
 @keyframes fadeInWish {
-  from { opacity: 0; transform: translateY(6px); }
+  from { opacity: 0; transform: translateY(4px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
 .fest-card-from {
-  font-size: var(--font-size-base);
+  font-size: 15px;
   font-style: italic;
-  font-weight: 600;
-  color: var(--color-gold);
-  margin-bottom: 16px;
+  font-weight: 700;
+  color: var(--ink-accent);
+  margin-bottom: 14px;
 }
 
-/* Card Actions (Shuffle & Copy) */
+/* Micro Actions (Shuffle & Copy Wish) */
 .fest-card-micro-actions {
   display: flex;
   justify-content: center;
   gap: 10px;
-  margin-bottom: 18px;
+  margin-bottom: 16px;
 }
 
 .btn-fest-chip {
-  background: rgba(0, 0, 0, 0.4);
-  border: 1px solid rgba(255, 215, 0, 0.3);
-  color: #FFFFFF;
+  background: #FFFFFF;
+  border: 1.5px solid rgba(59, 10, 18, 0.25);
+  color: var(--ink);
   border-radius: var(--radius-full);
-  padding: 8px 14px;
-  font-size: var(--font-size-xs);
-  font-weight: 600;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 700;
   cursor: pointer;
-  min-height: 38px;
+  min-height: 44px;
   display: inline-flex;
   align-items: center;
   gap: 6px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
   transition: all 0.2s ease;
 }
 
 .btn-fest-chip:hover, .btn-fest-chip:focus-visible {
-  border-color: var(--color-gold);
-  background: rgba(255, 215, 0, 0.15);
+  border-color: var(--ink-accent);
+  background: #FFF9EE;
+  outline: none;
 }
 
-/* PRIMARY VIRAL SHARE BUTTON (WhatsApp) */
+/* ==========================================================================
+   ACTIONS & SHARE BUTTONS (56px WhatsApp, 48px Secondary Targets)
+   ========================================================================== */
 .btn-fest-primary-whatsapp {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
   width: 100%;
-  background: var(--color-whatsapp);
-  color: #FFFFFF;
+  background: var(--wa-green);
+  color: #FFFFFF !important;
   text-decoration: none;
-  font-size: var(--font-size-lg);
+  font-size: 17px;
   font-weight: 800;
-  min-height: 54px; /* Big thumb target >= 48px */
+  min-height: 56px;
   border-radius: var(--radius-md);
-  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.45);
+  box-shadow: 0 6px 18px rgba(15, 123, 69, 0.4);
   border: none;
   cursor: pointer;
   transition: transform 0.15s ease, background-color 0.2s ease;
   margin-bottom: 12px;
+}
+
+.btn-fest-primary-whatsapp:hover {
+  background: var(--wa-green-hover);
 }
 
 .btn-fest-primary-whatsapp:active {
@@ -423,9 +517,10 @@ body {
   width: 26px;
   height: 26px;
   fill: currentColor;
+  flex-shrink: 0;
 }
 
-/* Secondary Share Row */
+/* 48px Target Secondary Share Grid */
 .fest-share-secondary-row {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -434,10 +529,10 @@ body {
 }
 
 .btn-share-icon {
-  background: rgba(0, 0, 0, 0.35);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: #FFFFFF;
+  border: 1.5px solid rgba(59, 10, 18, 0.2);
   border-radius: var(--radius-sm);
-  color: #FFFFFF;
+  color: var(--ink);
   padding: 8px 4px;
   min-height: 48px;
   display: flex;
@@ -445,30 +540,37 @@ body {
   align-items: center;
   justify-content: center;
   gap: 4px;
-  font-size: 11px;
+  font-size: 13px;
+  font-weight: 700;
   cursor: pointer;
   text-decoration: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);
   transition: all 0.2s ease;
 }
 
 .btn-share-icon:hover, .btn-share-icon:focus-visible {
-  border-color: var(--color-gold);
-  background: rgba(255, 215, 0, 0.15);
+  border-color: var(--ink-accent);
+  background: #FFF9EE;
 }
 
-/* Download Status Image & Make Own Buttons */
+.btn-share-icon span:first-child {
+  font-size: 20px;
+  line-height: 1;
+}
+
+/* Secondary Actions inside Hero */
 .fest-action-button-group {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
   margin-top: 10px;
 }
 
 .btn-fest-secondary {
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 215, 0, 0.4);
-  color: var(--color-gold-light);
-  font-size: var(--font-size-sm);
+  background: rgba(59, 10, 18, 0.06);
+  border: 1.5px solid rgba(59, 10, 18, 0.25);
+  color: var(--ink);
+  font-size: 15px;
   font-weight: 700;
   min-height: 48px;
   border-radius: var(--radius-md);
@@ -482,16 +584,16 @@ body {
 }
 
 .btn-fest-secondary:hover, .btn-fest-secondary:focus-visible {
-  background: rgba(255, 215, 0, 0.18);
-  border-color: var(--color-gold);
+  background: rgba(59, 10, 18, 0.12);
+  border-color: var(--ink-accent);
 }
 
 .btn-fest-tertiary {
   background: transparent;
-  border: 1px dashed rgba(255, 255, 255, 0.35);
-  color: #E2E8F0;
-  font-size: var(--font-size-sm);
-  font-weight: 600;
+  border: 1.5px dashed rgba(59, 10, 18, 0.4);
+  color: var(--ink-muted);
+  font-size: 14px;
+  font-weight: 700;
   min-height: 48px;
   border-radius: var(--radius-md);
   cursor: pointer;
@@ -502,169 +604,187 @@ body {
   width: 100%;
 }
 
-/* Personalization Input Section */
+/* ==========================================================================
+   PERSONALIZATION FORM (48px Inputs, 16px Font, 56px CTA)
+   ========================================================================== */
 .fest-personalize-box {
-  background: rgba(0, 0, 0, 0.4);
-  border: 1px solid rgba(255, 215, 0, 0.3);
+  background: var(--surface);
+  border: 1px solid var(--border);
   border-radius: var(--radius-md);
-  padding: 16px 14px;
-  margin-bottom: 18px;
+  padding: 20px 16px;
+  margin-bottom: 24px;
+  box-shadow: var(--shadow-card);
 }
 
 .fest-box-title {
-  font-size: var(--font-size-md);
-  font-weight: 700;
-  color: var(--color-gold);
-  margin-bottom: 12px;
+  font-size: 19px;
+  font-weight: 800;
+  color: var(--gold);
+  margin-bottom: 16px;
   text-align: center;
 }
 
 .fest-form-group {
-  margin-bottom: 12px;
+  margin-bottom: 14px;
   text-align: left;
 }
 
 .fest-form-label {
   display: block;
-  font-size: var(--font-size-xs);
-  font-weight: 600;
-  color: var(--theme-text-secondary);
-  margin-bottom: 4px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--gold);
+  margin-bottom: 6px;
 }
 
 .fest-input {
   width: 100%;
   min-height: 48px;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 215, 0, 0.35);
+  height: 48px;
+  background: var(--surface-2);
+  border: 1.5px solid var(--border);
   border-radius: var(--radius-sm);
-  padding: 10px 14px;
-  color: #FFFFFF;
-  font-size: var(--font-size-base);
+  padding: 0 16px;
+  color: var(--text);
+  font-size: 16px; /* Strictly 16px prevents iOS safari zoom! */
   font-family: inherit;
   outline: none;
-  transition: border-color 0.2s ease;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .fest-input:focus {
-  border-color: var(--color-gold);
-  box-shadow: 0 0 10px var(--color-gold-glow);
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(255, 200, 87, 0.25);
 }
 
 .fest-input::placeholder {
-  color: rgba(255, 255, 255, 0.4);
+  color: #B4A2D4;
 }
 
 .btn-fest-submit {
   width: 100%;
-  min-height: 48px;
-  background: var(--theme-accent-gradient);
-  color: #000000;
-  font-size: var(--font-size-base);
+  min-height: 56px;
+  height: 56px;
+  background: var(--saffron);
+  color: var(--saffron-text);
+  font-size: 17px;
   font-weight: 800;
   border: none;
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-md);
   cursor: pointer;
-  box-shadow: 0 4px 15px rgba(251, 133, 0, 0.4);
-  transition: transform 0.15s ease;
+  box-shadow: 0 4px 15px rgba(255, 153, 51, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: transform 0.15s ease, background-color 0.2s ease;
+  margin-top: 10px;
+}
+
+.btn-fest-submit:hover {
+  background: var(--saffron-dark);
 }
 
 .btn-fest-submit:active {
   transform: scale(0.98);
 }
 
-/* Quick Recipient Chips Row */
+/* ==========================================================================
+   STYLE & RECIPIENT CHIPS (Wrap, >=44px, Clear Active State)
+   ========================================================================== */
 .fest-recipient-chips {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
-  margin-bottom: 16px;
+  gap: 8px;
+  margin-bottom: 14px;
   justify-content: center;
 }
 
 .recipient-chip {
-  background: rgba(255, 255, 255, 0.07);
-  border: 1px solid rgba(255, 215, 0, 0.25);
-  color: var(--theme-text-secondary);
+  background: var(--surface);
+  border: 1.5px solid var(--border-light);
+  color: var(--text-muted);
   border-radius: var(--radius-full);
-  padding: 6px 12px;
-  font-size: var(--font-size-xs);
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 700;
   cursor: pointer;
-  min-height: 34px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   transition: all 0.2s ease;
 }
 
-.recipient-chip.active, .recipient-chip:hover {
-  background: rgba(255, 215, 0, 0.2);
-  border-color: var(--color-gold);
-  color: #FFFFFF;
+.recipient-chip.active {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: #1B0A33;
+  box-shadow: 0 2px 10px rgba(255, 200, 87, 0.35);
 }
 
-/* Wish Style Pills */
 .fest-styles-scroll {
   display: flex;
-  gap: 6px;
-  overflow-x: auto;
-  padding-bottom: 6px;
-  margin-bottom: 14px;
-  scrollbar-width: none;
-  -webkit-overflow-scrolling: touch;
-}
-
-.fest-styles-scroll::-webkit-scrollbar {
-  display: none;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+  justify-content: center;
 }
 
 .style-pill {
-  flex-shrink: 0;
-  background: rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: var(--theme-text-muted);
+  background: var(--surface-2);
+  border: 1.5px solid var(--border-light);
+  color: var(--text-muted);
   border-radius: var(--radius-full);
-  padding: 6px 12px;
-  font-size: var(--font-size-xs);
-  font-weight: 600;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 700;
   cursor: pointer;
-  min-height: 34px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
 }
 
 .style-pill.active {
-  background: rgba(255, 215, 0, 0.2);
-  border-color: var(--color-gold);
-  color: var(--color-gold);
+  background: var(--saffron);
+  border-color: var(--saffron);
+  color: var(--saffron-text);
+  box-shadow: 0 2px 10px rgba(255, 153, 51, 0.35);
 }
 
-/* =========================================================
-   ADSENSE POLICY SAFE CONTAINER (Zero CLS, >=100px buffer)
-   ========================================================= */
+/* ==========================================================================
+   POLICY-SAFE ADSENSE UNITS (Reserved Space, Dashed Border, >=100px Buffer)
+   ========================================================================== */
 .fest-ad-slot-wrapper {
-  margin: 36px 0; /* Ensures >= 100px distance from interactive buttons */
-  padding: 10px 0;
+  margin: 36px 0; /* Ensures >= 100px clearance from buttons */
+  padding: 0;
   width: 100%;
 }
 
 .fest-ad-slot {
   min-height: 280px; /* Target mobile ad height - strictly reserves layout space! */
-  background: rgba(0, 0, 0, 0.25);
-  border: 1px dashed rgba(255, 255, 255, 0.15);
-  border-radius: var(--radius-sm);
+  background: rgba(27, 10, 51, 0.5);
+  border: 1.5px dashed var(--border);
+  border-radius: var(--radius-md);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
   position: relative;
   overflow: hidden;
-  transition: opacity 0.3s ease;
 }
 
 .fest-ad-label {
-  font-size: 10px;
-  letter-spacing: 1px;
+  font-size: 12px;
+  letter-spacing: 1.5px;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.45);
-  padding: 6px 0 4px;
+  color: var(--text-muted);
+  padding: 8px 0;
   text-align: center;
   width: 100%;
+  font-weight: 700;
 }
 
 .fest-ad-slot ins.adsbygoogle {
@@ -673,22 +793,10 @@ body {
   min-height: 250px;
 }
 
-/* Preview mode for development */
-.ad-slot-preview-mode {
-  justify-content: center;
-}
-
-.ad-preview-badge {
-  font-size: 11px;
-  color: rgba(255, 215, 0, 0.7);
-  background: rgba(255, 215, 0, 0.08);
-  border: 1px solid rgba(255, 215, 0, 0.2);
-  border-radius: var(--radius-sm);
-  padding: 6px 12px;
-}
-
-/* Graceful collapse if ad fails or ad-blocked */
-.fest-ad-slot.ad-slot-collapsed {
+/* Auto collapse unfilled ad slots */
+.fest-ad-slot[data-ad-status="unfilled"],
+.fest-ad-slot.ad-slot-collapsed,
+.fest-ad-slot-wrapper:has(.ad-slot-collapsed) {
   display: none !important;
   min-height: 0 !important;
   height: 0 !important;
@@ -696,384 +804,609 @@ body {
   padding: 0 !important;
 }
 
-/* =========================================================
-   INTERACTIVE ENGAGEMENT EXTRA COMPONENTS
-   ========================================================= */
-/* Diya lighting game */
+/* ==========================================================================
+   INTERACTIVE DIYA GAME (Real SVG Clay Lamps with Glow)
+   ========================================================================== */
 .diya-game-card {
-  background: rgba(0, 0, 0, 0.4);
-  border: 1px solid rgba(255, 215, 0, 0.3);
+  background: var(--surface);
+  border: 1px solid var(--border);
   border-radius: var(--radius-md);
-  padding: 16px 12px;
-  margin-bottom: 24px;
+  padding: 20px 16px;
+  margin-bottom: 28px;
   text-align: center;
+  box-shadow: var(--shadow-card);
+}
+
+.diya-game-title {
+  color: var(--gold);
+  font-size: 18px;
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+
+.diya-game-desc {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-bottom: 16px;
 }
 
 .diya-game-row {
   display: flex;
   justify-content: center;
   gap: 12px;
-  margin: 14px 0;
+  margin: 16px 0 14px;
 }
 
 .interactive-diya {
-  width: 48px;
-  height: 48px;
-  background: #7A3305;
-  border-radius: 0 0 24px 24px;
-  position: relative;
-  cursor: pointer;
+  width: 54px;
+  height: 54px;
+  background: transparent;
   border: none;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
   transition: transform 0.2s ease;
 }
 
 .interactive-diya:active {
-  transform: scale(0.95);
+  transform: scale(0.92);
 }
 
-.diya-flame {
-  position: absolute;
-  top: -20px;
-  left: 50%;
-  transform: translateX(-50%) scale(0);
-  width: 14px;
-  height: 22px;
-  background: radial-gradient(ellipse at bottom, #FFF700 0%, #FF8C00 60%, #FF0000 100%);
-  border-radius: 50% 50% 35% 35%;
+.interactive-diya svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.diya-flame-path {
   opacity: 0;
+  transform-origin: 27px 18px;
+  transform: scale(0);
   transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s ease;
-  filter: drop-shadow(0 0 8px #FFA500);
+  filter: drop-shadow(0 0 10px #FF9900);
 }
 
-.interactive-diya.lit .diya-flame {
-  transform: translateX(-50%) scale(1);
+.interactive-diya.lit .diya-flame-path {
   opacity: 1;
-  animation: flickerFlame 1.2s infinite ease-in-out;
+  transform: scale(1);
+  animation: diyaFlicker 1.4s infinite ease-in-out;
 }
 
-@keyframes flickerFlame {
-  0%, 100% { transform: translateX(-50%) scale(1) rotate(-1deg); }
-  50% { transform: translateX(-50%) scale(1.08) rotate(1.5deg); }
+@keyframes diyaFlicker {
+  0%, 100% { transform: scale(1) rotate(-1.5deg); }
+  50% { transform: scale(1.1) rotate(2deg); }
 }
 
 .diya-game-status {
-  font-size: var(--font-size-xs);
-  color: var(--color-gold-light);
-  min-height: 20px;
-}
-
-.diya-game-status.completed {
-  color: var(--color-gold);
+  font-size: 14px;
+  color: var(--gold);
   font-weight: 700;
-  font-size: var(--font-size-sm);
+  min-height: 22px;
 }
 
-/* Quiz Box */
-.fest-quiz-box {
-  background: rgba(0, 0, 0, 0.45);
-  border: 1px solid rgba(255, 215, 0, 0.3);
+.btn-diya-share {
+  margin-top: 12px;
+  height: 48px;
+  padding: 0 18px;
+  background: var(--wa-green);
+  color: #FFFFFF;
+  border: none;
   border-radius: var(--radius-md);
-  padding: 18px 14px;
-  margin-bottom: 24px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ==========================================================================
+   ARTICLE CARD & EDITORIAL TYPOGRAPHY (High Contrast WCAG AA)
+   ========================================================================== */
+.fest-editorial-section {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 24px 18px;
+  margin-bottom: 28px;
+  color: var(--text);
+  line-height: 1.7;
+  box-shadow: var(--shadow-card);
+}
+
+.fest-editorial-section h2 {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--gold);
+  margin: 24px 0 12px;
+  line-height: var(--line-height-heading);
+}
+
+.fest-editorial-section h2:first-child {
+  margin-top: 0;
+}
+
+.fest-editorial-section h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin: 18px 0 8px;
+}
+
+.fest-editorial-section p {
+  font-size: 16px;
+  margin-bottom: 16px;
+  max-width: 65ch;
+  color: var(--text);
+}
+
+/* Muhurat Info Card with Definition List */
+.fest-muhurat-box {
+  background: var(--surface-2);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 18px 16px;
+  margin: 20px 0 24px;
+}
+
+.fest-muhurat-title {
+  color: var(--gold);
+  font-size: 18px;
+  font-weight: 800;
+  margin-bottom: 14px;
+}
+
+.fest-muhurat-dl {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+.fest-muhurat-item {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid var(--border-light);
+  padding-bottom: 8px;
+}
+
+.fest-muhurat-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.fest-muhurat-dt {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--gold);
+}
+
+.fest-muhurat-dd {
+  font-size: 16px;
+  color: #FFFFFF;
+  margin: 2px 0 0;
+  font-weight: 500;
+}
+
+.fest-disclaimer-note {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-top: 12px;
+}
+
+/* Puja Vidhi Numbered Steps with Badges */
+.fest-steps-list {
+  list-style: none;
+  counter-reset: step-counter;
+  padding-left: 0;
+  margin: 16px 0 20px;
+}
+
+.fest-steps-item {
+  counter-increment: step-counter;
+  position: relative;
+  padding-left: 44px;
+  margin-bottom: 16px;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.fest-steps-item::before {
+  content: counter(step-counter);
+  position: absolute;
+  left: 0;
+  top: 2px;
+  width: 30px;
+  height: 30px;
+  background: var(--saffron);
+  color: var(--saffron-text);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 14px;
+}
+
+/* Regional items list */
+.fest-regional-list {
+  list-style: none;
+  padding: 0;
+  margin: 16px 0 20px;
+}
+
+.fest-regional-item {
+  background: var(--surface-2);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  margin-bottom: 10px;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.fest-regional-tag {
+  display: inline-block;
+  background: rgba(255, 200, 87, 0.15);
+  color: var(--gold);
+  font-weight: 700;
+  font-size: 13px;
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  margin-bottom: 4px;
+}
+
+/* ==========================================================================
+   QUIZ COMPONENT (52px Options, Icon + Color, Localized)
+   ========================================================================== */
+.fest-quiz-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 20px 16px;
+  margin-bottom: 28px;
+  box-shadow: var(--shadow-card);
 }
 
 .quiz-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
 
 .quiz-badge {
-  background: rgba(255, 215, 0, 0.15);
-  color: var(--color-gold);
-  font-size: var(--font-size-xs);
-  font-weight: 700;
-  padding: 3px 8px;
+  background: rgba(255, 200, 87, 0.15);
+  color: var(--gold);
+  font-size: 13px;
+  font-weight: 800;
+  padding: 4px 10px;
   border-radius: var(--radius-sm);
 }
 
 .quiz-progress {
-  font-size: var(--font-size-xs);
-  color: var(--theme-text-muted);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-muted);
 }
 
 .quiz-question-text {
-  font-size: 17px;
-  font-weight: 700;
+  font-size: 18px;
+  font-weight: 800;
   color: #FFFFFF;
-  margin-bottom: 14px;
+  margin-bottom: 16px;
   line-height: 1.4;
 }
 
 .quiz-options-container {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  margin-bottom: 12px;
+  gap: 10px;
+  margin-bottom: 14px;
 }
 
 .quiz-opt-btn {
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: #FFFFFF;
+  background: var(--surface-2);
+  border: 1.5px solid var(--border-light);
+  color: var(--text);
   border-radius: var(--radius-sm);
-  padding: 12px 14px;
-  font-size: var(--font-size-sm);
+  padding: 12px 16px;
+  font-size: 15px;
+  font-weight: 600;
   text-align: left;
   cursor: pointer;
-  min-height: 48px;
+  min-height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
   transition: all 0.2s ease;
 }
 
 .quiz-opt-btn:hover {
-  background: rgba(255, 215, 0, 0.12);
-  border-color: var(--color-gold);
+  background: rgba(255, 200, 87, 0.15);
+  border-color: var(--gold);
 }
 
 .quiz-opt-btn.correct {
-  background: rgba(37, 211, 102, 0.25) !important;
-  border-color: var(--color-whatsapp) !important;
+  background: rgba(15, 123, 69, 0.35) !important;
+  border-color: var(--wa-green) !important;
   color: #FFFFFF !important;
   font-weight: 700;
 }
 
 .quiz-opt-btn.incorrect {
-  background: rgba(239, 68, 68, 0.25) !important;
+  background: rgba(220, 38, 38, 0.35) !important;
   border-color: #EF4444 !important;
   color: #FFFFFF !important;
 }
 
+.quiz-opt-icon {
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
 .quiz-explanation {
-  background: rgba(255, 255, 255, 0.06);
+  background: var(--surface-2);
+  border: 1px solid var(--border-light);
   border-radius: var(--radius-sm);
-  padding: 10px 12px;
-  font-size: var(--font-size-xs);
-  color: var(--theme-text-secondary);
-  margin-bottom: 12px;
+  padding: 12px 14px;
+  font-size: 14px;
+  color: var(--text);
+  margin-bottom: 14px;
   line-height: 1.5;
 }
 
 .btn-quiz-next {
-  background: var(--color-gold);
-  color: #000;
+  background: var(--gold);
+  color: #1B0A33;
   border: none;
-  font-weight: 700;
-  padding: 10px 18px;
+  font-weight: 800;
+  padding: 12px 24px;
   border-radius: var(--radius-sm);
   cursor: pointer;
-  font-size: var(--font-size-sm);
-  min-height: 44px;
+  font-size: 15px;
+  min-height: 48px;
 }
 
-/* =========================================================
-   EDITORIAL CONTENT & SEO SECTION
-   ========================================================= */
-.fest-editorial-section {
-  background: rgba(0, 0, 0, 0.35);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: var(--radius-lg);
-  padding: 22px 18px;
-  margin-bottom: 24px;
-  color: var(--theme-text-secondary);
-  line-height: 1.7;
+.quiz-result-card {
+  text-align: center;
+  padding: 16px 8px;
 }
 
-.fest-editorial-section h2 {
-  font-size: var(--font-size-xl);
-  color: var(--color-gold);
-  margin: 22px 0 10px;
-  line-height: 1.3;
+.quiz-result-card h3 {
+  color: var(--gold);
+  font-size: 20px;
+  font-weight: 800;
+  margin-bottom: 10px;
 }
 
-.fest-editorial-section h3 {
-  font-size: var(--font-size-lg);
+.quiz-score-badge {
+  font-size: 16px;
   color: #FFFFFF;
-  margin: 16px 0 8px;
+  margin-bottom: 16px;
+  line-height: 1.6;
 }
 
-.fest-editorial-section p {
-  font-size: 15px;
-  margin-bottom: 14px;
-}
-
-.fest-editorial-section ul, .fest-editorial-section ol {
-  margin: 0 0 16px 20px;
-}
-
-.fest-editorial-section li {
-  margin-bottom: 8px;
-  font-size: 15px;
-}
-
-/* Muhurat Highlight Card */
-.fest-muhurat-box {
-  background: rgba(255, 215, 0, 0.1);
-  border: 1px solid var(--color-gold);
-  border-radius: var(--radius-md);
-  padding: 14px 16px;
-  margin: 18px 0;
-}
-
-.fest-muhurat-box strong {
-  color: var(--color-gold-light);
-}
-
-.fest-disclaimer-note {
-  font-size: 12px;
-  color: var(--theme-text-muted);
-  margin-top: 6px;
-}
-
-/* FAQ Accordion */
-.fest-faq-list {
+.quiz-action-btns {
   display: flex;
   flex-direction: column;
   gap: 10px;
   margin-top: 14px;
 }
 
+/* ==========================================================================
+   FAQ ACCORDION (<details>/<summary> Works Without JS)
+   ========================================================================== */
+.fest-faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 14px;
+}
+
 .fest-faq-item {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: var(--surface);
+  border: 1px solid var(--border);
   border-radius: var(--radius-sm);
   overflow: hidden;
+  box-shadow: var(--shadow-card);
 }
 
 .fest-faq-question {
   width: 100%;
-  padding: 14px 16px;
+  padding: 16px;
   text-align: left;
   background: transparent;
   border: none;
-  color: #FFFFFF;
-  font-size: 15px;
+  color: var(--gold);
+  font-size: 16px;
   font-weight: 700;
   cursor: pointer;
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-.fest-faq-answer {
-  padding: 0 16px 14px;
-  font-size: 14px;
-  color: var(--theme-text-muted);
-  line-height: 1.6;
-}
-
-/* Next Festivals Carousel */
-.fest-carousel-title {
-  font-size: var(--font-size-md);
-  color: var(--color-gold);
-  font-weight: 700;
-  margin-bottom: 12px;
-}
-
-.fest-carousel-track {
-  display: flex;
   gap: 12px;
-  overflow-x: auto;
-  padding-bottom: 12px;
-  scrollbar-width: none;
+  list-style: none;
 }
 
-.fest-carousel-track::-webkit-scrollbar {
+.fest-faq-question::-webkit-details-marker {
   display: none;
 }
 
+.fest-faq-indicator {
+  font-size: 16px;
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+  color: var(--gold);
+}
+
+details[open] .fest-faq-indicator {
+  transform: rotate(180deg);
+}
+
+.fest-faq-answer {
+  padding: 0 16px 16px;
+  font-size: 15px;
+  color: var(--text);
+  line-height: 1.65;
+  border-top: 1px solid var(--border-light);
+  padding-top: 12px;
+}
+
+/* ==========================================================================
+   UPCOMING FESTIVALS (Cards with Names, Dates & Days Counter)
+   ========================================================================== */
+.fest-carousel-title {
+  font-size: 18px;
+  color: var(--gold);
+  font-weight: 800;
+  margin-bottom: 14px;
+  text-align: center;
+}
+
+.fest-carousel-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
 .fest-carousel-card {
-  flex: 0 0 140px;
-  background: rgba(255, 255, 255, 0.07);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: var(--surface);
+  border: 1px solid var(--border);
   border-radius: var(--radius-md);
-  padding: 12px 10px;
+  padding: 14px 12px;
   text-align: center;
   text-decoration: none;
-  color: #FFFFFF;
+  color: var(--text);
+  min-height: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-card);
   transition: all 0.2s ease;
 }
 
-.fest-carousel-card:hover {
-  border-color: var(--color-gold);
+.fest-carousel-card:hover, .fest-carousel-card:focus-visible {
+  border-color: var(--gold);
   transform: translateY(-2px);
 }
 
 .fest-carousel-emoji {
-  font-size: 26px;
+  font-size: 28px;
   margin-bottom: 4px;
 }
 
 .fest-carousel-name {
-  font-size: 13px;
-  font-weight: 700;
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--gold);
 }
 
 .fest-carousel-date {
-  font-size: 11px;
-  color: var(--theme-text-muted);
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-top: 2px;
 }
 
-/* Social & Channel CTA */
+.fest-carousel-days {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--saffron);
+  margin-top: 2px;
+}
+
+/* ==========================================================================
+   WHATSAPP COMMUNITY CHANNEL (Dark Brand Green Card)
+   ========================================================================== */
 .fest-channel-cta {
-  background: linear-gradient(135deg, rgba(37, 211, 102, 0.15) 0%, rgba(0, 136, 204, 0.15) 100%);
-  border: 1px solid rgba(37, 211, 102, 0.35);
+  background: #093F23;
+  border: 1.5px solid rgba(37, 211, 102, 0.4);
   border-radius: var(--radius-md);
-  padding: 16px 14px;
+  padding: 20px 16px;
   text-align: center;
-  margin-bottom: 24px;
+  margin: 32px 0 24px;
+  box-shadow: var(--shadow-card);
 }
 
 .fest-channel-cta h4 {
   color: #FFFFFF;
-  font-size: 16px;
-  margin-bottom: 6px;
+  font-size: 18px;
+  font-weight: 800;
+  margin-bottom: 8px;
 }
 
 .fest-channel-cta p {
-  font-size: 13px;
-  color: var(--theme-text-secondary);
-  margin-bottom: 12px;
+  font-size: 14px;
+  color: #E2F7EB;
+  line-height: 1.6;
+  margin-bottom: 16px;
 }
 
 .btn-join-channel {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  background: var(--color-whatsapp);
-  color: #FFFFFF;
+  justify-content: center;
+  gap: 8px;
+  background: var(--wa-light);
+  color: #062B16 !important;
   text-decoration: none;
-  font-weight: 700;
-  font-size: 14px;
-  padding: 8px 18px;
-  border-radius: var(--radius-full);
+  font-weight: 800;
+  font-size: 16px;
+  height: 56px;
+  min-height: 56px;
+  border-radius: var(--radius-md);
+  width: 100%;
+  box-shadow: 0 4px 14px rgba(37, 211, 102, 0.35);
 }
 
-/* Footer & Compliance Links */
+/* ==========================================================================
+   FOOTER (14px Links, 44px Tap Targets, AA Contrast)
+   ========================================================================== */
 .fest-footer {
-  border-top: 1px solid rgba(255, 255, 255, 0.15);
-  padding: 24px 10px calc(var(--safe-bottom) + 16px);
+  border-top: 1px solid var(--border-light);
+  padding: 28px 12px calc(var(--safe-bottom) + 20px);
   text-align: center;
-  font-size: 12px;
-  color: var(--theme-text-muted);
+  font-size: 13px;
+  color: var(--text-muted);
 }
 
 .fest-footer-links {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 12px;
-  margin-bottom: 12px;
+  gap: 8px;
+  margin-bottom: 16px;
 }
 
 .fest-footer-links a {
-  color: var(--theme-text-secondary);
+  color: var(--text-muted);
   text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  min-height: 44px;
+  min-width: 44px;
+  padding: 8px 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.fest-footer-links a:hover {
-  color: var(--color-gold);
+.fest-footer-links a:hover, .fest-footer-links a:focus-visible {
+  color: var(--gold);
   text-decoration: underline;
+}
+
+.fest-footer-copy {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin: 6px 0;
 }
 
 /* Toast Message */
@@ -1084,16 +1417,16 @@ body {
   transform: translateX(-50%) translateY(50px);
   background: #111827;
   color: #FFFFFF;
-  border: 1px solid var(--color-gold);
-  padding: 10px 18px;
+  border: 1px solid var(--gold);
+  padding: 12px 20px;
   border-radius: var(--radius-full);
-  font-size: var(--font-size-sm);
-  font-weight: 600;
+  font-size: 14px;
+  font-weight: 700;
   z-index: 9999;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.25s ease, transform 0.25s ease;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.4);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
 }
 
 .fest-toast.visible {
@@ -1101,49 +1434,7 @@ body {
   transform: translateX(-50%) translateY(0);
 }
 
-/* Consent Banner */
-.fest-consent-banner {
-  display: none;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: #1F2937;
-  border-top: 1px solid rgba(255, 215, 0, 0.3);
-  padding: 12px 16px calc(var(--safe-bottom) + 6px);
-  z-index: 9990;
-  font-size: 12px;
-  color: #E5E7EB;
-  box-shadow: 0 -4px 16px rgba(0,0,0,0.3);
-}
-
-.consent-content {
-  max-width: 600px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-}
-
-.consent-link {
-  color: var(--color-gold);
-  text-decoration: underline;
-}
-
-.btn-consent-accept {
-  background: var(--color-gold);
-  color: #000;
-  border: none;
-  border-radius: var(--radius-sm);
-  padding: 6px 14px;
-  font-weight: 700;
-  font-size: 12px;
-  cursor: pointer;
-  white-space: nowrap;
-}
-
-/* Reduced Motion Mode */
+/* Accessibility: Reduced Motion Support */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;

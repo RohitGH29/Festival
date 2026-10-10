@@ -29,11 +29,13 @@ function minifyCSS(css) {
 
 // Simple JS Minifier (Preserves string literals and Blogger safety)
 function minifyJS(js) {
-  // Strip multiline block comments that do not contain important directives
   let cleaned = js.replace(/\/\*[\s\S]*?\*\//g, '');
-  // Strip single line comments cautiously (only those at line start or after space)
   cleaned = cleaned.replace(/^\s*\/\/.*$/gm, '');
-  return cleaned.trim();
+  return cleaned
+    .split('\n')
+    .map(line => line.trim())
+    .filter(line => line.length > 0)
+    .join('\n');
 }
 
 // Helper: Scaffolds a new festival directory
@@ -143,6 +145,28 @@ function scaffoldFestival(slug) {
   console.log(`   Next step: Edit config.json and run "node build/build.js --festival ${cleanSlug}"\n`);
 }
 
+function decodeEntities(str) {
+  if (typeof str !== 'string' || !str) return str || '';
+  return str
+    .replace(/&amp;#(\d+);/g, (_, dec) => String.fromCodePoint(parseInt(dec, 10)))
+    .replace(/&amp;#x([0-9a-fA-F]+);/gi, (_, hex) => String.fromCodePoint(parseInt(hex, 16)))
+    .replace(/&#(\d+);/g, (_, dec) => String.fromCodePoint(parseInt(dec, 10)))
+    .replace(/&#x([0-9a-fA-F]+);/gi, (_, hex) => String.fromCodePoint(parseInt(hex, 16)));
+}
+
+function deepDecode(obj) {
+  if (typeof obj === 'string') return decodeEntities(obj);
+  if (Array.isArray(obj)) return obj.map(deepDecode);
+  if (obj && typeof obj === 'object') {
+    const res = {};
+    for (const [k, v] of Object.entries(obj)) {
+      res[k] = deepDecode(v);
+    }
+    return res;
+  }
+  return obj;
+}
+
 // Build a single festival
 function buildFestival(festivalSlug) {
   const festDir = path.join(FESTIVALS_DIR, festivalSlug);
@@ -160,8 +184,10 @@ function buildFestival(festivalSlug) {
 
   console.log(`\n📦 Building festival: "${festivalSlug}"...`);
 
-  const config = JSON.parse(fs.readFileSync(configFile, 'utf8'));
-  let template = fs.readFileSync(templateFile, 'utf8');
+  const rawConfig = JSON.parse(fs.readFileSync(configFile, 'utf8'));
+  const config = deepDecode(rawConfig);
+  let template = decodeEntities(fs.readFileSync(templateFile, 'utf8'))
+    .replace(/<!--(?!\[)[\s\S]*?-->/g, ''); // strip HTML comments to optimize budget
 
   // 1. Gather and bundle all CSS
   const baseCss = fs.readFileSync(path.join(SHARED_DIR, 'themes', 'base.css'), 'utf8');
@@ -206,8 +232,8 @@ function buildFestival(festivalSlug) {
     '{{CANONICAL_URL}}': config.seo.canonical,
     '{{OG_IMAGE}}': config.seo.ogImage,
     '{{BRAND_NAME}}': config.brandName || 'FestiveGlow',
-    '{{BLOG_URL}}': config.blogUrl || 'https://yourblog.blogspot.com',
-    '{{THEME_COLOR}}': config.colors.primary || '#FFB703',
+    '{{BLOG_URL}}': config.blogUrl || 'https://techinfo29.blogspot.com',
+    '{{THEME_COLOR}}': config.colors.primary || '#1B0A33',
     '{{ADSENSE_PUB_ID}}': config.adsensePublisherId || 'ca-pub-XXXXXXXXXXXXXXXX',
     '{{INLINED_CSS}}': bundledCss,
     '{{INLINED_JS}}': minifiedJs,
@@ -216,11 +242,25 @@ function buildFestival(festivalSlug) {
 
   let outputHtml = template;
   for (const [key, value] of Object.entries(replacements)) {
-    // Global string replacement
     outputHtml = outputHtml.split(key).join(value);
   }
 
-  // 4. Write generated self-contained output to blogger-post.html
+  // Optimize file size: trim leading/trailing line whitespace and blank lines
+  outputHtml = outputHtml
+    .split('\n')
+    .map(line => line.trim())
+    .filter(line => line.length > 0)
+    .join('\n');
+
+  // 4. Build Check: Verify no raw HTML entities exist in HTML markup text nodes
+  const markupWithoutScripts = outputHtml.replace(/<script[\s\S]*?<\/script>/gi, '').replace(/<style[\s\S]*?<\/style>/gi, '');
+  const entityMatches = markupWithoutScripts.match(/&#\d+;|&amp;#/g);
+  if (entityMatches) {
+    console.error(`  ❌ BUILD FAILURE: Found ${entityMatches.length} raw entity occurrence(s) in markup text nodes:`, entityMatches.slice(0, 5));
+    throw new Error(`Build failed for ${festivalSlug}: Raw HTML entities found in rendered template.`);
+  }
+
+  // 5. Write generated self-contained output to blogger-post.html
   const outputFile = path.join(festDir, 'blogger-post.html');
   fs.writeFileSync(outputFile, outputHtml, 'utf8');
 

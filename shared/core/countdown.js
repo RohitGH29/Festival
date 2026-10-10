@@ -1,21 +1,68 @@
 /**
  * Festival Countdown Engine
- * Calculates real-time difference to festival date and muhurat.
- * Accurate time calculations in IST (Asia/Kolkata).
+ * Calculates real-time difference to festival date and shubh muhurat in IST.
+ * Tabular-nums digits, zero layout shift, and localized Hindi/English labels.
  */
 (function(window) {
   'use strict';
 
+  function decodeEntities(str) {
+    if (typeof str !== 'string' || !str) return str || '';
+    if (!/&#\d+|&#x[0-9a-fA-F]+;|&amp;#/i.test(str)) return str;
+    return str
+      .replace(/&amp;#(\d+);/g, function(_, dec) { return String.fromCodePoint(parseInt(dec, 10)); })
+      .replace(/&amp;#x([0-9a-fA-F]+);/gi, function(_, hex) { return String.fromCodePoint(parseInt(hex, 16)); })
+      .replace(/&#(\d+);/g, function(_, dec) { return String.fromCodePoint(parseInt(dec, 10)); })
+      .replace(/&#x([0-9a-fA-F]+);/gi, function(_, hex) { return String.fromCodePoint(parseInt(hex, 16)); });
+  }
+
   var Countdown = {
+    config: null,
     timerInterval: null,
+    currentLang: 'hi',
 
     init: function(config) {
+      this.config = config || {};
+      var params = window.FestivalSanitizer ? window.FestivalSanitizer.getQueryParams() : {};
+      this.currentLang = params.lang || (this.config.defaultLanguage || 'hi');
+
       if (!config || !config.dates || !config.dates.primaryDate) return;
-      this.start(config.dates.primaryDate, config.name);
+      this.start();
+      this.updateLabels();
     },
 
-    start: function(targetDateStr, festivalName) {
+    setLanguage: function(lang) {
+      this.currentLang = lang;
+      this.updateLabels();
+    },
+
+    updateLabels: function() {
+      var isHindi = this.currentLang === 'hi';
+      var festName = isHindi ? (this.config.nameHindi || this.config.name || 'पर्व') : (this.config.name || 'Festival');
+      var year = (this.config.dates && this.config.dates.year) || '2026';
+
+      var titleEl = document.querySelector('.fest-countdown-title');
+      if (titleEl) {
+        titleEl.textContent = decodeEntities(isHindi ? (festName + ' ' + year + ' काउंटडाउन ⏳') : (festName + ' ' + year + ' Countdown ⏳'));
+      }
+
+      var labels = isHindi ? ['दिन', 'घंटे', 'मिनट', 'सेकंड'] : ['Days', 'Hours', 'Mins', 'Secs'];
+      var lblEls = document.querySelectorAll('.fest-timer-lbl');
+      if (lblEls.length === 4) {
+        lblEls[0].textContent = decodeEntities(labels[0]);
+        lblEls[1].textContent = decodeEntities(labels[1]);
+        lblEls[2].textContent = decodeEntities(labels[2]);
+        lblEls[3].textContent = decodeEntities(labels[3]);
+      }
+
+      if (typeof window.decodeDOMEntities === 'function') {
+        window.decodeDOMEntities(document.getElementById('fest-countdown-container'));
+      }
+    },
+
+    start: function() {
       var self = this;
+      var targetDateStr = this.config.dates.primaryDate;
       var targetDate = new Date(targetDateStr).getTime();
       if (isNaN(targetDate)) return;
 
@@ -31,19 +78,22 @@
         var minsEl = document.getElementById('cd-mins');
         var secsEl = document.getElementById('cd-secs');
         var bannerEl = document.getElementById('fest-live-banner');
+        var isHindi = self.currentLang === 'hi';
+        var festName = isHindi ? (self.config.nameHindi || self.config.name || 'पर्व') : (self.config.name || 'Festival');
 
         if (diff <= 0) {
-          // If within the same day (within 24 hours after target date)
           var oneDayMs = 24 * 60 * 60 * 1000;
           if (Math.abs(diff) < oneDayMs) {
             if (bannerEl) {
-              bannerEl.innerHTML = '✨ <strong>Today is the auspicious day of ' + (festivalName || 'the festival') + '!</strong> May joy and blessings fill your home! ✨';
+              bannerEl.innerHTML = '✨ <strong>' +
+                (isHindi ? ('आज पावन ' + festName + ' है! हार्दिक शुभकामनाएं!') : ("It's " + festName + " today! Wishing you joy and triumph!")) +
+                '</strong> ✨';
               bannerEl.style.display = 'block';
             }
             if (container) container.classList.add('fest-day-today');
           } else {
             if (bannerEl) {
-              bannerEl.innerHTML = '🙏 Wishing you peace and happiness throughout this festive season!';
+              bannerEl.innerHTML = isHindi ? '🙏 आप सभी को पावन पर्व की मंगलमय शुभकामनाएं!' : '🙏 Wishing you peace and happiness throughout this festive season!';
               bannerEl.style.display = 'block';
             }
           }
@@ -67,6 +117,7 @@
       }
 
       update();
+      if (this.timerInterval) clearInterval(this.timerInterval);
       this.timerInterval = setInterval(update, 1000);
     }
   };

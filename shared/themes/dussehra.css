@@ -1,29 +1,34 @@
 /**
  * Dussehra / Vijayadashami Theme Overrides
- * Symbolism: Victory of Good over Evil, Lord Rama's Triumph, Goddess Durga's Blessings
- * Colors: Imperial Crimson, Radiant Saffron, Royal Antique Gold
+ * Consistent surface tokens with subtle saffron glow
  */
 
 body.theme-dussehra {
-  --theme-bg-gradient: linear-gradient(165deg, #1C0505 0%, #350808 30%, #521107 70%, #1A0404 100%);
-  --theme-card-bg: rgba(45, 10, 10, 0.65);
-  --theme-card-border: rgba(255, 183, 3, 0.55);
-  --theme-accent: #E63946;
-  --theme-accent-gradient: linear-gradient(135deg, #FFB703 0%, #E63946 100%);
-  --color-gold-glow: rgba(255, 183, 3, 0.4);
+  --bg-1: #1B0A33;
+  --bg-2: #3A1259;
+  --surface: #2A1647;
+  --surface-2: #38205C;
+  --border: rgba(255, 200, 87, 0.35);
+  --gold: #FFC857;
+  --saffron: #FF9933;
 }
 
 .theme-dussehra .fest-card {
-  border-image: linear-gradient(to bottom right, #FFD700, #E63946, #FF9900) 1;
-  border-radius: var(--radius-lg);
+  background: var(--parchment);
+  border: 2px solid rgba(255, 200, 87, 0.7);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.45), 0 0 25px rgba(255, 153, 51, 0.25);
 }
 
 .theme-dussehra .fest-card-title {
-  background: linear-gradient(135deg, #FFF176 0%, #FFD54F 50%, #FF8F00 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--ink) !important;
+  -webkit-text-fill-color: var(--ink) !important;
+  background: none !important;
 }
 
-.theme-dussehra .fest-card-art-svg {
-  filter: drop-shadow(0 0 16px rgba(255, 183, 3, 0.5));
+.theme-dussehra .fest-card-name {
+  color: var(--ink-accent) !important;
+}
+
+.theme-dussehra .fest-card-wish {
+  color: var(--ink) !important;
 }

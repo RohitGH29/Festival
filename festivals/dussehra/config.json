@@ -1,10 +1,10 @@
 {
   "slug": "dussehra",
   "name": "Dussehra",
-  "nameHindi": "दशहरा / विजयदशमी",
+  "nameHindi": "दशहरा",
   "emoji": "🏹",
   "brandName": "FestiveGlow",
-  "blogUrl": "https://yourblog.blogspot.com",
+  "blogUrl": "https://techinfo29.blogspot.com",
   "adsensePublisherId": "ca-pub-XXXXXXXXXXXXXXXX",
   "ga4MeasurementId": "G-XXXXXXXXXX",
   "defaultLanguage": "hi",
@@ -12,22 +12,27 @@
     "year": 2026,
     "primaryDate": "2026-10-20T00:00:00+05:30",
     "displayDate": "Tuesday, October 20, 2026",
+    "displayDateHindi": "मंगलवार, 20 अक्टूबर 2026",
     "tithi": "Ashwin Shukla Dashami",
+    "tithiHindi": "आश्विन शुक्ल दशमी",
     "vijayMuhurat": "02:07 PM to 02:54 PM (IST)",
+    "vijayMuhuratHindi": "दोपहर 02:07 बजे से 02:54 बजे तक (अवधि: 47 मिनट)",
     "ravanDahanMuhurat": "After Sunset, 05:48 PM to 08:22 PM (IST)",
-    "disclaimer": "Auspicious muhurats vary by city longitude & latitude. Please verify with your local panchang."
+    "ravanDahanMuhuratHindi": "सूर्यास्त के पश्चात, सायं 05:48 बजे से 08:22 बजे तक",
+    "disclaimer": "Auspicious muhurats vary by city longitude & latitude. Please verify with your local panchang.",
+    "disclaimerHindi": "स्थानीय सूर्योदय व अक्षांश के अनुसार मुहूर्त में कुछ मिनटों का अंतर हो सकता है। कृपया अपने स्थानीय पंचांग से मिलान करें।"
   },
   "colors": {
-    "primary": "#E63946",
-    "secondary": "#FFB703",
-    "background": "#1C0505",
-    "cardBg": "rgba(45, 10, 10, 0.65)"
+    "primary": "#FF9933",
+    "secondary": "#FFC857",
+    "background": "#1B0A33",
+    "cardBg": "#FFF4DC"
   },
   "seo": {
-    "title": "Happy Dussehra 2026 Wishes, Images with Name & WhatsApp Status Generator",
-    "description": "Create personalized Happy Dussehra 2026 greetings with name for WhatsApp. Download HD Vijayadashami status image, read Shubh Muhurat, Puja Vidhi, and heartfelt wishes in English & Hindi.",
-    "canonical": "https://yourblog.blogspot.com/p/dussehra.html",
-    "ogImage": "https://yourblog.blogspot.com/assets/dussehra-og-banner.webp",
+    "title": "Happy Dussehra 2026 Wishes, Images & Messages - FestiveGlow",
+    "description": "Create personalized Happy Dussehra 2026 greetings with name for WhatsApp. Shubh Vijaya Muhurat, Puja Vidhi, and heartfelt Vijayadashami wishes in English & Hindi.",
+    "canonical": "https://techinfo29.blogspot.com/p/dussehra.html",
+    "ogImage": "https://techinfo29.blogspot.com/assets/dussehra-og-banner.webp",
     "keywords": "happy dussehra 2026, dussehra wishes with name, vijayadashami greeting card generator, dussehra whatsapp status, ravan dahan shubh muhurat 2026, dussehra quotes in hindi, dussehra wishes for family"
   },
   "languages": {
@@ -48,12 +53,7 @@
         { "category": "formal", "text": "Warm regards on Vijayadashami. May your endeavors always be guided by the principles of justice, perseverance, and ethical leadership." },
         { "category": "shayari", "text": "Burai ka hota hai hamesha ant, satya ki sada hoti hai jeet. Vijayadashami ka paawan parv laye aapke jeevan mein sneh aur preet! Shubh Dussehra!" },
         { "category": "shayari", "text": "Rama kripa ki chhaon mein khile aapka sansar, har din laye khushiyon ka anootha tyohar. Vijayadashami ki dheron shubhkaamnayein!" },
-        { "category": "shayari", "text": "Dhan-dhanya se bhara rahe aapka har aangan, pawan ho jaye man aur saara jeevan. Shubh Dussehra!" },
-        { "category": "traditional", "text": "As the majestic effigies burn to ashes, may every strand of sorrow and negativity in your life disintegrate forever. Happy Dussehra!" },
-        { "category": "traditional", "text": "May the sacred blessings of Shami tree worship bestow endless good fortune, protection, and boundless prosperity on your lineage." },
-        { "category": "friends", "text": "Let us celebrate the victory of goodness over malice and light over darkness. Happy Dussehra to you and your gang!" },
-        { "category": "family", "text": "May the divine grace of Maryada Purushottam Shri Rama keep every elder healthy and every child smiling in our family. Happy Vijayadashami!" },
-        { "category": "formal", "text": "May this Vijayadashami mark the beginning of great milestones and remarkable milestones in all your ventures. Happy Dussehra!" }
+        { "category": "traditional", "text": "As the majestic effigies burn to ashes, may every strand of sorrow and negativity in your life disintegrate forever. Happy Dussehra!" }
       ]
     },
     "hi": {
@@ -73,18 +73,83 @@
         { "category": "formal", "text": "कार्यक्षेत्र में निरंतर उन्नति और नए मील के पत्थर स्थापित करने हेतु विजयादशमी की औपचारिक शुभकामनाएं।" },
         { "category": "shayari", "text": "अधर्म पर धर्म की जीत, अन्याय पर न्याय की प्रीत। मुबारक हो आपको यह पावन पर्व, श्री राम का नाम ही है हर जन का गर्व। शुभ दशहरा!" },
         { "category": "shayari", "text": "चंदन की खुशबू, रेशम का हार, सावन की सुगंध, बारिश की फुहार। मुबारक हो आपको विजयादशमी का त्योहार!" },
-        { "category": "shayari", "text": "दशहरे का यह पावन त्योहार, जीवन में लाए खुशियां अपार। श्री राम जी करें आपके घर सुख की बरसात, पूरी हो आपकी हर मुराद!" },
-        { "category": "traditional", "text": "शमी के पत्तों की तरह सोना बरसे आपके द्वार, कभी न छूटे खुशियों का यह पावन संसार। शुभ दशहरा!" },
-        { "category": "traditional", "text": "दसों दिशाओं में फैले आपका सुयश और कीर्ति। विजयादशमी के पावन पर्व पर प्रभु राम का आशीर्वाद आप पर सदा बना रहे।" },
-        { "category": "friends", "text": "दोस्ती का यह बंधन सदा मजबूत रहे और हम हर मुश्किल पर विजय प्राप्त करें। हैप्पी दशहरा ब्रो!" }
+        { "category": "traditional", "text": "शमी के पत्तों की तरह सोना बरसे आपके द्वार, कभी न छूटे खुशियों का यह पावन संसार। शुभ दशहरा!" }
       ]
     }
   },
   "quiz": {
+    "en": {
+      "questions": [
+        {
+          "question": "Which demon king did Lord Rama defeat on the day of Dussehra?",
+          "options": ["Mahishasura", "Ravana", "Kumbhakarna", "Meghanada"],
+          "correctIndex": 1,
+          "explanation": "Lord Rama defeated the ten-headed demon king Ravana on Ashwin Shukla Dashami after a fierce ten-day battle."
+        },
+        {
+          "question": "Which sacred tree's leaves (often called Sonpatti/gold) are exchanged on Dussehra?",
+          "options": ["Banyan tree", "Peepal tree", "Shami tree (Apta)", "Neem tree"],
+          "correctIndex": 2,
+          "explanation": "Leaves of the sacred Shami tree (or Apta tree) are exchanged as symbols of pure gold and divine victory."
+        },
+        {
+          "question": "Which manifestation of Goddess Durga slayed the buffalo demon Mahishasura on Vijayadashami?",
+          "options": ["Maa Mahishasuramardini", "Maa Saraswati", "Maa Katyayani", "Maa Shailputri"],
+          "correctIndex": 0,
+          "explanation": "Goddess Durga annihilated Mahishasura after a 9-day war, culminating in triumph on the 10th day (Vijayadashami)."
+        },
+        {
+          "question": "In Karnataka, which royal historic celebration of Dasara is globally world-famous?",
+          "options": ["Hampi Utsav", "Mysuru (Mysore) Dasara", "Coorg Festival", "Gokarna Fair"],
+          "correctIndex": 1,
+          "explanation": "Mysuru Dasara features the world-renowned Jumboo Savari procession with Goddess Chamundeshwari mounted on a decorated golden howdah."
+        },
+        {
+          "question": "What is the auspicious muhurat for starting new ventures on Dussehra called?",
+          "options": ["Abhijit Muhurat", "Vijaya Muhurat", "Brahma Muhurat", "Amrit Kaal"],
+          "correctIndex": 1,
+          "explanation": "The Vijaya Muhurat on Dashami is historically revered as the most auspicious window for new beginnings, journeys, and ventures."
+        }
+      ]
+    },
+    "hi": {
+      "questions": [
+        {
+          "question": "प्रभु श्री राम ने दशहरे के पावन दिन किस असुर राजा का वध किया था?",
+          "options": ["महिषासुर", "रावण", "कुंभकर्ण", "मेघनाद"],
+          "correctIndex": 1,
+          "explanation": "प्रभु श्री राम ने 10 दिनों के धर्मयुद्ध के पश्चात लंकापति रावण का संहार कर माता सीता को मुक्त कराया था।"
+        },
+        {
+          "question": "दशहरे के दिन किस पवित्र वृक्ष के पत्तों को 'सोना' (सोनपत्ती) मानकर आदान-प्रदान किया जाता है?",
+          "options": ["बरगद का वृक्ष", "पीपल का वृक्ष", "शमी वृक्ष (आप्टा)", "नीम का वृक्ष"],
+          "correctIndex": 2,
+          "explanation": "शमी वृक्ष के पत्तों को सोना मानकर बड़ों का आशीर्वाद लिया जाता है और परस्पर शुभकामनाएं दी जाती हैं।"
+        },
+        {
+          "question": "विजयादशमी पर मां दुर्गा के किस रूप ने आतातायी महिषासुर का वध किया था?",
+          "options": ["मां महिषासुरमर्दिनी", "मां सरस्वती", "मां कात्यायनी", "मां शैलपुत्री"],
+          "correctIndex": 0,
+          "explanation": "मां दुर्गा ने 9 दिनों के घोर संग्राम के बाद 10वें दिन महिषासुर का वध कर देवताओं को भयमुक्त किया था।"
+        },
+        {
+          "question": "कर्नाटक के किस ऐतिहासिक शहर का दशहरा उत्सव पूरे विश्व में प्रसिद्ध है?",
+          "options": ["हम्पी उत्सव", "मैसूरु (मैसूर) दशहरा", "कूर्ग उत्सव", "गोकर्ण मेला"],
+          "correctIndex": 1,
+          "explanation": "मैसूरु दशहरा में 1 लाख बल्बों से सजा राजमहल और मां चामुंडेश्वरी की भव्य जम्बू सवारी विश्वविख्यात है।"
+        },
+        {
+          "question": "दशहरे के दिन किसी भी शुभ कार्य को प्रारंभ करने हेतु कौन-सा समय अबूझ मुहूर्त माना जाता है?",
+          "options": ["अभिजीत मुहूर्त", "विजय मुहूर्त", "ब्रह्म मुहूर्त", "अमृत काल"],
+          "correctIndex": 1,
+          "explanation": "दशहरे का विजय मुहूर्त सर्वकार्य सिद्धिदायक माना जाता है, जिसमें नया व्यापार, गृह प्रवेश या यात्रा अत्यंत शुभ होती है।"
+        }
+      ]
+    },
     "questions": [
       {
         "question": "Which demon king did Lord Rama defeat on the day of Dussehra?",
-        "options": ["Mahishasura", "Ravana", "Kumbhakarna", "Kumbha"],
+        "options": ["Mahishasura", "Ravana", "Kumbhakarna", "Meghanada"],
         "correctIndex": 1,
         "explanation": "Lord Rama defeated the ten-headed demon king Ravana on Ashwin Shukla Dashami after a fierce ten-day battle."
       },
