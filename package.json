@@ -1,0 +1,25 @@
+{
+  "name": "indian-festival-greetings",
+  "version": "1.0.0",
+  "description": "Mobile-first Indian festival greeting page system for Google Blogger with AdSense monetization and viral WhatsApp loop",
+  "main": "build/build.js",
+  "scripts": {
+    "build": "node build/build.js",
+    "build:dussehra": "node build/build.js --festival dussehra",
+    "build:diwali": "node build/build.js --festival diwali",
+    "validate": "node build/validate.js",
+    "serve": "node build/serve.js",
+    "test": "node build/validate.js"
+  },
+  "keywords": [
+    "blogger",
+    "festival-greetings",
+    "adsense",
+    "mobile-first",
+    "dussehra",
+    "diwali",
+    "whatsapp-sharing"
+  ],
+  "author": "Growth & Monetization Specialist",
+  "license": "MIT"
+}

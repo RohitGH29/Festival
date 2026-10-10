@@ -1,0 +1,9 @@
+<!-- 
+  GOOGLE BLOGGER THEME INTEGRATION SNIPPET
+  Add this inside your Blogger Theme XML right before </head> for automated meta tags & ads.txt support
+-->
+<b:if cond='data:blog.pageType == "static_page"'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover'/>
+  <!-- Google AdSense Auto Ads / Script -->
+  <script async='async' src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX' crossorigin='anonymous'></script>
+</b:if>

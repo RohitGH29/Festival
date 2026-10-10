@@ -1,0 +1,29 @@
+/**
+ * Dussehra / Vijayadashami Theme Overrides
+ * Symbolism: Victory of Good over Evil, Lord Rama's Triumph, Goddess Durga's Blessings
+ * Colors: Imperial Crimson, Radiant Saffron, Royal Antique Gold
+ */
+
+body.theme-dussehra {
+  --theme-bg-gradient: linear-gradient(165deg, #1C0505 0%, #350808 30%, #521107 70%, #1A0404 100%);
+  --theme-card-bg: rgba(45, 10, 10, 0.65);
+  --theme-card-border: rgba(255, 183, 3, 0.55);
+  --theme-accent: #E63946;
+  --theme-accent-gradient: linear-gradient(135deg, #FFB703 0%, #E63946 100%);
+  --color-gold-glow: rgba(255, 183, 3, 0.4);
+}
+
+.theme-dussehra .fest-card {
+  border-image: linear-gradient(to bottom right, #FFD700, #E63946, #FF9900) 1;
+  border-radius: var(--radius-lg);
+}
+
+.theme-dussehra .fest-card-title {
+  background: linear-gradient(135deg, #FFF176 0%, #FFD54F 50%, #FF8F00 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.theme-dussehra .fest-card-art-svg {
+  filter: drop-shadow(0 0 16px rgba(255, 183, 3, 0.5));
+}

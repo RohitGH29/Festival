@@ -1,0 +1,99 @@
+{
+  "slug": "holi",
+  "name": "Holi",
+  "nameHindi": "Holi (त्योहार)",
+  "emoji": "🎉",
+  "brandName": "FestiveGlow",
+  "blogUrl": "https://yourblog.blogspot.com",
+  "adsensePublisherId": "ca-pub-XXXXXXXXXXXXXXXX",
+  "ga4MeasurementId": "G-XXXXXXXXXX",
+  "defaultLanguage": "en",
+  "dates": {
+    "year": 2026,
+    "primaryDate": "2026-10-20T00:00:00+05:30",
+    "displayDate": "Auspicious Festival Date 2026",
+    "tithi": "Festival Tithi",
+    "muhurat": "Auspicious Muhurat (IST)",
+    "disclaimer": "Please verify festival timings with your local regional panchang."
+  },
+  "colors": {
+    "primary": "#FFB703",
+    "secondary": "#FB8500",
+    "background": "#1A0B2E",
+    "cardBg": "rgba(255, 255, 255, 0.08)"
+  },
+  "seo": {
+    "title": "Happy Holi 2026 Wishes, Images with Name & WhatsApp Status",
+    "description": "Send personalized Happy Holi 2026 wishes with name on WhatsApp. Free HD greeting card creator, quotes, puja vidhi & auspicious muhurat.",
+    "canonical": "https://yourblog.blogspot.com/p/holi.html",
+    "ogImage": "https://yourblog.blogspot.com/assets/holi-og-banner.webp",
+    "keywords": "happy holi 2026, holi wishes with name, holi greeting card generator, holi whatsapp status"
+  },
+  "languages": {
+    "en": {
+      "greetingName": "Happy Holi",
+      "wishes": [
+        {
+          "category": "traditional",
+          "text": "May this holy occasion of Holi bring peace, divine light, and prosperity to your household!"
+        },
+        {
+          "category": "family",
+          "text": "Warmest festive greetings to you and your beloved family on Holi!"
+        },
+        {
+          "category": "friends",
+          "text": "Wishing you tremendous joy, sweet memories, and success this Holi!"
+        },
+        {
+          "category": "formal",
+          "text": "Wishing you and your esteemed organization a joyous and prosperous Holi celebration."
+        },
+        {
+          "category": "shayari",
+          "text": "Khushiyon ka mausam, apno ka pyar, mubarak ho aapko yeh paawan tyohar!"
+        }
+      ]
+    },
+    "hi": {
+      "greetingName": "शुभ Holi",
+      "wishes": [
+        {
+          "category": "traditional",
+          "text": "Holi के पावन पर्व की आपको और आपके पूरे परिवार को हार्दिक शुभकामनाएं!"
+        },
+        {
+          "category": "family",
+          "text": "आपके घर में सुख, शांति और समृद्धि का वास हो। सपरिवार मंगलमय Holi!"
+        },
+        {
+          "category": "friends",
+          "text": "हैप्पी Holi मेरे दोस्त! सदा मुस्कुराते रहो और जीवन में नई ऊंचाइयों को छुओ!"
+        },
+        {
+          "category": "formal",
+          "text": "Holi के पावन अवसर पर आपको एवं आपके पूरे संस्थान को हार्दिक बधाई।"
+        },
+        {
+          "category": "shayari",
+          "text": "दीप जलें, दिल खिलें, हर खुशी आपके द्वार मिले। शुभ Holi!"
+        }
+      ]
+    }
+  },
+  "quiz": {
+    "questions": [
+      {
+        "question": "What does the sacred festival of Holi primarily celebrate?",
+        "options": [
+          "Victory of light and truth",
+          "Spring harvest",
+          "Family solidarity",
+          "Spiritual devotion"
+        ],
+        "correctIndex": 0,
+        "explanation": "The celebration embodies the eternal victory of goodness, harmony, and righteousness."
+      }
+    ]
+  }
+}
