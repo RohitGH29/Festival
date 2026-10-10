@@ -62,7 +62,7 @@
       var params = {
         to: '',
         from: '',
-        lang: 'en',
+        lang: '',
         style: 'all'
       };
 

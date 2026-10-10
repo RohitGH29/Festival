@@ -133,8 +133,8 @@
       </a>
       <div class="fest-header-controls">
         <div class="fest-lang-switcher" role="radiogroup" aria-label="Select Language">
-          <button type="button" class="lang-pill active" data-lang="en" role="radio" aria-checked="true">EN</button>
-          <button type="button" class="lang-pill" data-lang="hi" role="radio" aria-checked="false">हिंदी</button>
+          <button type="button" class="lang-pill" data-lang="en" role="radio" aria-checked="false">EN</button>
+          <button type="button" class="lang-pill active" data-lang="hi" role="radio" aria-checked="true">हिंदी</button>
         </div>
         <button type="button" id="fest-btn-audio" class="btn-fest-audio" aria-label="Toggle Festive Chime Sound">🔔 Audio</button>
       </div>
@@ -169,7 +169,7 @@
       <div class="fest-celebration-pill">
         <span>✨</span>
         <span id="fest-counter-val">19,430</span>
-        <span>wishes sent today</span>
+        <span>शुभकामनाएं आज भेजी गईं</span>
       </div>
     </div>
 
@@ -203,22 +203,22 @@
         </svg>
       </div>
 
-      <span class="fest-card-badge">✨ Auspicious Deepavali 2026 ✨</span>
-      <h1 class="fest-card-title" id="fest-card-title">Happy Diwali</h1>
+      <span class="fest-card-badge">✨ पावन दीपावली 2026 ✨</span>
+      <h1 class="fest-card-title" id="fest-card-title">शुभ दीपावली</h1>
       <div class="fest-card-name" id="fest-card-name" style="display: none;"></div>
 
       <div class="fest-card-divider"></div>
 
       <div class="fest-card-wish-box">
-        <p class="fest-card-wish" id="fest-card-wish">May the divine glow of countless diyas fill your home with boundless prosperity, health, and spiritual enlightenment. Wishing you and your family a blessed Deepavali!</p>
+        <p class="fest-card-wish" id="fest-card-wish">दीपों के पावन महापर्व दीपावली की आपको और आपके समस्त परिवार को हार्दिक और मंगलमय शुभकामनाएं!</p>
       </div>
 
       <div class="fest-card-from" id="fest-card-from" style="display: none;"></div>
 
       <!-- Micro Actions (Shuffle & Copy Wish) -->
       <div class="fest-card-micro-actions">
-        <button type="button" class="btn-fest-chip" id="fest-btn-shuffle" aria-label="Shuffle wish message">🔀 Shuffle Wish</button>
-        <button type="button" class="btn-fest-chip" id="fest-btn-copy-wish" aria-label="Copy wish message">📋 Copy Text</button>
+        <button type="button" class="btn-fest-chip" id="fest-btn-shuffle" aria-label="Shuffle wish message">🔀 नया संदेश</button>
+        <button type="button" class="btn-fest-chip" id="fest-btn-copy-wish" aria-label="Copy wish message">📋 कॉपी करें</button>
       </div>
 
       <!-- PRIMARY VIRAL SHARE BUTTON (WhatsApp Deep Link) -->
@@ -226,7 +226,7 @@
         <svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true">
           <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2ZM12.05 20.15C10.56 20.15 9.11 19.75 7.85 19L7.55 18.82L4.43 19.64L5.26 16.6L5.07 16.29C4.24 14.97 3.81 13.46 3.81 11.91C3.81 7.37 7.5 3.68 12.05 3.68C14.25 3.68 16.31 4.54 17.87 6.1C19.42 7.66 20.28 9.72 20.28 11.92C20.28 16.46 16.59 20.15 12.05 20.15Z"/>
         </svg>
-        <span>Share on WhatsApp 🚀</span>
+        <span>व्हाट्सएप पर भेजें 🚀</span>
       </a>
 
       <!-- Secondary Multi-Platform Share Buttons -->
@@ -253,48 +253,48 @@
       <div class="fest-action-button-group">
         <button type="button" class="btn-fest-secondary" id="fest-btn-status-image">
           <span>📸</span>
-          <span>Download WhatsApp Status Image (HD)</span>
+          <span>व्हाट्सएप स्टेटस इमेज डाउनलोड करें (HD)</span>
         </button>
         <button type="button" class="btn-fest-tertiary" id="fest-btn-make-own">
           <span>✍️</span>
-          <span>Make One For Someone Else</span>
+          <span>अपने नाम से दूसरों के लिए बनाएं</span>
         </button>
       </div>
     </article>
 
     <!-- Personalization Input Section -->
     <section class="fest-personalize-box" id="fest-personalize-section" aria-label="Personalize Your Greeting">
-      <h2 class="fest-box-title">Personalize This Greeting in 2 Seconds</h2>
+      <h2 class="fest-box-title">2 सेकंड में अपने नाम से बनाएं</h2>
       <form id="fest-personalize-form">
         <div class="fest-form-group">
-          <label for="fest-input-to" class="fest-form-label" id="label-to">Enter Recipient Name (e.g., Priya)</label>
-          <input type="text" id="fest-input-to" class="fest-input" maxlength="30" placeholder="Recipient's name" autocomplete="off" required>
+          <label for="fest-input-to" class="fest-form-label" id="label-to">यह शुभकामना किसके लिए है? (नाम)</label>
+          <input type="text" id="fest-input-to" class="fest-input" maxlength="30" placeholder="उदा. राहुल या प्रिया" autocomplete="off" required>
         </div>
         <div class="fest-form-group">
-          <label for="fest-input-from" class="fest-form-label" id="label-from">Your Name (Optional)</label>
-          <input type="text" id="fest-input-from" class="fest-input" maxlength="30" placeholder="Your name" autocomplete="off">
+          <label for="fest-input-from" class="fest-form-label" id="label-from">आपका नाम (वैकल्पिक)</label>
+          <input type="text" id="fest-input-from" class="fest-input" maxlength="30" placeholder="आपका नाम" autocomplete="off">
         </div>
-        <button type="submit" class="btn-fest-submit" id="fest-btn-create">✨ Generate Personalized Greeting</button>
+        <button type="submit" class="btn-fest-submit" id="fest-btn-create">✨ व्यक्तिगत कार्ड बनाएं</button>
       </form>
     </section>
 
     <!-- Quick Recipient Category Chips -->
     <div class="fest-recipient-chips" aria-label="Quick Recipient Filter">
-      <button type="button" class="recipient-chip active" data-target-style="all">All Wishes 🌟</button>
-      <button type="button" class="recipient-chip" data-target-style="family">Family 👨‍👩‍👧‍👦</button>
-      <button type="button" class="recipient-chip" data-target-style="friends">Friends 🤝</button>
-      <button type="button" class="recipient-chip" data-target-style="formal">Boss & Colleagues 💼</button>
-      <button type="button" class="recipient-chip" data-target-style="traditional">Devotional & Lakshmi Puja 🙏</button>
+      <button type="button" class="recipient-chip active" data-target-style="all">सभी संदेश 🌟</button>
+      <button type="button" class="recipient-chip" data-target-style="family">परिवार 👨‍👩‍👧‍👦</button>
+      <button type="button" class="recipient-chip" data-target-style="friends">मित्र 🤝</button>
+      <button type="button" class="recipient-chip" data-target-style="formal">ऑफिस व सहयोगी 💼</button>
+      <button type="button" class="recipient-chip" data-target-style="traditional">धार्मिक व लक्ष्मी पूजन 🙏</button>
     </div>
 
     <!-- Wish Category Pills -->
     <nav class="fest-styles-scroll" aria-label="Wish Styles">
-      <button type="button" class="style-pill active" data-style="all">Popular</button>
-      <button type="button" class="style-pill" data-style="traditional">Traditional</button>
-      <button type="button" class="style-pill" data-style="family">For Family</button>
-      <button type="button" class="style-pill" data-style="friends">For Friends</button>
-      <button type="button" class="style-pill" data-style="formal">Formal</button>
-      <button type="button" class="style-pill" data-style="shayari">Shayari</button>
+      <button type="button" class="style-pill active" data-style="all">लोकप्रिय</button>
+      <button type="button" class="style-pill" data-style="traditional">पारंपरिक</button>
+      <button type="button" class="style-pill" data-style="family">परिवार</button>
+      <button type="button" class="style-pill" data-style="friends">मित्र</button>
+      <button type="button" class="style-pill" data-style="formal">औपचारिक</button>
+      <button type="button" class="style-pill" data-style="shayari">शायरी</button>
     </nav>
 
     <!-- ========================================================
@@ -333,8 +333,8 @@
          ======================================================== -->
     <div class="fest-editorial-container">
       
-      <!-- ENGLISH CONTENT -->
-      <article class="fest-editorial-section lang-content-en">
+      <!-- ENGLISH CONTENT (Hidden by default, shown when user toggles to EN) -->
+      <article class="fest-editorial-section lang-content-en" style="display: none;">
         <h2>Significance of Deepavali: The Festival of Lights & Spiritual Awakening</h2>
         <p>Diwali (or Deepavali, meaning 'a row of lighted lamps') is heralded as the supreme festival of joy, illumination, and spiritual renewal celebrated by millions across India and the global diaspora. Falling on the darkest night of the Hindu lunar month of Kartik (Kartik Amavasya), the festival commemorates the joyous return of Lord Shri Rama, Mata Sita, and Lakshmana to their ancestral kingdom of Ayodhya after fourteen years of exile and the conquest of the demon king Ravana.</p>
 
@@ -392,8 +392,8 @@
         </ul>
       </article>
 
-      <!-- HINDI CONTENT -->
-      <article class="fest-editorial-section lang-content-hi" style="display: none;">
+      <!-- HINDI CONTENT (Visible by default) -->
+      <article class="fest-editorial-section lang-content-hi">
         <h2>दीपावली महापर्व का आध्यात्मिक एवं सांस्कृतिक महत्व</h2>
         <p>दीपावली अथवा दीपोत्सव सनातन धर्म का सर्वाधिक उल्लासपूर्ण, प्रकाशमान और मंगलकारी महापर्व है। कार्तिक मास की घोर अंधकारमयी अमावस्या की रात्रि को जब अनगिनत मिट्टी के दीयों की स्वर्णिम कतारें प्रज्वलित होती हैं, तो अंधकार का नामोनिशान मिट जाता है। यह पावन पर्व मर्यादा पुरुषोत्तम भगवान श्री राम के 14 वर्ष के वनवास और लंका विजय के पश्चात अयोध्या नगरी में प्रथम आगमन की पावन स्मृति में मनाया जाता है।</p>
 
@@ -553,7 +553,7 @@
   <!-- Inlined JavaScript Core Modules -->
   <script>
     // Configuration Object
-    var FESTIVAL_CONFIG = {"slug":"diwali","name":"Diwali","nameHindi":"दीपावली / दिवाली","emoji":"🪔","brandName":"FestiveGlow","blogUrl":"https://yourblog.blogspot.com","adsensePublisherId":"ca-pub-XXXXXXXXXXXXXXXX","ga4MeasurementId":"G-XXXXXXXXXX","defaultLanguage":"en","dates":{"year":2026,"primaryDate":"2026-11-08T00:00:00+05:30","displayDate":"Sunday, November 8, 2026","tithi":"Kartik Amavasya","dhanterasDate":"Friday, November 6, 2026","chhotiDiwaliDate":"Saturday, November 7, 2026","lakshmiPujaMuhurat":"05:42 PM to 07:38 PM (Pradosh Kaal, IST)","govardhanDate":"Monday, November 9, 2026","bhaiDoojDate":"Tuesday, November 10, 2026","disclaimer":"Muhurat timings depend upon local sunrise & sunset at your location. Please verify with your local priest or panchang."},"colors":{"primary":"#FFB703","secondary":"#FB8500","background":"#0D091A","cardBg":"rgba(26, 14, 46, 0.7)"},"seo":{"title":"Happy Diwali 2026 Wishes, Images with Name & WhatsApp Status Generator","description":"Send personalized Happy Diwali 2026 wishes with name on WhatsApp. Free HD Deepavali greeting card creator, Lakshmi Puja Shubh Muhurat, Dhanteras wishes & quotes in English & Hindi.","canonical":"https://yourblog.blogspot.com/p/diwali.html","ogImage":"https://yourblog.blogspot.com/assets/diwali-og-banner.webp","keywords":"happy diwali 2026, diwali wishes with name, deepavali greeting card generator, lakshmi puja muhurat 2026, diwali whatsapp status, dhanteras wishes, bhai dooj greetings"},"languages":{"en":{"greetingName":"Happy Diwali","wishes":[{"category":"traditional","text":"May the divine glow of countless diyas fill your home with boundless prosperity, health, and spiritual enlightenment. Wishing you and your family a blessed Deepavali!"},{"category":"traditional","text":"May Goddess Lakshmi bless your treasury with unending wealth and Lord Ganesha remove every obstacle from your endeavors. Shubh Deepavali!"},{"category":"traditional","text":"On this sacred night of Kartik Amavasya, may divine light eradicate all shadows of sorrow and illuminate your path to greatness."},{"category":"family","text":"May the warmth of family laughter and the sweet taste of festivities make this Diwali unforgettable! Wishing our beloved family infinite happiness!"},{"category":"family","text":"Home is where the heart sparkles brighter than any lamp. Sending warmest festive hugs and love to each one of you on this joyful Diwali!"},{"category":"family","text":"May our family bond grow sweeter like kaju katli and stronger with each passing year. Have a safe, healthy, and blissful Diwali!"},{"category":"friends","text":"May your year ahead be as luminous as sparklers, as joyful as patakhas, and as sweet as gulab jamuns! Happy Diwali, my friend!"},{"category":"friends","text":"Light up your dreams, feast on delicious sweets, and party like there's no tomorrow! Have a rocking and prosperous Diwali, buddy!"},{"category":"friends","text":"Happy Diwali! May your bank account overflow with cash, your life with laughs, and your stomach with gourmet sweets!"},{"category":"formal","text":"Wishing you and your esteemed organization a glorious and prosperous Diwali. May this festival of lights spark new milestones and fruitful partnerships."},{"category":"formal","text":"May this Deepavali usher in an era of abundant prosperity, visionary growth, and lasting success for you and your team."},{"category":"formal","text":"Warm greetings on Diwali. May the divine radiance of the festival guide your business endeavors to remarkable heights."},{"category":"shayari","text":"Diyon ki roshni se jhilmilata aangan ho, khushiyon ki bahaar se mehakta aapka har kshan ho. Shubh Deepavali!"},{"category":"shayari","text":"Maa Lakshmi ka aashirvaad ho, Ganesh ji ka sath ho, is Diwali aapke jeevan mein bas khushiyon ki barsaat ho! Happy Diwali!"},{"category":"shayari","text":"Deep jale to ujaala ho, phool khile to mausam pyara ho, Diwali ki shubh bela par har sapna sach tumhara ho!"},{"category":"traditional","text":"May this festival of lights burn away all past grudges and kindle eternal harmony, unconditional love, and inner peace in your soul."},{"category":"traditional","text":"Welcome Goddess Mahalakshmi into your clean abode with pure devotion and rangoli. Wishing you a blissful Lakshmi Puja and Diwali!"},{"category":"friends","text":"Cheers to another festive season filled with friendship, fun, and unending box after box of sweets! Happy Diwali!"},{"category":"family","text":"May the blessings of elders and the laughter of young ones keep our household brimming with joyous celebrations. Happy Diwali!"},{"category":"formal","text":"May the brightness of Diwali illuminate your corporate horizon with innovation, prosperity, and triumphant accomplishments."}]},"hi":{"greetingName":"शुभ दीपावली","wishes":[{"category":"traditional","text":"दीपों के पावन महापर्व दीपावली की आपको और आपके समस्त परिवार को हार्दिक और मंगलमय शुभकामनाएं!"},{"category":"traditional","text":"मां महालक्ष्मी का वरद हस्त आपके सिर पर रहे और विघ्नहर्ता भगवान श्री गणेश आपके जीवन के सारे संकट हर लें। शुभ दीपावली!"},{"category":"traditional","text":"कार्तिक अमावस्या के पावन अवसर पर आपके घर-आंगन में ज्ञान, समृद्धि और आरोग्य के अखंड दीप प्रज्वलित हों।"},{"category":"family","text":"परिवार की एकता और प्रेम ही संसार का सबसे बड़ा धन है। दीपावली का यह पावन पर्व हमारे परिवार को सुख, शांति और दीर्घायु प्रदान करे।"},{"category":"family","text":"दीपावली के इस पावन पर्व पर हमारे घर में खुशियों की अविरल वर्षा हो और आपसी स्नेह सदा महकता रहे। सप्रेम दीपावली!"},{"category":"family","text":"आपके घर में रिद्धि-सिद्धि का वास हो और अन्नपूर्णा की कृपा से भंडार सदा भरे रहें। पूरे परिवार को शुभ दीपावली!"},{"category":"friends","text":"रंग-बिरंगी रोशनी, काजू कतली की मिठास और बेहिसाब मस्ती! हैप्पी दिवाली मेरे प्यारे दोस्त, जीवन में सदा चमकते रहो!"},{"category":"friends","text":"तुम्हारी खुशियों के पटाखे आसमान छूएं और तरक्की की फुलझड़ी कभी न बुझे! शानदार दीपावली मुबारक हो भाई!"},{"category":"friends","text":"इस दिवाली तुम्हारे बटुए में लक्ष्मी जी और दिमाग में सरस्वती जी का पक्का डेरा हो! हैप्पी दीपावली!"},{"category":"formal","text":"दीपावली के पावन पर्व पर आपको एवं आपके पूरे प्रतिष्ठान को हार्दिक बधाई। यह उत्सव आपके व्यापार में अप्रत्याशित सफलता और उन्नति लाए।"},{"category":"formal","text":"प्रकाश और समृद्धि का यह पावन महापर्व आपके पेशेवर जीवन में नए अवसर, कीर्ति और उपलब्धियां लेकर आए। शुभ दीपावली।"},{"category":"formal","text":"दीपावली की हार्दिक मंगलकामनाएं। आपके साथ व्यावसायिक संबंध और प्रगाढ़ हों, इसी कामना के साथ सप्रेम अभिवादन।"},{"category":"shayari","text":"दीपक की ज्योति से रोशन हो संसार, आंगन में खिले खुशियों का गुलजार। मुबारक हो आपको दीपावली का पावन त्योहार!"},{"category":"shayari","text":"लक्ष्मी जी विराजे आपके द्वार, सोने-चांदी से भर जाए घर-संसार। जीवन में न रहे कोई गम, ऐसी खुशियां दे आपको यह पावन पर्व!"},{"category":"shayari","text":"दीप जलते जगमगाते रहे, हम आपको आप हमें याद आते रहे। जब तक जिंदगी है दुआ है हमारी, आप यूं ही दिए की तरह मुस्कुराते रहे!"},{"category":"traditional","text":"सत्य और धर्म के दीपक जलाएं, मन के भीतर का हर अंधकार मिटाएं। आप सभी को प्रकाश पर्व दीपावली की कोटि-कोटि बधाई!"},{"category":"traditional","text":"सुख, शांति, धन और यश का पावन उपहार लाए यह दिवाली। मां लक्ष्मी आपके घर में सदा के लिए वास करें।"},{"category":"friends","text":"दोस्ती के दीए सदा यूं ही रोशन रहें और हमारी महफिल सदा सजी रहे। हैप्पी सेफ एंड ग्रीन दिवाली ब्रो!"}]}},"quiz":{"questions":[{"question":"Diwali celebrates Lord Rama's return to Ayodhya after how many years of exile?","options":["12 Years","14 Years","16 Years","10 Years"],"correctIndex":1,"explanation":"Lord Rama returned to Ayodhya after completing 14 years of exile and defeating Ravana. The citizens lit ghee lamps across Ayodhya to welcome him."},{"question":"Which divine physician and deity of Ayurveda emerged during the churning of the ocean on Dhanteras?","options":["Lord Dhanvantari","Lord Indra","Lord Kubera","Lord Ashwini Kumar"],"correctIndex":0,"explanation":"Lord Dhanvantari, the physician of the gods and incarnation of Lord Vishnu, emerged carrying the pot of Amrita (nectar) on Dhanatrayodashi (Dhanteras)."},{"question":"Which two supreme deities are primarily worshipped together during Diwali evening puja?","options":["Lord Shiva & Parvati","Goddess Lakshmi & Lord Ganesha","Lord Rama & Sita","Lord Vishnu & Lakshmi"],"correctIndex":1,"explanation":"Goddess Lakshmi (deity of wealth & prosperity) and Lord Ganesha (remover of obstacles & deity of wisdom) are worshipped together."},{"question":"On the day of Govardhan Puja (Annakut), which mountain did Lord Krishna lift on his little finger?","options":["Mount Meru","Mount Kailash","Govardhan Hill","Vindhyachal"],"correctIndex":2,"explanation":"Lord Krishna lifted the sacred Govardhan Hill on his little finger for seven days to shield the villagers and cattle of Vrindavan from torrential storms."},{"question":"Which festival celebrated on the 5th day of Diwali honors the pure bond between sisters and brothers?","options":["Bhai Dooj (Yama Dwitiya)","Raksha Bandhan","Karwa Chauth","Hartalika Teej"],"correctIndex":0,"explanation":"Bhai Dooj (also known as Bhau-Beej or Yama Dwitiya) celebrates the divine bond of protection and affection between brother and sister."}]}};
+    var FESTIVAL_CONFIG = {"slug":"diwali","name":"Diwali","nameHindi":"दीपावली / दिवाली","emoji":"🪔","brandName":"FestiveGlow","blogUrl":"https://yourblog.blogspot.com","adsensePublisherId":"ca-pub-XXXXXXXXXXXXXXXX","ga4MeasurementId":"G-XXXXXXXXXX","defaultLanguage":"hi","dates":{"year":2026,"primaryDate":"2026-11-08T00:00:00+05:30","displayDate":"Sunday, November 8, 2026","tithi":"Kartik Amavasya","dhanterasDate":"Friday, November 6, 2026","chhotiDiwaliDate":"Saturday, November 7, 2026","lakshmiPujaMuhurat":"05:42 PM to 07:38 PM (Pradosh Kaal, IST)","govardhanDate":"Monday, November 9, 2026","bhaiDoojDate":"Tuesday, November 10, 2026","disclaimer":"Muhurat timings depend upon local sunrise & sunset at your location. Please verify with your local priest or panchang."},"colors":{"primary":"#FFB703","secondary":"#FB8500","background":"#0D091A","cardBg":"rgba(26, 14, 46, 0.7)"},"seo":{"title":"Happy Diwali 2026 Wishes, Images with Name & WhatsApp Status Generator","description":"Send personalized Happy Diwali 2026 wishes with name on WhatsApp. Free HD Deepavali greeting card creator, Lakshmi Puja Shubh Muhurat, Dhanteras wishes & quotes in English & Hindi.","canonical":"https://yourblog.blogspot.com/p/diwali.html","ogImage":"https://yourblog.blogspot.com/assets/diwali-og-banner.webp","keywords":"happy diwali 2026, diwali wishes with name, deepavali greeting card generator, lakshmi puja muhurat 2026, diwali whatsapp status, dhanteras wishes, bhai dooj greetings"},"languages":{"en":{"greetingName":"Happy Diwali","wishes":[{"category":"traditional","text":"May the divine glow of countless diyas fill your home with boundless prosperity, health, and spiritual enlightenment. Wishing you and your family a blessed Deepavali!"},{"category":"traditional","text":"May Goddess Lakshmi bless your treasury with unending wealth and Lord Ganesha remove every obstacle from your endeavors. Shubh Deepavali!"},{"category":"traditional","text":"On this sacred night of Kartik Amavasya, may divine light eradicate all shadows of sorrow and illuminate your path to greatness."},{"category":"family","text":"May the warmth of family laughter and the sweet taste of festivities make this Diwali unforgettable! Wishing our beloved family infinite happiness!"},{"category":"family","text":"Home is where the heart sparkles brighter than any lamp. Sending warmest festive hugs and love to each one of you on this joyful Diwali!"},{"category":"family","text":"May our family bond grow sweeter like kaju katli and stronger with each passing year. Have a safe, healthy, and blissful Diwali!"},{"category":"friends","text":"May your year ahead be as luminous as sparklers, as joyful as patakhas, and as sweet as gulab jamuns! Happy Diwali, my friend!"},{"category":"friends","text":"Light up your dreams, feast on delicious sweets, and party like there's no tomorrow! Have a rocking and prosperous Diwali, buddy!"},{"category":"friends","text":"Happy Diwali! May your bank account overflow with cash, your life with laughs, and your stomach with gourmet sweets!"},{"category":"formal","text":"Wishing you and your esteemed organization a glorious and prosperous Diwali. May this festival of lights spark new milestones and fruitful partnerships."},{"category":"formal","text":"May this Deepavali usher in an era of abundant prosperity, visionary growth, and lasting success for you and your team."},{"category":"formal","text":"Warm greetings on Diwali. May the divine radiance of the festival guide your business endeavors to remarkable heights."},{"category":"shayari","text":"Diyon ki roshni se jhilmilata aangan ho, khushiyon ki bahaar se mehakta aapka har kshan ho. Shubh Deepavali!"},{"category":"shayari","text":"Maa Lakshmi ka aashirvaad ho, Ganesh ji ka sath ho, is Diwali aapke jeevan mein bas khushiyon ki barsaat ho! Happy Diwali!"},{"category":"shayari","text":"Deep jale to ujaala ho, phool khile to mausam pyara ho, Diwali ki shubh bela par har sapna sach tumhara ho!"},{"category":"traditional","text":"May this festival of lights burn away all past grudges and kindle eternal harmony, unconditional love, and inner peace in your soul."},{"category":"traditional","text":"Welcome Goddess Mahalakshmi into your clean abode with pure devotion and rangoli. Wishing you a blissful Lakshmi Puja and Diwali!"},{"category":"friends","text":"Cheers to another festive season filled with friendship, fun, and unending box after box of sweets! Happy Diwali!"},{"category":"family","text":"May the blessings of elders and the laughter of young ones keep our household brimming with joyous celebrations. Happy Diwali!"},{"category":"formal","text":"May the brightness of Diwali illuminate your corporate horizon with innovation, prosperity, and triumphant accomplishments."}]},"hi":{"greetingName":"शुभ दीपावली","wishes":[{"category":"traditional","text":"दीपों के पावन महापर्व दीपावली की आपको और आपके समस्त परिवार को हार्दिक और मंगलमय शुभकामनाएं!"},{"category":"traditional","text":"मां महालक्ष्मी का वरद हस्त आपके सिर पर रहे और विघ्नहर्ता भगवान श्री गणेश आपके जीवन के सारे संकट हर लें। शुभ दीपावली!"},{"category":"traditional","text":"कार्तिक अमावस्या के पावन अवसर पर आपके घर-आंगन में ज्ञान, समृद्धि और आरोग्य के अखंड दीप प्रज्वलित हों।"},{"category":"family","text":"परिवार की एकता और प्रेम ही संसार का सबसे बड़ा धन है। दीपावली का यह पावन पर्व हमारे परिवार को सुख, शांति और दीर्घायु प्रदान करे।"},{"category":"family","text":"दीपावली के इस पावन पर्व पर हमारे घर में खुशियों की अविरल वर्षा हो और आपसी स्नेह सदा महकता रहे। सप्रेम दीपावली!"},{"category":"family","text":"आपके घर में रिद्धि-सिद्धि का वास हो और अन्नपूर्णा की कृपा से भंडार सदा भरे रहें। पूरे परिवार को शुभ दीपावली!"},{"category":"friends","text":"रंग-बिरंगी रोशनी, काजू कतली की मिठास और बेहिसाब मस्ती! हैप्पी दिवाली मेरे प्यारे दोस्त, जीवन में सदा चमकते रहो!"},{"category":"friends","text":"तुम्हारी खुशियों के पटाखे आसमान छूएं और तरक्की की फुलझड़ी कभी न बुझे! शानदार दीपावली मुबारक हो भाई!"},{"category":"friends","text":"इस दिवाली तुम्हारे बटुए में लक्ष्मी जी और दिमाग में सरस्वती जी का पक्का डेरा हो! हैप्पी दीपावली!"},{"category":"formal","text":"दीपावली के पावन पर्व पर आपको एवं आपके पूरे प्रतिष्ठान को हार्दिक बधाई। यह उत्सव आपके व्यापार में अप्रत्याशित सफलता और उन्नति लाए।"},{"category":"formal","text":"प्रकाश और समृद्धि का यह पावन महापर्व आपके पेशेवर जीवन में नए अवसर, कीर्ति और उपलब्धियां लेकर आए। शुभ दीपावली।"},{"category":"formal","text":"दीपावली की हार्दिक मंगलकामनाएं। आपके साथ व्यावसायिक संबंध और प्रगाढ़ हों, इसी कामना के साथ सप्रेम अभिवादन।"},{"category":"shayari","text":"दीपक की ज्योति से रोशन हो संसार, आंगन में खिले खुशियों का गुलजार। मुबारक हो आपको दीपावली का पावन त्योहार!"},{"category":"shayari","text":"लक्ष्मी जी विराजे आपके द्वार, सोने-चांदी से भर जाए घर-संसार। जीवन में न रहे कोई गम, ऐसी खुशियां दे आपको यह पावन पर्व!"},{"category":"shayari","text":"दीप जलते जगमगाते रहे, हम आपको आप हमें याद आते रहे। जब तक जिंदगी है दुआ है हमारी, आप यूं ही दिए की तरह मुस्कुराते रहे!"},{"category":"traditional","text":"सत्य और धर्म के दीपक जलाएं, मन के भीतर का हर अंधकार मिटाएं। आप सभी को प्रकाश पर्व दीपावली की कोटि-कोटि बधाई!"},{"category":"traditional","text":"सुख, शांति, धन और यश का पावन उपहार लाए यह दिवाली। मां लक्ष्मी आपके घर में सदा के लिए वास करें।"},{"category":"friends","text":"दोस्ती के दीए सदा यूं ही रोशन रहें और हमारी महफिल सदा सजी रहे। हैप्पी सेफ एंड ग्रीन दिवाली ब्रो!"}]}},"quiz":{"questions":[{"question":"Diwali celebrates Lord Rama's return to Ayodhya after how many years of exile?","options":["12 Years","14 Years","16 Years","10 Years"],"correctIndex":1,"explanation":"Lord Rama returned to Ayodhya after completing 14 years of exile and defeating Ravana. The citizens lit ghee lamps across Ayodhya to welcome him."},{"question":"Which divine physician and deity of Ayurveda emerged during the churning of the ocean on Dhanteras?","options":["Lord Dhanvantari","Lord Indra","Lord Kubera","Lord Ashwini Kumar"],"correctIndex":0,"explanation":"Lord Dhanvantari, the physician of the gods and incarnation of Lord Vishnu, emerged carrying the pot of Amrita (nectar) on Dhanatrayodashi (Dhanteras)."},{"question":"Which two supreme deities are primarily worshipped together during Diwali evening puja?","options":["Lord Shiva & Parvati","Goddess Lakshmi & Lord Ganesha","Lord Rama & Sita","Lord Vishnu & Lakshmi"],"correctIndex":1,"explanation":"Goddess Lakshmi (deity of wealth & prosperity) and Lord Ganesha (remover of obstacles & deity of wisdom) are worshipped together."},{"question":"On the day of Govardhan Puja (Annakut), which mountain did Lord Krishna lift on his little finger?","options":["Mount Meru","Mount Kailash","Govardhan Hill","Vindhyachal"],"correctIndex":2,"explanation":"Lord Krishna lifted the sacred Govardhan Hill on his little finger for seven days to shield the villagers and cattle of Vrindavan from torrential storms."},{"question":"Which festival celebrated on the 5th day of Diwali honors the pure bond between sisters and brothers?","options":["Bhai Dooj (Yama Dwitiya)","Raksha Bandhan","Karwa Chauth","Hartalika Teej"],"correctIndex":0,"explanation":"Bhai Dooj (also known as Bhau-Beej or Yama Dwitiya) celebrates the divine bond of protection and affection between brother and sister."}]}};
 
     (function(window) {
   'use strict';
@@ -601,7 +601,7 @@
       var params = {
         to: '',
         from: '',
-        lang: 'en',
+        lang: '',
         style: 'all'
       };
 
@@ -1026,9 +1026,9 @@
 
     init: function(config) {
       this.config = config || {};
-      var params = window.FestivalSanitizer ? window.FestivalSanitizer.getQueryParams() : { to: '', from: '', lang: 'en', style: 'all' };
+      var params = window.FestivalSanitizer ? window.FestivalSanitizer.getQueryParams() : { to: '', from: '', lang: '', style: 'all' };
 
-      this.currentLang = params.lang || (this.config.defaultLanguage || 'en');
+      this.currentLang = params.lang || (this.config.defaultLanguage || 'hi');
       this.currentStyle = params.style || 'all';
       this.state.to = params.to || '';
       this.state.from = params.from || '';
@@ -1424,15 +1424,62 @@
 
       var toLabel = document.getElementById('label-to');
       var fromLabel = document.getElementById('label-from');
+      var toInput = document.getElementById('fest-input-to');
+      var fromInput = document.getElementById('fest-input-from');
       var createBtn = document.getElementById('fest-btn-create');
       var shuffleBtn = document.getElementById('fest-btn-shuffle');
+      var copyBtn = document.getElementById('fest-btn-copy-wish');
       var makeOwnBtn = document.getElementById('fest-btn-make-own');
+      var statusBtn = document.getElementById('fest-btn-status-image');
+      var boxTitle = document.querySelector('.fest-box-title');
+      var badgeEl = document.querySelector('.fest-card-badge');
+      var waBtn = document.getElementById('fest-btn-share-whatsapp');
 
       if (toLabel) toLabel.textContent = isHindi ? 'यह शुभकामना किसके लिए है? (नाम)' : 'Enter Recipient Name (e.g., Priya)';
       if (fromLabel) fromLabel.textContent = isHindi ? 'आपका नाम (वैकल्पिक)' : 'Your Name (Optional)';
-      if (createBtn) createBtn.textContent = isHindi ? '✨ व्यक्तिगत कार्ड बनाएं' : '✨ Generate Personalized Greeting';
-      if (shuffleBtn) shuffleBtn.textContent = isHindi ? '🔀 नया संदेश देखें' : '🔀 Shuffle Wish';
-      if (makeOwnBtn) makeOwnBtn.textContent = isHindi ? '✍️ अपने नाम से दूसरों के लिए बनाएं' : '✍️ Make One for Someone Else';
+      if (toInput) toInput.placeholder = isHindi ? 'उदा. राहुल या प्रिया' : 'Recipient\'s name';
+      if (fromInput) fromInput.placeholder = isHindi ? 'आपका नाम' : 'Your name';
+      if (boxTitle) boxTitle.textContent = isHindi ? '2 सेकंड में अपने नाम से बनाएं' : 'Personalize This Greeting in 2 Seconds';
+
+      if (createBtn) createBtn.innerHTML = isHindi ? '<span>✨</span> <span>व्यक्तिगत कार्ड बनाएं</span>' : '<span>✨</span> <span>Generate Personalized Greeting</span>';
+      if (shuffleBtn) shuffleBtn.innerHTML = isHindi ? '<span>🔀</span> <span>नया संदेश</span>' : '<span>🔀</span> <span>Shuffle Wish</span>';
+      if (copyBtn) copyBtn.innerHTML = isHindi ? '<span>📋</span> <span>कॉपी करें</span>' : '<span>📋</span> <span>Copy Text</span>';
+      if (makeOwnBtn) makeOwnBtn.innerHTML = isHindi ? '<span>✍️</span> <span>अपने नाम से दूसरों के लिए बनाएं</span>' : '<span>✍️</span> <span>Make One for Someone Else</span>';
+      if (statusBtn) statusBtn.innerHTML = isHindi ? '<span>📸</span> <span>व्हाट्सएप स्टेटस इमेज डाउनलोड करें (HD)</span>' : '<span>📸</span> <span>Download WhatsApp Status Image (HD)</span>';
+
+      if (waBtn) {
+        var waSpan = waBtn.querySelector('span');
+        if (waSpan) waSpan.textContent = isHindi ? 'व्हाट्सएप पर भेजें 🚀' : 'Share on WhatsApp 🚀';
+      }
+
+      if (badgeEl) {
+        var festName = isHindi ? (this.config.nameHindi || this.config.name) : this.config.name;
+        badgeEl.textContent = isHindi ? ('✨ पावन ' + festName + ' 2026 ✨') : ('✨ Auspicious ' + festName + ' 2026 ✨');
+      }
+
+      var stylePills = document.querySelectorAll('.style-pill');
+      var styleNamesHindi = {
+        'all': 'लोकप्रिय',
+        'traditional': 'पारंपरिक',
+        'family': 'परिवार',
+        'friends': 'मित्र',
+        'formal': 'औपचारिक',
+        'shayari': 'शायरी'
+      };
+      var styleNamesEn = {
+        'all': 'Popular',
+        'traditional': 'Traditional',
+        'family': 'For Family',
+        'friends': 'For Friends',
+        'formal': 'Formal',
+        'shayari': 'Shayari'
+      };
+      stylePills.forEach(function(pill) {
+        var s = pill.getAttribute('data-style');
+        if (s) {
+          pill.textContent = isHindi ? (styleNamesHindi[s] || s) : (styleNamesEn[s] || s);
+        }
+      });
     }
   };
 

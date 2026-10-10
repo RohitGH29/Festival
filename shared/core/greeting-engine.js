@@ -17,9 +17,9 @@
 
     init: function(config) {
       this.config = config || {};
-      var params = window.FestivalSanitizer ? window.FestivalSanitizer.getQueryParams() : { to: '', from: '', lang: 'en', style: 'all' };
+      var params = window.FestivalSanitizer ? window.FestivalSanitizer.getQueryParams() : { to: '', from: '', lang: '', style: 'all' };
 
-      this.currentLang = params.lang || (this.config.defaultLanguage || 'en');
+      this.currentLang = params.lang || (this.config.defaultLanguage || 'hi');
       this.currentStyle = params.style || 'all';
       this.state.to = params.to || '';
       this.state.from = params.from || '';
@@ -437,15 +437,63 @@
       // Update Form button & labels
       var toLabel = document.getElementById('label-to');
       var fromLabel = document.getElementById('label-from');
+      var toInput = document.getElementById('fest-input-to');
+      var fromInput = document.getElementById('fest-input-from');
       var createBtn = document.getElementById('fest-btn-create');
       var shuffleBtn = document.getElementById('fest-btn-shuffle');
+      var copyBtn = document.getElementById('fest-btn-copy-wish');
       var makeOwnBtn = document.getElementById('fest-btn-make-own');
+      var statusBtn = document.getElementById('fest-btn-status-image');
+      var boxTitle = document.querySelector('.fest-box-title');
+      var badgeEl = document.querySelector('.fest-card-badge');
+      var waBtn = document.getElementById('fest-btn-share-whatsapp');
 
       if (toLabel) toLabel.textContent = isHindi ? 'यह शुभकामना किसके लिए है? (नाम)' : 'Enter Recipient Name (e.g., Priya)';
       if (fromLabel) fromLabel.textContent = isHindi ? 'आपका नाम (वैकल्पिक)' : 'Your Name (Optional)';
-      if (createBtn) createBtn.textContent = isHindi ? '✨ व्यक्तिगत कार्ड बनाएं' : '✨ Generate Personalized Greeting';
-      if (shuffleBtn) shuffleBtn.textContent = isHindi ? '🔀 नया संदेश देखें' : '🔀 Shuffle Wish';
-      if (makeOwnBtn) makeOwnBtn.textContent = isHindi ? '✍️ अपने नाम से दूसरों के लिए बनाएं' : '✍️ Make One for Someone Else';
+      if (toInput) toInput.placeholder = isHindi ? 'उदा. राहुल या प्रिया' : 'Recipient\'s name';
+      if (fromInput) fromInput.placeholder = isHindi ? 'आपका नाम' : 'Your name';
+      if (boxTitle) boxTitle.textContent = isHindi ? '2 सेकंड में अपने नाम से बनाएं' : 'Personalize This Greeting in 2 Seconds';
+
+      if (createBtn) createBtn.innerHTML = isHindi ? '<span>✨</span> <span>व्यक्तिगत कार्ड बनाएं</span>' : '<span>✨</span> <span>Generate Personalized Greeting</span>';
+      if (shuffleBtn) shuffleBtn.innerHTML = isHindi ? '<span>🔀</span> <span>नया संदेश</span>' : '<span>🔀</span> <span>Shuffle Wish</span>';
+      if (copyBtn) copyBtn.innerHTML = isHindi ? '<span>📋</span> <span>कॉपी करें</span>' : '<span>📋</span> <span>Copy Text</span>';
+      if (makeOwnBtn) makeOwnBtn.innerHTML = isHindi ? '<span>✍️</span> <span>अपने नाम से दूसरों के लिए बनाएं</span>' : '<span>✍️</span> <span>Make One for Someone Else</span>';
+      if (statusBtn) statusBtn.innerHTML = isHindi ? '<span>📸</span> <span>व्हाट्सएप स्टेटस इमेज डाउनलोड करें (HD)</span>' : '<span>📸</span> <span>Download WhatsApp Status Image (HD)</span>';
+
+      if (waBtn) {
+        var waSpan = waBtn.querySelector('span');
+        if (waSpan) waSpan.textContent = isHindi ? 'व्हाट्सएप पर भेजें 🚀' : 'Share on WhatsApp 🚀';
+      }
+
+      if (badgeEl) {
+        var festName = isHindi ? (this.config.nameHindi || this.config.name) : this.config.name;
+        badgeEl.textContent = isHindi ? ('✨ पावन ' + festName + ' 2026 ✨') : ('✨ Auspicious ' + festName + ' 2026 ✨');
+      }
+
+      // Update Style Navigation Pills
+      var stylePills = document.querySelectorAll('.style-pill');
+      var styleNamesHindi = {
+        'all': 'लोकप्रिय',
+        'traditional': 'पारंपरिक',
+        'family': 'परिवार',
+        'friends': 'मित्र',
+        'formal': 'औपचारिक',
+        'shayari': 'शायरी'
+      };
+      var styleNamesEn = {
+        'all': 'Popular',
+        'traditional': 'Traditional',
+        'family': 'For Family',
+        'friends': 'For Friends',
+        'formal': 'Formal',
+        'shayari': 'Shayari'
+      };
+      stylePills.forEach(function(pill) {
+        var s = pill.getAttribute('data-style');
+        if (s) {
+          pill.textContent = isHindi ? (styleNamesHindi[s] || s) : (styleNamesEn[s] || s);
+        }
+      });
     }
   };
 
