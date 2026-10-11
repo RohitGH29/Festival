@@ -2,8 +2,56 @@
 <html lang="hi">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script>(function(){try{var v=document.querySelector('meta[name="viewport"]');if(v){v.setAttribute('content','width=device-width, initial-scale=1.0');}else{v=document.createElement('meta');v.name='viewport';v.content='width=device-width, initial-scale=1.0';document.head.appendChild(v);}}catch(e){}})();</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <script>
+    (function(){
+      function fixMobileLayout() {
+        try {
+          var meta = document.querySelector('meta[name="viewport"]');
+          if (!meta) {
+            meta = document.createElement('meta');
+            meta.name = 'viewport';
+            document.head.appendChild(meta);
+          }
+          meta.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=5.0');
+          if (document.documentElement) {
+            document.documentElement.style.width = '100%';
+            document.documentElement.style.maxWidth = '100%';
+            document.documentElement.style.minWidth = '0px';
+            document.documentElement.style.overflowX = 'hidden';
+          }
+          if (document.body) {
+            document.body.style.width = '100%';
+            document.body.style.maxWidth = '100%';
+            document.body.style.minWidth = '0px';
+            document.body.style.margin = '0px';
+            document.body.style.padding = '0px';
+            document.body.style.overflowX = 'hidden';
+          }
+          var sel = '.content-outer,.content-fauxcolumn-outer,.region-inner,.main-inner,.columns,.columns-inner,.column-center-outer,.column-center-inner,.post-outer,.post-body,.entry-content';
+          var els = document.querySelectorAll(sel);
+          for (var i = 0; i < els.length; i++) {
+            els[i].style.width = '100%';
+            els[i].style.maxWidth = '100%';
+            els[i].style.minWidth = '0px';
+            els[i].style.margin = '0 auto';
+            els[i].style.padding = '0';
+            els[i].style.float = 'none';
+          }
+          var hide = '.header-outer,#header-outer,.Header,#header,.tabs-outer,.tabs-inner,.post-title,.entry-title,.post-header,.post-footer,.sidebar,#sidebar,.column-right-outer,.column-left-outer,.footer-outer,#HTML1,#HTML2,#HTML3,#Profile1,#BlogArchive1,#Attribution1';
+          var hideEls = document.querySelectorAll(hide);
+          for (var j = 0; j < hideEls.length; j++) {
+            hideEls[j].style.display = 'none';
+          }
+        } catch(e) {}
+      }
+      fixMobileLayout();
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', fixMobileLayout);
+      }
+      window.addEventListener('load', fixMobileLayout);
+    })();
+  </script>
   <title>{{SEO_TITLE}}</title>
   <meta name="description" content="{{SEO_DESCRIPTION}}">
   <meta name="keywords" content="{{SEO_KEYWORDS}}">
@@ -340,162 +388,69 @@
     <!-- ========================================================
          EDITORIAL CONTENT (SEO & High Value Depth, Switchable)
          ======================================================== -->
+    <!-- Auspicious Muhurat Card (Bilingual Switchable) -->
     <div class="fest-editorial-container">
+      <div class="fest-muhurat-box lang-content-hi">
+        <h3 class="fest-muhurat-title">दशहरा 2026 शुभ मुहूर्त एवं पंचांग ⏱️</h3>
+        <dl class="fest-muhurat-dl">
+          <div class="fest-muhurat-item">
+            <dt class="fest-muhurat-dt">दशहरा मुख्य तिथि</dt>
+            <dd class="fest-muhurat-dd">मंगलवार, 20 अक्टूबर 2026</dd>
+          </div>
+          <div class="fest-muhurat-item">
+            <dt class="fest-muhurat-dt">दशमी तिथि प्रारंभ</dt>
+            <dd class="fest-muhurat-dd">19 अक्टूबर 2026, रात्रि 09:44 बजे से</dd>
+          </div>
+          <div class="fest-muhurat-item">
+            <dt class="fest-muhurat-dt">दशमी तिथि समाप्त</dt>
+            <dd class="fest-muhurat-dd">20 अक्टूबर 2026, रात्रि 08:15 बजे तक</dd>
+          </div>
+          <div class="fest-muhurat-item">
+            <dt class="fest-muhurat-dt">अति शुभ विजय मुहूर्त</dt>
+            <dd class="fest-muhurat-dd">दोपहर 02:07 बजे से 02:54 बजे तक (अवधि: 47 मिनट)</dd>
+          </div>
+          <div class="fest-muhurat-item">
+            <dt class="fest-muhurat-dt">अपराह्न पूजन समय</dt>
+            <dd class="fest-muhurat-dd">दोपहर 01:20 बजे से अपराह्न 03:41 बजे तक</dd>
+          </div>
+          <div class="fest-muhurat-item">
+            <dt class="fest-muhurat-dt">रावण दहन समय</dt>
+            <dd class="fest-muhurat-dd">सूर्यास्त के पश्चात, सायं 05:48 बजे से 08:22 बजे के मध्य</dd>
+          </div>
+        </dl>
+        <p class="fest-disclaimer-note">* सूचना: स्थानीय सूर्योदय एवं अक्षांश के अनुसार मुहूर्त में कुछ मिनटों का अंतर हो सकता है।</p>
+      </div>
 
-      <!-- HINDI EDITORIAL SECTION (Visible by default) -->
-      <article class="fest-editorial-section lang-content-hi">
-        <h2>विजयादशमी का पावन महत्व: धर्म की अधर्म पर अमर विजय</h2>
-        <p>विजयादशमी, जिसे हम सभी आदर और उत्साह के साथ 'दशहरा' कहते हैं, भारतीय संस्कृति का एक ऐसा पावन पर्व है जो सदियों से हमें धर्म, मर्यादा और सत्य के मार्ग पर चलने की प्रेरणा देता आ रहा है। आश्विन मास के शुक्ल पक्ष की दशमी तिथि को मनाया जाने वाला यह महापर्व यह संदेश देता है कि असत्य, अहंकार और अन्याय चाहे कितना भी शक्तिशाली क्यों न प्रतीत हो, अंत में विजय केवल और केवल सत्य एवं धर्म की ही होती है।</p>
-
-        <p>यह पर्व दो महान आध्यात्मिक विजयों का साक्षी है। उत्तर, पश्चिम और मध्य भारत में यह दिन मर्यादा पुरुषोत्तम प्रभु श्रीराम द्वारा लंकापति रावण के वध और माता सीता को मुक्त कराने की विजय गाथा के रूप में मनाया जाता है। वहीं पूर्वी भारत, विशेषकर पश्चिम बंगाल, असम और ओडिशा में, यह दिन महिषासुरमर्दिनी मां दुर्गा द्वारा आतातायी राक्षस महिषासुर के संहार का प्रतीक है, जिसे 'विजयादशमी' और 'सिंदूर खेला' के रूप में हर्षोल्लास से मनाया जाता है।</p>
-
-        <!-- Shubh Muhurat Info Card with Definition List (Hindi) -->
-        <div class="fest-muhurat-box">
-          <h3 class="fest-muhurat-title">दशहरा 2026 शुभ मुहूर्त एवं पंचांग विवरण</h3>
-          <dl class="fest-muhurat-dl">
-            <div class="fest-muhurat-item">
-              <dt class="fest-muhurat-dt">दशहरा मुख्य तिथि</dt>
-              <dd class="fest-muhurat-dd">मंगलवार, 20 अक्टूबर 2026</dd>
-            </div>
-            <div class="fest-muhurat-item">
-              <dt class="fest-muhurat-dt">दशमी तिथि प्रारंभ</dt>
-              <dd class="fest-muhurat-dd">19 अक्टूबर 2026, रात्रि 09:44 बजे से</dd>
-            </div>
-            <div class="fest-muhurat-item">
-              <dt class="fest-muhurat-dt">दशमी तिथि समाप्त</dt>
-              <dd class="fest-muhurat-dd">20 अक्टूबर 2026, रात्रि 08:15 बजे तक</dd>
-            </div>
-            <div class="fest-muhurat-item">
-              <dt class="fest-muhurat-dt">अति शुभ विजय मुहूर्त</dt>
-              <dd class="fest-muhurat-dd">दोपहर 02:07 बजे से 02:54 बजे तक (अवधि: 47 मिनट)</dd>
-            </div>
-            <div class="fest-muhurat-item">
-              <dt class="fest-muhurat-dt">अपराह्न पूजन समय</dt>
-              <dd class="fest-muhurat-dd">दोपहर 01:20 बजे से अपराह्न 03:41 बजे तक</dd>
-            </div>
-            <div class="fest-muhurat-item">
-              <dt class="fest-muhurat-dt">रावण दहन समय</dt>
-              <dd class="fest-muhurat-dd">सूर्यास्त के पश्चात, सायं 05:48 बजे से 08:22 बजे के मध्य</dd>
-            </div>
-          </dl>
-          <p class="fest-disclaimer-note">* सूचना: स्थानीय सूर्योदय एवं अक्षांश के अनुसार मुहूर्त में कुछ मिनटों का अंतर हो सकता है। कृपया अपने स्थानीय पंचांग से अवश्य मिलान करें।</p>
-        </div>
-
-        <h2>दशहरा पूजन विधि एवं धार्मिक अनुष्ठान</h2>
-        <p>हिंदू धर्म में विजयादशमी को 'साढ़े तीन अबूझ मुहूर्तों' में से एक माना गया है। इस दिन किसी भी नए कार्य, व्यापार अथवा विद्यारंभ के लिए किसी अतिरिक्त मुहूर्त की आवश्यकता नहीं होती।</p>
-        <ol class="fest-steps-list">
-          <li class="fest-steps-item">
-            <strong>शमी वृक्ष पूजन:</strong> महाभारत में पांडवों ने अज्ञातवास के समय अपने दिव्यास्त्र शमी वृक्ष में छिपाए थे और विजयदशमी को पुनः प्राप्त कर कौरवों पर विजय पाई थी। इस दिन शमी के पत्तों (सोना) का आदान-प्रदान कर बड़ों का आशीर्वाद लिया जाता है।
-          </li>
-          <li class="fest-steps-item">
-            <strong>अपराजिता देवी पूजन:</strong> सर्वत्र विजय की कामना हेतु दोपहर के समय अपराजिता स्तोत्र का पाठ कर देवी की अराधना की जाती है।
-          </li>
-          <li class="fest-steps-item">
-            <strong>शस्त्र एवं उपकरण पूजा (आयुध पूजा):</strong> किसान अपने हल, कारीगर अपने औजार, सैनिक अपने शस्त्र और व्यापारी अपने बही-खातों व वाहनों की पूजा कर कर्म के प्रति श्रद्धा व्यक्त करते हैं।
-          </li>
-          <li class="fest-steps-item">
-            <strong>रावण, कुंभकर्ण व मेघनाद के पुतलों का दहन:</strong> संध्याकाल में बुराई के प्रतीकों का दहन कर यह संकल्प लिया जाता है कि हम अपने अंतर्मन के काम, क्रोध, लोभ और अहंकार रूपी रावण को भी भस्म करेंगे।
-          </li>
-        </ol>
-
-        <h2>भारत में विजयादशमी के अनूठे रंग</h2>
-        <ul class="fest-regional-list">
-          <li class="fest-regional-item">
-            <span class="fest-regional-tag">मैसूरु (कर्नाटक)</span>
-            लगभग 400 वर्षों से अधिक पुरानी परंपरा के तहत मैसूर का राजमहल 1 लाख से अधिक बल्बों की रोशनी से जगमगाता है और स्वर्ण हौदे पर मां चामुंडेश्वरी की भव्य शोभायात्रा निकलती है।
-          </li>
-          <li class="fest-regional-item">
-            <span class="fest-regional-tag">कुल्लू (हिमाचल प्रदेश)</span>
-            जब पूरे देश में दशहरा समाप्त होता है, तब कुल्लू के ढालपुर मैदान में 200 से अधिक स्थानीय देवी-देवताओं का सात दिवसीय दिव्य महामिलन शुरू होता है।
-          </li>
-          <li class="fest-regional-item">
-            <span class="fest-regional-tag">पश्चिम बंगाल</span>
-            दशमी के दिन सुहागिन महिलाएं मां दुर्गा को सिंदूर अर्पित कर 'सिंदूर खेला' खेलती हैं और परिवार के अखंड सौभाग्य की प्रार्थना करती हैं।
-          </li>
-          <li class="fest-regional-item">
-            <span class="fest-regional-tag">गुजरात</span>
-            दशहरे की सुबह गरमा-गरम फाफड़ा और रसीली जलेबी खाने की पावन सांस्कृतिक परंपरा है।
-          </li>
-        </ul>
-      </article>
-
-      <!-- ENGLISH EDITORIAL SECTION (Shown when user toggles to EN) -->
-      <article class="fest-editorial-section lang-content-en" style="display: none;">
-        <h2>Significance of Vijayadashami: The Triumph of Righteousness</h2>
-        <p>Vijayadashami, popularly celebrated as Dussehra, stands as one of the most culturally revered and spiritually potent festivals in the Indian subcontinent. Occurring on the tenth day (Dashami) of the bright fortnight of Ashwin, this sacred festival epitomizes the cosmic principle that truth, virtue, and righteousness (Dharma) inevitably triumph over injustice, pride, and falsehood (Adharma).</p>
-
-        <p>In North, Western, and Central India, Dussehra commemorates the victory of Lord Rama over demon king Ravana after a ten-day war. In Eastern India, the day marks Goddess Durga's vanquishing of the demon Mahishasura, celebrated as Vijayadashami.</p>
-
-        <!-- Shubh Muhurat Info Card with Definition List (English) -->
-        <div class="fest-muhurat-box">
-          <h3 class="fest-muhurat-title">Auspicious Dussehra 2026 Tithi & Shubh Muhurat</h3>
-          <dl class="fest-muhurat-dl">
-            <div class="fest-muhurat-item">
-              <dt class="fest-muhurat-dt">Primary Festival Date</dt>
-              <dd class="fest-muhurat-dd">Tuesday, October 20, 2026</dd>
-            </div>
-            <div class="fest-muhurat-item">
-              <dt class="fest-muhurat-dt">Dashami Tithi Begins</dt>
-              <dd class="fest-muhurat-dd">October 19, 2026 at 09:44 PM (IST)</dd>
-            </div>
-            <div class="fest-muhurat-item">
-              <dt class="fest-muhurat-dt">Dashami Tithi Ends</dt>
-              <dd class="fest-muhurat-dd">October 20, 2026 at 08:15 PM (IST)</dd>
-            </div>
-            <div class="fest-muhurat-item">
-              <dt class="fest-muhurat-dt">Shubh Vijaya Muhurat</dt>
-              <dd class="fest-muhurat-dd">02:07 PM to 02:54 PM (Duration: 47 minutes)</dd>
-            </div>
-            <div class="fest-muhurat-item">
-              <dt class="fest-muhurat-dt">Aparahna Puja Window</dt>
-              <dd class="fest-muhurat-dd">01:20 PM to 03:41 PM</dd>
-            </div>
-            <div class="fest-muhurat-item">
-              <dt class="fest-muhurat-dt">Ravana Dahan Timing</dt>
-              <dd class="fest-muhurat-dd">Post-sunset, between 05:48 PM and 08:22 PM</dd>
-            </div>
-          </dl>
-          <p class="fest-disclaimer-note">* Note: Muhurat timings depend on local sunrise and solar coordinates. Please verify with your local city panchang.</p>
-        </div>
-
-        <h2>Sacred Rituals & Step-by-Step Puja Vidhi</h2>
-        <p>Vijayadashami is considered one of the three and a half auspicious days (Sade Teen Muhurat) in the Hindu calendar where any noble venture is blessed with victory.</p>
-        <ol class="fest-steps-list">
-          <li class="fest-steps-item">
-            <strong>Shami Tree Worship:</strong> Historically, before going to war, kings worshipped the sacred Shami tree. In the Mahabharata, the Pandavas concealed their divine weapons inside a Shami tree and retrieved them on Dashami before emerging victorious.
-          </li>
-          <li class="fest-steps-item">
-            <strong>Aparajita Puja:</strong> Devotees worship Goddess Aparajita (the invincible) in the afternoon to invoke protection against adversity.
-          </li>
-          <li class="fest-steps-item">
-            <strong>Ayudha Puja (Blessing of Tools):</strong> Artisans, engineers, soldiers, and students consecrate their instruments and vehicles, seeking excellence and righteous utility.
-          </li>
-          <li class="fest-steps-item">
-            <strong>Ravana Dahan:</strong> Gigantic effigies of Ravana, Kumbhakarna, and Meghanada packed with fireworks are set ablaze to eliminate internal vices of ego and anger.
-          </li>
-        </ol>
-
-        <h2>Regional Celebrations Across India</h2>
-        <ul class="fest-regional-list">
-          <li class="fest-regional-item">
-            <span class="fest-regional-tag">Mysuru (Karnataka)</span>
-            The Mysore Palace illuminates with over 100,000 bulbs as the iconic Jumboo Savari elephant procession carries Goddess Chamundeshwari.
-          </li>
-          <li class="fest-regional-item">
-            <span class="fest-regional-tag">Kullu (Himachal Pradesh)</span>
-            Over 200 village deities congregate in Dhalpur Maidan in a vibrant seven-day spiritual celebration.
-          </li>
-          <li class="fest-regional-item">
-            <span class="fest-regional-tag">West Bengal</span>
-            Married women celebrate Bijoya Dashami with vermilion (sindoor khela), bidding heartfelt farewell to Maa Durga.
-          </li>
-          <li class="fest-regional-item">
-            <span class="fest-regional-tag">Gujarat</span>
-            Families feast on crispy Fafda and hot saffron-sweet Jalebi on Dussehra morning.
-          </li>
-        </ul>
-      </article>
-
+      <div class="fest-muhurat-box lang-content-en" style="display: none;">
+        <h3 class="fest-muhurat-title">Dussehra 2026 Auspicious Muhurat ⏱️</h3>
+        <dl class="fest-muhurat-dl">
+          <div class="fest-muhurat-item">
+            <dt class="fest-muhurat-dt">Primary Festival Date</dt>
+            <dd class="fest-muhurat-dd">Tuesday, October 20, 2026</dd>
+          </div>
+          <div class="fest-muhurat-item">
+            <dt class="fest-muhurat-dt">Dashami Tithi Begins</dt>
+            <dd class="fest-muhurat-dd">October 19, 2026 at 09:44 PM (IST)</dd>
+          </div>
+          <div class="fest-muhurat-item">
+            <dt class="fest-muhurat-dt">Dashami Tithi Ends</dt>
+            <dd class="fest-muhurat-dd">October 20, 2026 at 08:15 PM (IST)</dd>
+          </div>
+          <div class="fest-muhurat-item">
+            <dt class="fest-muhurat-dt">Shubh Vijaya Muhurat</dt>
+            <dd class="fest-muhurat-dd">02:07 PM to 02:54 PM (Duration: 47 minutes)</dd>
+          </div>
+          <div class="fest-muhurat-item">
+            <dt class="fest-muhurat-dt">Aparahna Puja Window</dt>
+            <dd class="fest-muhurat-dd">01:20 PM to 03:41 PM</dd>
+          </div>
+          <div class="fest-muhurat-item">
+            <dt class="fest-muhurat-dt">Ravana Dahan Timing</dt>
+            <dd class="fest-muhurat-dd">Post-sunset, between 05:48 PM and 08:22 PM</dd>
+          </div>
+        </dl>
+        <p class="fest-disclaimer-note">* Note: Timings depend on local solar coordinates. Please verify with local panchang.</p>
+      </div>
     </div>
 
     <!-- ========================================================

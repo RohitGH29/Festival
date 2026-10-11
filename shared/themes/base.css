@@ -113,6 +113,12 @@ html, body,
   float: none !important;
 }
 
+.main-inner .columns,
+.main-inner .columns-inner {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
 /* Ensure Blogger columns have no floats, margins, or sidebar offsets */
 .columns,
 .columns-inner,
@@ -131,15 +137,33 @@ html, body,
   display: block !important;
 }
 
-/* Restyle Blogger Attribution ("Powered by Blogger") - dark background, accessible link */
-.attribution, .footer-outer, .footer-inner, [id*="Attribution"] {
-  background: var(--bg-1) !important;
-  color: var(--text-muted) !important;
-  text-align: center !important;
-  padding: 16px 12px calc(var(--safe-bottom) + 12px) !important;
-  font-size: 13px !important;
-  border-top: 1px solid var(--border-light) !important;
+.main-inner .column-right-outer,
+.main-inner .fauxcolumn-center-outer,
+.main-inner .fauxcolumn-right-outer,
+.main-inner .fauxcolumn-left-outer,
+.sidebar-outer,
+.sidebar,
+#sidebar,
+.column-right-outer,
+.column-left-outer,
+#HTML1,
+#HTML2,
+#HTML3,
+#Profile1,
+#BlogArchive1,
+#Attribution1,
+.attribution,
+.footer-outer,
+.footer-inner,
+[id*="Attribution"],
+.post-title,
+.entry-title {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
   margin: 0 !important;
+  padding: 0 !important;
+  visibility: hidden !important;
 }
 .attribution a, .footer-outer a {
   color: var(--gold) !important;
