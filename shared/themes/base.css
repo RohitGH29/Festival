@@ -61,6 +61,7 @@
    Ensures edge-to-edge background, kills white gutters, hides title/comments/gadgets
    ========================================================================== */
 html, body,
+body.mobile, body.variant-simplysimple, body.variant-pale,
 .body-fauxcolumn-outer,
 .fauxcolumn-inner,
 .content-outer,
@@ -76,7 +77,20 @@ html, body,
 .entry-content,
 .post,
 .Blog,
-.blog-posts {
+.blog-posts,
+.mobile .content-outer,
+.mobile .content-inner,
+.mobile .region-inner,
+.mobile .main-outer,
+.mobile .main-inner,
+.mobile .column-center-outer,
+.mobile .column-center-inner,
+.mobile .post-outer,
+.mobile .post,
+.mobile .post-body,
+.mobile .entry-content,
+.date-outer,
+.date-posts {
   background: var(--bg-1) !important;
   background-color: var(--bg-1) !important;
   background-image: radial-gradient(circle at 50% 20%, var(--bg-2) 0%, var(--bg-1) 80%) !important;
@@ -90,6 +104,7 @@ html, body,
   max-width: 100% !important;
   min-width: 0 !important;
   overflow-x: hidden !important;
+  box-sizing: border-box !important;
 }
 
 /* Hide Blogger Chrome headers, plain titles ("dussehra"), share icons, comments, and sidebars */
@@ -104,7 +119,17 @@ html, body,
 .status-msg-wrap, .status-msg-border,
 .widget.HTML:not(.fest-widget),
 .widget.AdSense:not(.fest-ad-slot),
-[id*="sidebar"] {
+[id*="sidebar"],
+.date-header,
+.mobile .header-outer,
+.mobile .Header,
+.mobile .tabs-outer,
+.mobile .date-header,
+.mobile h3.post-title,
+.mobile .post-header,
+.mobile .post-footer,
+.mobile .footer-outer,
+.mobile .blog-pager {
   display: none !important;
   width: 0 !important;
   height: 0 !important;

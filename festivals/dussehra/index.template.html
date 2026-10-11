@@ -7,6 +7,11 @@
     (function(){
       function fixMobileLayout() {
         try {
+          // 1. Destroy Blogger's hardcoded 960px template stylesheet if present
+          var tSkin = document.getElementById('template-skin-1');
+          if (tSkin) { tSkin.remove(); }
+          
+          // 2. Ensure mobile viewport meta tag
           var meta = document.querySelector('meta[name="viewport"]');
           if (!meta) {
             meta = document.createElement('meta');
@@ -14,34 +19,66 @@
             document.head.appendChild(meta);
           }
           meta.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=5.0');
-          if (document.documentElement) {
-            document.documentElement.style.width = '100%';
-            document.documentElement.style.maxWidth = '100%';
-            document.documentElement.style.minWidth = '0px';
-            document.documentElement.style.overflowX = 'hidden';
+          
+          // 3. Inject high-priority fluid layout style into head
+          var styleId = 'fest-mobile-enforcer';
+          if (!document.getElementById(styleId)) {
+            var st = document.createElement('style');
+            st.id = styleId;
+            st.innerHTML = '\
+              html, body, body.mobile, body.variant-simplysimple, body.variant-pale {\
+                min-width: 0 !important;\
+                max-width: 100vw !important;\
+                width: 100% !important;\
+                margin: 0 !important;\
+                padding: 0 !important;\
+                overflow-x: hidden !important;\
+                background: #1B0A33 !important;\
+              }\
+              .content-outer, .content-fauxcolumn-outer, .region-inner, .main-outer, .main-inner,\
+              .columns, .columns-inner, .column-center-outer, .column-center-inner, .post-outer, .post-body,\
+              .entry-content, .mobile .content-outer, .mobile .region-inner, .mobile .main-outer, .mobile .main-inner,\
+              .mobile .columns, .mobile .columns-inner, .mobile .column-center-outer, .mobile .column-center-inner,\
+              .mobile .post-outer, .mobile .post, .mobile .post-body, .mobile .entry-content, .date-outer, .date-posts {\
+                min-width: 0 !important;\
+                max-width: 100% !important;\
+                width: 100% !important;\
+                box-sizing: border-box !important;\
+                margin: 0 auto !important;\
+                padding: 0 !important;\
+                float: none !important;\
+                background: transparent !important;\
+                border: none !important;\
+                box-shadow: none !important;\
+              }\
+              .header-outer, #header-outer, .Header, #header, .tabs-outer, .tabs-inner, .post-title, .entry-title,\
+              .post-header, .post-footer, .sidebar, #sidebar, .column-right-outer, .column-left-outer, .footer-outer,\
+              #HTML1, #HTML2, #HTML3, #Profile1, #BlogArchive1, #Attribution1, .date-header, .mobile .header-outer,\
+              .mobile .Header, .mobile .tabs-outer, .mobile .date-header, .mobile h3.post-title, .mobile .post-header,\
+              .mobile .post-footer, .mobile .footer-outer, .mobile .blog-pager {\
+                display: none !important;\
+              }\
+            ';
+            document.head.appendChild(st);
           }
-          if (document.body) {
-            document.body.style.width = '100%';
-            document.body.style.maxWidth = '100%';
-            document.body.style.minWidth = '0px';
-            document.body.style.margin = '0px';
-            document.body.style.padding = '0px';
-            document.body.style.overflowX = 'hidden';
-          }
-          var sel = '.content-outer,.content-fauxcolumn-outer,.region-inner,.main-inner,.columns,.columns-inner,.column-center-outer,.column-center-inner,.post-outer,.post-body,.entry-content';
+          
+          // 4. Reset inline styles on all container elements
+          var sel = 'html,body,.content-outer,.content-fauxcolumn-outer,.region-inner,.main-inner,.columns,.columns-inner,.column-center-outer,.column-center-inner,.post-outer,.post-body,.entry-content,.date-outer,.date-posts';
           var els = document.querySelectorAll(sel);
           for (var i = 0; i < els.length; i++) {
-            els[i].style.width = '100%';
-            els[i].style.maxWidth = '100%';
-            els[i].style.minWidth = '0px';
-            els[i].style.margin = '0 auto';
-            els[i].style.padding = '0';
-            els[i].style.float = 'none';
+            els[i].style.setProperty('width', '100%', 'important');
+            els[i].style.setProperty('max-width', '100%', 'important');
+            els[i].style.setProperty('min-width', '0px', 'important');
+            els[i].style.setProperty('margin', '0 auto', 'important');
+            els[i].style.setProperty('padding', '0', 'important');
+            els[i].style.setProperty('float', 'none', 'important');
           }
-          var hide = '.header-outer,#header-outer,.Header,#header,.tabs-outer,.tabs-inner,.post-title,.entry-title,.post-header,.post-footer,.sidebar,#sidebar,.column-right-outer,.column-left-outer,.footer-outer,#HTML1,#HTML2,#HTML3,#Profile1,#BlogArchive1,#Attribution1';
+          
+          // 5. Hide Blogger outer elements
+          var hide = '.header-outer,#header-outer,.Header,#header,.tabs-outer,.tabs-inner,.post-title,.entry-title,.post-header,.post-footer,.sidebar,#sidebar,.column-right-outer,.column-left-outer,.footer-outer,#HTML1,#HTML2,#HTML3,#Profile1,#BlogArchive1,#Attribution1,.date-header,.mobile .header-outer,.mobile .Header,.mobile .tabs-outer,.mobile .date-header,.mobile h3.post-title,.mobile .post-header,.mobile .post-footer,.mobile .footer-outer,.mobile .blog-pager';
           var hideEls = document.querySelectorAll(hide);
           for (var j = 0; j < hideEls.length; j++) {
-            hideEls[j].style.display = 'none';
+            hideEls[j].style.setProperty('display', 'none', 'important');
           }
         } catch(e) {}
       }
@@ -50,6 +87,9 @@
         document.addEventListener('DOMContentLoaded', fixMobileLayout);
       }
       window.addEventListener('load', fixMobileLayout);
+      setTimeout(fixMobileLayout, 100);
+      setTimeout(fixMobileLayout, 500);
+      setTimeout(fixMobileLayout, 1500);
     })();
   </script>
   <title>{{SEO_TITLE}}</title>
