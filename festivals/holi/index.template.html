@@ -541,46 +541,45 @@
 
     {{INLINED_JS}}
 
-    // App Initialization on DOM Ready
-    document.addEventListener('DOMContentLoaded', function() {
-      // 1. Initialize Privacy & Analytics
-      if (window.FestivalAnalytics) {
-        window.FestivalAnalytics.init(FESTIVAL_CONFIG);
-      }
-      if (window.FestivalConsent) {
-        window.FestivalConsent.init();
-      }
+    function bootstrapFestival() {
+      try {
+        if (window.FestivalAnalytics) window.FestivalAnalytics.init(FESTIVAL_CONFIG);
+      } catch (e) { console.error('Analytics init error:', e); }
 
-      // 2. Initialize Greeting & Wish Engine
-      if (window.FestivalGreeting) {
-        window.FestivalGreeting.init(FESTIVAL_CONFIG);
-      }
+      try {
+        if (window.FestivalConsent) window.FestivalConsent.init();
+      } catch (e) { console.error('Consent init error:', e); }
 
-      // 3. Initialize Share Engine
-      if (window.FestivalShare) {
-        window.FestivalShare.init();
-      }
+      try {
+        if (window.FestivalCountdown) window.FestivalCountdown.init(FESTIVAL_CONFIG);
+      } catch (e) { console.error('Countdown init error:', e); }
 
-      // 4. Initialize 1080x1920 Status Canvas Generator
-      if (window.FestivalStatusCanvas) {
-        window.FestivalStatusCanvas.init();
-      }
+      try {
+        if (window.FestivalGreeting) window.FestivalGreeting.init(FESTIVAL_CONFIG);
+      } catch (e) { console.error('Greeting init error:', e); }
 
-      // 5. Initialize Live Countdown
-      if (window.FestivalCountdown) {
-        window.FestivalCountdown.init(FESTIVAL_CONFIG);
-      }
+      try {
+        if (window.FestivalShare) window.FestivalShare.init();
+      } catch (e) { console.error('Share init error:', e); }
 
-      // 6. Initialize Interactive Delight (Particles, Chime Audio, Quiz, Diya Game)
-      if (window.FestivalInteractive) {
-        window.FestivalInteractive.init(FESTIVAL_CONFIG);
-      }
+      try {
+        if (window.FestivalStatusCanvas) window.FestivalStatusCanvas.init();
+      } catch (e) { console.error('Status canvas init error:', e); }
 
-      // 7. Initialize Policy-Safe AdSense Lazy Loader
-      if (window.FestivalAdLoader) {
-        window.FestivalAdLoader.init(FESTIVAL_CONFIG);
-      }
-    });
+      try {
+        if (window.FestivalInteractive) window.FestivalInteractive.init(FESTIVAL_CONFIG);
+      } catch (e) { console.error('Interactive init error:', e); }
+
+      try {
+        if (window.FestivalAdLoader) window.FestivalAdLoader.init(FESTIVAL_CONFIG);
+      } catch (e) { console.error('AdLoader init error:', e); }
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', bootstrapFestival);
+    } else {
+      bootstrapFestival();
+    }
   </script>
 </body>
 </html>

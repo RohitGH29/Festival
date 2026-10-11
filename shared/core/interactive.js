@@ -137,11 +137,16 @@
       };
 
       // Trigger modest sparkle on initial load
-      window.addEventListener('load', function() {
+      var triggerInitialSparkle = function() {
         setTimeout(function() {
           if (window.triggerFestConfetti) window.triggerFestConfetti();
         }, 700);
-      });
+      };
+      if (document.readyState === 'complete') {
+        triggerInitialSparkle();
+      } else {
+        window.addEventListener('load', triggerInitialSparkle);
+      }
     },
 
     // --- 2. PROCEDURAL FESTIVE CHIME AUDIO (WEB AUDIO API) ---

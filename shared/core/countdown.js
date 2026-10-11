@@ -62,8 +62,15 @@
 
     start: function() {
       var self = this;
-      var targetDateStr = this.config.dates.primaryDate;
-      var targetDate = new Date(targetDateStr).getTime();
+      var targetDateStr = (this.config && this.config.dates && this.config.dates.primaryDate) || '';
+      var targetDate = Date.parse(targetDateStr);
+      if (isNaN(targetDate)) {
+        targetDate = new Date(targetDateStr.replace(/-/g, '/').replace('T', ' ')).getTime();
+      }
+      if (isNaN(targetDate)) {
+        var y = (this.config && this.config.dates && this.config.dates.year) || 2026;
+        targetDate = new Date(y, 9, 20, 0, 0, 0).getTime();
+      }
       if (isNaN(targetDate)) return;
 
       var container = document.getElementById('fest-countdown-container');

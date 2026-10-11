@@ -22,7 +22,7 @@ function minifyCSS(css) {
   return css
     .replace(/\/\*[\s\S]*?\*\//g, '') // remove comments
     .replace(/\s+/g, ' ')             // collapse whitespace
-    .replace(/\s*([\{\}:;,])\s*/g, '$1') // remove space around delimiters
+    .replace(/\s*([\{\}:;,>+~])\s*/g, '$1') // remove space around delimiters and combinators
     .replace(/;}/g, '}')              // remove trailing semicolon
     .trim();
 }
@@ -245,7 +245,15 @@ function buildFestival(festivalSlug) {
     outputHtml = outputHtml.split(key).join(value);
   }
 
-  // Optimize file size: trim leading/trailing line whitespace and blank lines
+  // Optimize file size: minify JSON-LD and trim leading/trailing line whitespace and blank lines
+  outputHtml = outputHtml.replace(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/gi, (match, json) => {
+    try {
+      return `<script type="application/ld+json">${JSON.stringify(JSON.parse(json))}</script>`;
+    } catch (e) {
+      return match;
+    }
+  });
+
   outputHtml = outputHtml
     .split('\n')
     .map(line => line.trim())

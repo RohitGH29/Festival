@@ -98,6 +98,7 @@ html, body,
 .post-title, .entry-title, .post-header, .post-footer, .post-bottom,
 .post-share-buttons, .byline, .post-author, .post-timestamp,
 .sidebar-outer, .sidebar, #sidebar, .sidebar-container,
+.column-left-outer, .column-right-outer, .column-left-inner, .column-right-inner,
 #comments, .comments, #comment-editor, .comment-form, .comment-thread,
 .blog-pager, #blog-pager, .feed-links,
 .status-msg-wrap, .status-msg-border,
@@ -105,6 +106,29 @@ html, body,
 .widget.AdSense:not(.fest-ad-slot),
 [id*="sidebar"] {
   display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  float: none !important;
+}
+
+/* Ensure Blogger columns have no floats, margins, or sidebar offsets */
+.columns,
+.columns-inner,
+.column-center-outer,
+.column-center-inner,
+.main,
+.main-inner {
+  float: none !important;
+  position: static !important;
+  left: auto !important;
+  right: auto !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  display: block !important;
 }
 
 /* Restyle Blogger Attribution ("Powered by Blogger") - dark background, accessible link */

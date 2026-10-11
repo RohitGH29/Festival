@@ -85,11 +85,16 @@
           observer.observe(slot);
         });
       } else {
-        window.addEventListener('load', function() {
+        var triggerFallbackLoad = function() {
           adSlots.forEach(function(slot) {
             self.loadSlot(slot);
           });
-        });
+        };
+        if (document.readyState === 'complete') {
+          triggerFallbackLoad();
+        } else {
+          window.addEventListener('load', triggerFallbackLoad);
+        }
       }
     },
 
@@ -138,10 +143,15 @@
       }
 
       // Check on load and periodically for filled status
-      window.addEventListener('load', function() {
+      var triggerWatcher = function() {
         setTimeout(checkAndCollapse, 2000);
         setTimeout(checkAndCollapse, 4500);
-      });
+      };
+      if (document.readyState === 'complete') {
+        triggerWatcher();
+      } else {
+        window.addEventListener('load', triggerWatcher);
+      }
     }
   };
 
