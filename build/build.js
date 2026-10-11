@@ -31,11 +31,19 @@ function minifyCSS(css) {
 function minifyJS(js) {
   let cleaned = js.replace(/\/\*[\s\S]*?\*\//g, '');
   cleaned = cleaned.replace(/^\s*\/\/.*$/gm, '');
-  return cleaned
+  const lines = cleaned
     .split('\n')
     .map(line => line.trim())
-    .filter(line => line.length > 0)
-    .join('\n');
+    .filter(line => line.length > 0);
+  let result = '';
+  for (let i = 0; i < lines.length; i++) {
+    const l = lines[i];
+    result += l;
+    if (!/[;{},:]$/.test(l)) {
+      result += '\n';
+    }
+  }
+  return result;
 }
 
 // Helper: Scaffolds a new festival directory
@@ -259,6 +267,12 @@ function buildFestival(festivalSlug) {
     .map(line => line.trim())
     .filter(line => line.length > 0)
     .join('\n');
+
+  const htmlParts = outputHtml.split(/(<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>)/i);
+  for (let i = 0; i < htmlParts.length; i += 2) {
+    htmlParts[i] = htmlParts[i].replace(/>\s+</g, '><');
+  }
+  outputHtml = htmlParts.join('');
 
   // 4. Build Check: Verify no raw HTML entities exist in HTML markup text nodes
   const markupWithoutScripts = outputHtml.replace(/<script[\s\S]*?<\/script>/gi, '').replace(/<style[\s\S]*?<\/style>/gi, '');

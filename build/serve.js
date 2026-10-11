@@ -25,13 +25,47 @@ const server = http.createServer((req, res) => {
   const festivalSlug = pathname.replace(/^\//, '').split('/')[0];
   const postFile = path.join(FESTIVALS_DIR, festivalSlug, 'blogger-post.html');
 
+  if (pathname === '/full' || pathname === '/blogger') {
+    const themeXml = fs.readFileSync(path.join(ROOT_DIR, 'theme.xml'), 'utf8');
+    const postHtml = fs.readFileSync(path.join(ROOT_DIR, 'dussehra.html'), 'utf8');
+
+    // Extract skin styles
+    const bSkinMatch = themeXml.match(/<b:skin><!\[CDATA\[([\s\S]*?)\]\]><\/b:skin>/i);
+    const bTemplateMatch = themeXml.match(/<b:template-skin><!\[CDATA\[([\s\S]*?)\]\]><\/b:template-skin>/i);
+    const skinCss = (bSkinMatch ? bSkinMatch[1] : '') + '\n' + (bTemplateMatch ? bTemplateMatch[1] : '');
+
+    // Render simulated Blogger page
+    let rendered = themeXml
+      .replace(/<b:skin>[\s\S]*?<\/b:skin>/i, `<style>${skinCss}</style>`)
+      .replace(/<b:template-skin>[\s\S]*?<\/b:template-skin>/i, '')
+      .replace(/<b:include data='blog' name='all-head-content'\/>/i, '<meta charset="utf-8"/>')
+      .replace(/<data:blog.pageTitle\/>/g, 'Tech info: dussehra')
+      .replace(/<data:title\/>/g, 'Tech info')
+      .replace(/<data:description\/>/g, 'Welcome to Tech info Blog')
+      .replace(/<data:post.title\/>/g, 'dussehra')
+      .replace(/expr:href='data:blog.homepageUrl'/g, 'href="/"')
+      .replace(/<b:if[\s\S]*?>/gi, '')
+      .replace(/<\/b:if>/gi, '')
+      .replace(/<b:loop[\s\S]*?>/gi, '')
+      .replace(/<\/b:loop>/gi, '')
+      .replace(/<b:widget[\s\S]*?>/gi, '')
+      .replace(/<\/b:widget>/gi, '')
+      .replace(/<b:includable[\s\S]*?>/gi, '')
+      .replace(/<\/b:includable>/gi, '')
+      .replace(/<data:content\/>/g, '<div style="background:#f0f0f0;padding:20px;text-align:center;color:#888;font-size:12px;">ADVERTISEMENT</div>')
+      .replace(/<data:post.body\/>/g, postHtml);
+
+    res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-cache' });
+    return res.end(rendered);
+  }
+
   if (fs.existsSync(postFile)) {
     const content = fs.readFileSync(postFile, 'utf8');
     res.writeHead(200, {
       'Content-Type': 'text/html; charset=utf-8',
       'Cache-Control': 'no-cache'
     });
-    res.end(content);
+    return res.end(content);
   } else {
     // Show index of available festivals
     const festivals = fs.existsSync(FESTIVALS_DIR)

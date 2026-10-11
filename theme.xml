@@ -1,0 +1,505 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html b:version='2' class='v2' expr:dir='data:blog.languageDirection' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+<head>
+  <meta content='width=device-width, initial-scale=1' name='viewport'/>
+  <b:include data='blog' name='all-head-content'/>
+  <title><data:blog.pageTitle/></title>
+
+  <b:skin><![CDATA[
+/*
+-----------------------------------------------
+Blogger Template Style
+Name:     Simple (Mobile Responsive Fluid Edition)
+Designer: Blogger & FestiveGlow
+URL:      www.blogger.com
+----------------------------------------------- */
+
+/* Global Safety Rules */
+img, iframe, video, table {
+  max-width: 100%;
+  height: auto;
+}
+
+body, .post-body, .fest-wrapper, .entry-content, p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+/* Base Simple Theme CSS */
+body {
+  font: normal normal 14px Arial, Tahoma, Helvetica, FreeSans, sans-serif;
+  color: #222222;
+  background: #66bbdd none repeat scroll top left;
+  padding: 0 40px 40px 40px;
+  margin: 0;
+}
+
+h2 {
+  font-size: 22px;
+}
+
+a:link {
+  text-decoration: none;
+  color: #2288bb;
+}
+a:visited {
+  text-decoration: none;
+  color: #888888;
+}
+a:hover {
+  text-decoration: underline;
+  color: #33aaff;
+}
+
+.body-fauxcolumn-outer .fauxcolumn-inner {
+  background: transparent url(https://resources.blogblog.com/blogblog/data/1kt/simple/body_gradient_tile_light.png) repeat scroll top left;
+}
+.body-fauxcolumn-outer .cap-top {
+  position: absolute;
+  z-index: 1;
+  height: 400px;
+  width: 100%;
+}
+.body-fauxcolumn-outer .cap-top .cap-left {
+  width: 100%;
+  background: transparent url(https://resources.blogblog.com/blogblog/data/1kt/simple/gradients_light.png) repeat-x scroll top left;
+}
+
+.content-outer {
+  box-shadow: 0 0 40px rgba(0, 0, 0, .15);
+  margin-bottom: 1px;
+}
+.content-inner {
+  padding: 10px 10px;
+  background-color: #ffffff;
+}
+
+/* Header */
+.header-outer {
+  background: transparent none repeat-x scroll 0 -400px;
+}
+.Header h1 {
+  font: normal normal 48px Arial, Tahoma, Helvetica, FreeSans, sans-serif;
+  color: #3399bb;
+  text-shadow: -1px -1px 1px rgba(0, 0, 0, .2);
+  margin: 0;
+}
+.Header h1 a {
+  color: #3399bb;
+}
+.Header .description {
+  font-size: 140%;
+  color: #777777;
+}
+.header-inner .Header .titlewrapper {
+  padding: 22px 30px;
+}
+.header-inner .Header .descriptionwrapper {
+  padding: 0 30px;
+}
+
+/* Main */
+.main-inner {
+  padding-top: 20px;
+  padding-bottom: 30px;
+}
+.main-inner .column-center-inner {
+  padding: 0 15px;
+}
+.main-inner .column-center-inner .section {
+  margin: 0 15px;
+}
+.post {
+  margin: 0 0 25px 0;
+}
+h3.post-title, .comments h4 {
+  font: normal normal 22px Arial, Tahoma, Helvetica, FreeSans, sans-serif;
+  margin: .75em 0 0;
+}
+.post-body {
+  font-size: 110%;
+  line-height: 1.5;
+  position: relative;
+}
+
+/* Sidebar Widgets & Ad Headings */
+div.widget > h2,
+div.widget h2.title {
+  margin: 0 0 1em 0;
+  font: normal bold 11px Arial, Tahoma, Helvetica, FreeSans, sans-serif;
+  color: #000000;
+}
+
+/* Remove leftover sidebar widget headings ("A", "A1", "Ad") */
+#HTML1 .title,
+#HTML2 .title,
+#HTML3 .title,
+.sidebar .widget.HTML .title,
+.foot .widget.HTML .title {
+  display: none !important;
+}
+
+/* Footer */
+.footer-outer {
+  border-top: 0 dashed #bbbbbb;
+}
+
+/* ==========================================================================
+   MOBILE RESPONSIVENESS & FLUID CONTAINER RULES (< 1280px)
+   ========================================================================== */
+@media screen and (max-width: 1279px) {
+  body {
+    min-width: 0 !important;
+    padding: 0 8px 16px 8px !important;
+  }
+  .content-outer,
+  .content-fauxcolumn-outer,
+  .region-inner,
+  .main-inner,
+  .columns-inner,
+  .header-inner,
+  .tabs-inner,
+  .footer-inner {
+    min-width: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  .content-inner {
+    padding: 8px 6px !important;
+  }
+  .header-inner .Header .titlewrapper,
+  .header-inner .Header .descriptionwrapper {
+    padding: 10px 12px !important;
+  }
+  .Header h1 {
+    font-size: 32px !important;
+  }
+  .main-inner {
+    padding-top: 10px !important;
+    padding-bottom: 15px !important;
+  }
+  .main-inner .columns {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  .main-inner .column-center-outer {
+    width: 100% !important;
+    float: none !important;
+    margin: 0 !important;
+  }
+  .main-inner .column-center-inner {
+    padding: 0 !important;
+  }
+  .main-inner .column-center-inner .section {
+    margin: 0 !important;
+  }
+  .main-inner .column-right-outer {
+    width: 100% !important;
+    float: none !important;
+    margin: 24px auto 0 !important;
+    clear: both !important;
+  }
+  .main-inner .column-right-inner {
+    padding: 0 !important;
+  }
+  .main-inner .fauxcolumn-center-outer,
+  .main-inner .fauxcolumn-right-outer,
+  .main-inner .fauxcolumn-left-outer {
+    display: none !important;
+  }
+  .section-columns td.columns-cell {
+    display: block !important;
+    width: 100% !important;
+    border-left: none !important;
+    box-sizing: border-box !important;
+  }
+}
+
+/* ==========================================================================
+   DESKTOP PRESERVATION RULES (>= 1280px)
+   ========================================================================== */
+@media screen and (min-width: 1280px) {
+  body {
+    padding: 0 40px 40px 40px;
+  }
+  .content-outer,
+  .content-fauxcolumn-outer,
+  .region-inner {
+    max-width: 1100px;
+    width: 1100px;
+    margin: 0 auto;
+  }
+  .main-inner .columns {
+    padding-left: 0;
+    padding-right: 310px;
+  }
+  .main-inner .column-right-outer {
+    width: 310px;
+    margin-right: -310px;
+  }
+}
+  ]]></b:skin>
+
+  <b:template-skin><![CDATA[
+body {
+  min-width: 0;
+}
+.content-outer, .content-fauxcolumn-outer, .region-inner {
+  min-width: 0;
+  max-width: 100%;
+  width: auto;
+}
+.main-inner .fauxcolumn-center-outer {
+  left: 0;
+  right: 0;
+}
+#layout {
+  min-width: 0;
+}
+#layout .content-outer {
+  min-width: 0;
+  width: 100%;
+}
+#layout .region-inner {
+  min-width: 0;
+  width: auto;
+}
+  ]]></b:template-skin>
+</head>
+
+<body class='loading variant-pale'>
+  <div class='navbar section' id='navbar' name='Navbar'>
+    <b:widget id='Navbar1' locked='true' title='Navbar' type='Navbar' version='1'>
+      <b:includable id='main'>
+        <div id="navbar-iframe-container"></div>
+      </b:includable>
+    </b:widget>
+  </div>
+
+  <div class='body-fauxcolumns'>
+    <div class='fauxcolumn-outer body-fauxcolumn-outer'>
+      <div class='cap-top'><div class='cap-left'></div><div class='cap-right'></div></div>
+      <div class='fauxborder-left'><div class='fauxborder-right'></div><div class='fauxcolumn-inner'></div></div>
+      <div class='cap-bottom'><div class='cap-left'></div><div class='cap-right'></div></div>
+    </div>
+  </div>
+
+  <div class='content'>
+    <div class='content-fauxcolumns'>
+      <div class='fauxcolumn-outer content-fauxcolumn-outer'>
+        <div class='cap-top'><div class='cap-left'></div><div class='cap-right'></div></div>
+        <div class='fauxborder-left'><div class='fauxborder-right'></div><div class='fauxcolumn-inner'></div></div>
+        <div class='cap-bottom'><div class='cap-left'></div><div class='cap-right'></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class='content-outer'>
+    <div class='content-cap-top cap-top'><div class='cap-left'></div><div class='cap-right'></div></div>
+    <div class='fauxborder-left content-fauxborder-left'><div class='fauxborder-right content-fauxborder-right'></div>
+      <div class='content-inner'>
+        <header>
+          <div class='header-outer'>
+            <div class='header-cap-top cap-top'><div class='cap-left'></div><div class='cap-right'></div></div>
+            <div class='fauxborder-left header-fauxborder-left'><div class='fauxborder-right header-fauxborder-right'></div>
+              <div class='region-inner header-inner'>
+                <div class='header section' id='header' name='Header'>
+                  <b:widget id='Header1' locked='true' title='Tech info' type='Header' version='1'>
+                    <b:includable id='main'>
+                      <div id='header-inner'>
+                        <div class='titlewrapper'>
+                          <h1 class='title'>
+                            <a expr:href='data:blog.homepageUrl'><data:title/></a>
+                          </h1>
+                        </div>
+                        <b:if cond='data:description'>
+                          <div class='descriptionwrapper'>
+                            <p class='description'><span><data:description/></span></p>
+                          </div>
+                        </b:if>
+                      </div>
+                    </b:includable>
+                  </b:widget>
+                </div>
+              </div>
+            </div>
+            <div class='header-cap-bottom cap-bottom'><div class='cap-left'></div><div class='cap-right'></div></div>
+          </div>
+        </header>
+
+        <div class='tabs-outer'>
+          <div class='tabs-cap-top cap-top'><div class='cap-left'></div><div class='cap-right'></div></div>
+          <div class='fauxborder-left tabs-fauxborder-left'><div class='fauxborder-right tabs-fauxborder-right'></div>
+            <div class='region-inner tabs-inner'>
+              <div class='tabs no-items section' id='crosscol' name='Cross-column'></div>
+              <div class='tabs no-items section' id='crosscol-overflow' name='Cross-Column 2'></div>
+            </div>
+          </div>
+          <div class='tabs-cap-bottom cap-bottom'><div class='cap-left'></div><div class='cap-right'></div></div>
+        </div>
+
+        <div class='main-outer'>
+          <div class='main-cap-top cap-top'><div class='cap-left'></div><div class='cap-right'></div></div>
+          <div class='fauxborder-left main-fauxborder-left'><div class='fauxborder-right main-fauxborder-right'></div>
+            <div class='region-inner main-inner'>
+              <div class='columns fauxcolumns'>
+                <div class='fauxcolumn-outer fauxcolumn-center-outer'>
+                  <div class='cap-top'><div class='cap-left'></div><div class='cap-right'></div></div>
+                  <div class='fauxborder-left'><div class='fauxborder-right'></div><div class='fauxcolumn-inner'></div></div>
+                  <div class='cap-bottom'><div class='cap-left'></div><div class='cap-right'></div></div>
+                </div>
+                <div class='fauxcolumn-outer fauxcolumn-left-outer'>
+                  <div class='cap-top'><div class='cap-left'></div><div class='cap-right'></div></div>
+                  <div class='fauxborder-left'><div class='fauxborder-right'></div><div class='fauxcolumn-inner'></div></div>
+                  <div class='cap-bottom'><div class='cap-left'></div><div class='cap-right'></div></div>
+                </div>
+                <div class='fauxcolumn-outer fauxcolumn-right-outer'>
+                  <div class='cap-top'><div class='cap-left'></div><div class='cap-right'></div></div>
+                  <div class='fauxborder-left'><div class='fauxborder-right'></div><div class='fauxcolumn-inner'></div></div>
+                  <div class='cap-bottom'><div class='cap-left'></div><div class='cap-right'></div></div>
+                </div>
+              </div>
+
+              <div class='columns-inner'>
+                <div class='column-center-outer'>
+                  <div class='column-center-inner'>
+                    <div class='main section' id='main' name='Main'>
+                      <b:widget id='Blog1' locked='true' title='Blog Posts' type='Blog' version='1'>
+                        <b:includable id='main' var='top'>
+                          <div class='blog-posts hfeed'>
+                            <b:loop values='data:posts' var='post'>
+                              <div class='post-outer'>
+                                <article class='post hentry'>
+                                  <b:if cond='data:post.title'>
+                                    <h3 class='post-title entry-title'>
+                                      <b:if cond='data:post.link'>
+                                        <a expr:href='data:post.link'><data:post.title/></a>
+                                      <b:else/>
+                                        <b:if cond='data:post.url'>
+                                          <a expr:href='data:post.url'><data:post.title/></a>
+                                        <b:else/>
+                                          <data:post.title/>
+                                        </b:if>
+                                      </b:if>
+                                    </h3>
+                                  </b:if>
+                                  <div class='post-body entry-content' expr:id='&quot;post-body-&quot; + data:post.id'>
+                                    <data:post.body/>
+                                    <div style='clear: both;'></div>
+                                  </div>
+                                </article>
+                              </div>
+                            </b:loop>
+                          </div>
+                        </b:includable>
+                      </b:widget>
+                    </div>
+                  </div>
+                </div>
+
+                <div class='column-right-outer'>
+                  <div class='column-right-inner'>
+                    <aside>
+                      <div class='sidebar section' id='sidebar-right-1' name='Sidebar'>
+                        <!-- HTML3 Ad Widget without leftover 'A' heading -->
+                        <b:widget id='HTML3' locked='false' title='' type='HTML' version='1'>
+                          <b:includable id='main'>
+                            <div class='widget-content'>
+                              <data:content/>
+                            </div>
+                          </b:includable>
+                        </b:widget>
+                        <!-- Profile Widget -->
+                        <b:widget id='Profile1' locked='false' title='About Me' type='Profile' version='1'>
+                          <b:includable id='main'>
+                            <h2>About Me</h2>
+                            <div class='widget-content'>
+                              <dl class='profile-datablock'>
+                                <dt class='profile-data'>
+                                  <a class='profile-name-link g-profile' href='https://www.blogger.com/profile/08192684803752279438' rel='author'>ROHIT</a>
+                                </dt>
+                              </dl>
+                              <a class='profile-link' href='https://www.blogger.com/profile/08192684803752279438' rel='author'>View my complete profile</a>
+                            </div>
+                          </b:includable>
+                        </b:widget>
+                      </div>
+
+                      <div class='sidebar section' id='sidebar-right-2-1' name='Sidebar Lower'>
+                        <!-- HTML2 Ad Widget without leftover 'Ad' heading -->
+                        <b:widget id='HTML2' locked='false' title='' type='HTML' version='1'>
+                          <b:includable id='main'>
+                            <div class='widget-content'>
+                              <data:content/>
+                            </div>
+                          </b:includable>
+                        </b:widget>
+                        <!-- BlogArchive Widget -->
+                        <b:widget id='BlogArchive1' locked='false' title='Blog Archive' type='BlogArchive' version='1'>
+                          <b:includable id='main'>
+                            <h2>Blog Archive</h2>
+                            <div class='widget-content'>
+                              <div id='ArchiveList'>
+                                <div id='BlogArchive1_ArchiveList'>
+                                  <ul class='hierarchy'>
+                                    <li class='archivedate expanded'>
+                                      <a class='toggle' href='javascript:void(0)'><span class='zippy toggle-open'>&#9660;&#160;</span></a>
+                                      <a class='post-count-link' href='https://techinfo29.blogspot.com/2026/'>2026</a>
+                                      <span class='post-count' dir='ltr'>(1)</span>
+                                    </li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                          </b:includable>
+                        </b:widget>
+                      </div>
+                    </aside>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class='main-cap-bottom cap-bottom'><div class='cap-left'></div><div class='cap-right'></div></div>
+        </div>
+
+        <footer>
+          <div class='footer-outer'>
+            <div class='footer-cap-top cap-top'><div class='cap-left'></div><div class='cap-right'></div></div>
+            <div class='fauxborder-left footer-fauxborder-left'><div class='fauxborder-right footer-fauxborder-right'></div>
+              <div class='region-inner footer-inner'>
+                <div class='foot section' id='footer-1' name='Footer 1'>
+                  <!-- HTML1 Ad Widget without leftover 'A1' heading -->
+                  <b:widget id='HTML1' locked='false' title='' type='HTML' version='1'>
+                    <b:includable id='main'>
+                      <div class='widget-content'>
+                        <data:content/>
+                      </div>
+                    </b:includable>
+                  </b:widget>
+                </div>
+                <div class='foot no-items section' id='footer-2-1'></div>
+                <div class='foot no-items section' id='footer-2-2'></div>
+                <div class='foot section' id='footer-3' name='Footer'>
+                  <b:widget id='Attribution1' locked='true' title='' type='Attribution' version='1'>
+                    <b:includable id='main'>
+                      <div class='widget-content' style='text-align: center;'>
+                        2016-2026. Simple theme (Mobile-First Responsive). Powered by <a href='https://www.blogger.com' target='_blank'>Blogger</a>.
+                      </div>
+                    </b:includable>
+                  </b:widget>
+                </div>
+              </div>
+            </div>
+            <div class='footer-cap-bottom cap-bottom'><div class='cap-left'></div><div class='cap-right'></div></div>
+          </div>
+        </footer>
+
+      </div>
+    </div>
+    <div class='content-cap-bottom cap-bottom'><div class='cap-left'></div><div class='cap-right'></div></div>
+  </div>
+</body>
+</html>

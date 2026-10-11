@@ -240,7 +240,7 @@ body {
   border: 1.5px solid var(--border);
   border-radius: var(--radius-full);
   padding: 3px;
-  height: 48px;
+  height: 50px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
@@ -253,7 +253,7 @@ body {
   padding: 0 16px;
   border-radius: var(--radius-full);
   cursor: pointer;
-  height: 40px;
+  height: 44px;
   min-width: 52px;
   display: inline-flex;
   align-items: center;
@@ -749,10 +749,25 @@ body {
 
 .fest-styles-scroll {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
   gap: 8px;
+  padding-bottom: 8px;
   margin-bottom: 24px;
-  justify-content: center;
+  justify-content: flex-start;
+}
+
+.fest-styles-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+@media (min-width: 769px) {
+  .fest-styles-scroll {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 }
 
 .style-pill {
@@ -1465,5 +1480,64 @@ details[open] .fest-faq-indicator {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+}
+
+/* ==========================================================================
+   MOBILE RESPONSIVENESS & FLUID CONTAINER RULES
+   ========================================================================== */
+img, iframe, video, table {
+  max-width: 100%;
+  height: auto;
+}
+
+body, .post-body, .fest-wrapper, .fest-card, .fest-editorial-section, p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+.fest-table-responsive,
+.fest-muhurat-box {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+@media (max-width: 768px) {
+  .fest-wrapper {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .fest-wrapper {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  /* Wrap countdown boxes to a 2x2 grid on small screens */
+  .fest-timer-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+  }
+  .fest-timer-item {
+    padding: 10px 4px 8px !important;
+  }
+  .fest-timer-val {
+    font-size: 26px !important;
+  }
+  /* Wrap secondary share buttons */
+  .fest-share-secondary-row {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px !important;
+  }
+  /* Stack micro actions vertically */
+  .fest-card-micro-actions {
+    flex-direction: column !important;
+    gap: 8px !important;
+  }
+  .fest-card-micro-actions .btn-fest-chip {
+    width: 100% !important;
+    justify-content: center !important;
   }
 }

@@ -3,9 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script>
-    (function(){try{var m=document.querySelector('meta[name="viewport"]');if(!m){m=document.createElement('meta');m.name='viewport';document.head.appendChild(m);}m.content='width=device-width, initial-scale=1.0';}catch(e){}})();
-  </script>
+  <script>(function(){try{var v=document.querySelector('meta[name="viewport"]');if(v){v.setAttribute('content','width=device-width, initial-scale=1.0');}else{v=document.createElement('meta');v.name='viewport';v.content='width=device-width, initial-scale=1.0';document.head.appendChild(v);}}catch(e){}})();</script>
   <title>{{SEO_TITLE}}</title>
   <meta name="description" content="{{SEO_DESCRIPTION}}">
   <meta name="keywords" content="{{SEO_KEYWORDS}}">
@@ -664,7 +662,8 @@
     <section class="fest-channel-cta" aria-label="Join Community Channel">
       <h4>🔔 शुभ मुहूर्त व शुभकामनाओं के लिए जुड़ें</h4>
       <p>हमारे निःशुल्क व्हाट्सएप चैनल से जुड़ें और पाएं पावन मुहूर्त, प्रेरक विचार व HD ग्रीटिंग कार्ड्स सीधे अपने फोन पर।</p>
-      <a href="https://whatsapp.com/channel/example" class="btn-join-channel" target="_blank" rel="noopener noreferrer">
+      <!-- TODO: Replace placeholder URL below with your actual verified WhatsApp Channel URL -->
+      <a href="https://whatsapp.com/channel/YOUR_CHANNEL_ID_HERE" class="btn-join-channel" target="_blank" rel="noopener noreferrer">
         <span>📲</span> <span>व्हाट्सएप चैनल से जुड़ें</span>
       </a>
     </section>
